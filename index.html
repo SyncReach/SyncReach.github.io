@@ -217,7 +217,6 @@
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
-    .flow__step.active .flow__node{animation:none;}
   }
 </style>
 </head>
@@ -492,7 +491,6 @@
   });
   var steps=flow.querySelectorAll('.flow__step');
   var nowEl=document.getElementById('flowNow'), titleEl=document.getElementById('flowTitle'), descEl=document.getElementById('flowDesc');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function paint(cur){
     var done = cur>=STAGES.length;
     steps.forEach(function(st,i){
@@ -503,9 +501,9 @@
     nowEl.textContent = done?'Live':('Step '+(idx+1));
     titleEl.textContent = a.label; descEl.textContent = a.desc;
   }
-  if(reduce){ paint(STAGES.length); }
-  else { var cur=0; paint(0); setInterval(function(){cur=(cur+1)%(STAGES.length+1);paint(cur);},1900); }
+  var cur=0; paint(0); setInterval(function(){cur=(cur+1)%(STAGES.length+1);paint(cur);},1900);
 </script>
 <script src="assets/site.js"></script>
 </body>
 </html>
+                                                                                                                                                                                 
