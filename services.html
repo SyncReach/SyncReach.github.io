@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — SyncReach</title>
+<meta name="description" content="Tailored digital solutions for attorneys: websites, email & SMS marketing, social media, content, automation & client intake, branding, and custom project solutions.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  /* services-page specific */
+  .svc-block{display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:center;padding:56px 0;border-top:1px solid var(--border-soft);}
+  .svc-block:first-of-type{border-top:0;}
+  .svc-block--alt .svc-block__media{order:2;}
+  .svc-block__num{font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:0.14em;color:var(--text-faint);}
+  .svc-block__tile{width:48px;height:48px;border-radius:var(--radius-xs);background:var(--brand-red);color:var(--brand-cream);display:flex;align-items:center;justify-content:center;margin:16px 0 0;}
+  .svc-block__tile svg{width:24px;height:24px;}
+  .svc-block__t{font-family:var(--font-sans);font-weight:700;font-size:clamp(24px,3.4vw,30px);letter-spacing:-0.02em;color:var(--text-strong);margin:16px 0 0;line-height:1.12;}
+  .svc-block__d{font-size:16px;color:var(--text-muted);margin:14px 0 0;}
+  .svc-block__list{margin-top:22px;display:grid;gap:11px;}
+  .svc-item{display:flex;gap:12px;align-items:flex-start;}
+  .svc-item__ic{flex:none;width:20px;height:20px;border-radius:var(--radius-xs);background:var(--red-50);color:var(--brand-red);display:flex;align-items:center;justify-content:center;margin-top:2px;}
+  .svc-item__ic svg{width:13px;height:13px;}
+  .svc-item__txt{font-size:15px;color:var(--text-default);}
+  .svc-block__media{height:340px;}
+  .svc-block__media .photo{height:100%;border:1px solid var(--border-default);box-shadow:var(--shadow-overlay);}
+
+  /* process recap strip */
+  .recap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-soft);border:1px solid var(--border-soft);border-radius:var(--radius-sm);overflow:hidden;margin-top:40px;}
+  .recap__c{background:var(--surface-default);padding:24px 22px;}
+  .recap__step{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-accent);}
+  .recap__t{font-family:var(--font-sans);font-weight:700;font-size:19px;color:var(--text-strong);margin-top:8px;}
+  .recap__d{font-size:13.5px;color:var(--text-muted);margin-top:8px;line-height:1.5;}
+
+  @media (max-width:860px){
+    .svc-block{grid-template-columns:1fr;gap:26px;padding:44px 0;}
+    .svc-block--alt .svc-block__media{order:0;}
+    .svc-block__media{height:240px;}
+    .recap{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:520px){ .recap{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="brand" href="index.html" aria-label="SyncReach home">
+    <span class="brand__mark" data-globe-mark></span>
+    <span class="brand__name"><b>SYNC</b><span>REACH</span></span>
+  </a>
+  <div class="nav__links">
+    <a href="index.html#system">Growth System</a><a href="services.html" aria-current="page">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+  </div>
+  <span class="nav__sp"></span>
+  <div class="nav__right">
+    <a class="btn btn--sm btn--primary" href="contact.html">Book a free consultation</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="phead">
+  <span class="phead__motif" data-globe></span>
+  <div class="phead__in">
+    <span class="eyebrow">What SyncReach offers</span>
+    <h1>Tailored digital solutions for attorneys.</h1>
+    <p>Everything a modern law firm needs to grow efficiently and stand out in a competitive market — designed to work together as one connected system, with your firm in full control.</p>
+    <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;">
+      <a class="btn btn--primary" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book a free consultation</a>
+      <a class="btn btn--secondary" href="index.html#system">See the growth system</a>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICE BLOCKS -->
+<main class="sec">
+
+  <!-- 1 Website -->
+  <section class="svc-block">
+    <div>
+      <div class="svc-block__num">Service 01</div>
+      <div class="svc-block__tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+      <h2 class="svc-block__t">Website Design &amp; Development</h2>
+      <p class="svc-block__d">Modern, high-performing websites built specifically for law firms — designed to earn trust, improve visibility, and turn visitors into clients.</p>
+      <div class="svc-block__list">
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">SEO-optimized structure so the right clients find you</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Built-in client intake forms and consultation scheduling</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Mobile-first, fast-loading, and accessible by default</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Professional design that reflects your firm's credibility</span></div>
+      </div>
+    </div>
+    <div class="svc-block__media">
+      <img class="photo website" src="/assets/syncreach-website.png" alt="Website Development">
+    </div>
+  </section>
+
+  <!-- 2 Email -->
+  <section class="svc-block svc-block--alt">
+    <div>
+      <div class="svc-block__num">Service 02</div>
+      <div class="svc-block__tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></div>
+      <h2 class="svc-block__t">Email Marketing</h2>
+      <p class="svc-block__d">Nurture leads and stay connected with current clients through strategic, automated email campaigns that keep your firm top of mind.</p>
+      <div class="svc-block__list">
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Automated nurture sequences for new inquiries</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Branded templates and regular client newsletters</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Segmented campaigns by practice area and stage</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Performance tracking and A/B testing</span></div>
+      </div>
+    </div>
+    <div class="svc-block__media">
+      <img class="photo email marketing" src="/assets/syncreach-email.png" alt="Email Marketing">
+    </div>
+  </section>
+
+  <!-- 3 SMS -->
+  <section class="svc-block">
+    <div>
+      <div class="svc-block__num">Service 03</div>
+      <div class="svc-block__tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <h2 class="svc-block__t">SMS Marketing</h2>
+      <p class="svc-block__d">Reach prospects and clients instantly with automated text messaging — the fastest way to confirm, remind, and follow up without manual effort.</p>
+      <div class="svc-block__list">
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Instant follow-up the moment a lead comes in</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Appointment and consultation reminders</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Promotions and important firm updates</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Fully automated, compliant, and trackable</span></div>
+      </div>
+    </div>
+    <div class="svc-block__media">
+      <img class="photo sms" src="/assets/syncreach-sms.png" alt="SMS">
+    </div>
+  </section>
+
+  <!-- 4 Social -->
+  <section class="svc-block svc-block--alt">
+    <div>
+      <div class="svc-block__num">Service 04</div>
+      <div class="svc-block__tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></div>
+      <h2 class="svc-block__t">Social Media Marketing</h2>
+      <p class="svc-block__d">Build credibility, increase visibility, and establish authority in your practice area with professionally managed social media content.</p>
+      <div class="svc-block__list">
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Content strategy tailored to your practice area</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Consistent posting calendar and branded design</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Authority-building content for LinkedIn and beyond</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Engagement and growth reporting</span></div>
+      </div>
+    </div>
+    <div class="svc-block__media">
+      <img class="photo social marketing" src="/assets/syncreach-social.png" alt="Social Marketing"> 
+    </div>
+  </section>
+
+  <!-- 5 Content -->
+  <section class="svc-block">
+    <div>
+      <div class="svc-block__num">Service 05</div>
+      <div class="svc-block__tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></div>
+      <h2 class="svc-block__t">Blog &amp; Content Writing</h2>
+      <p class="svc-block__d">SEO-focused content that improves your search rankings, answers the questions clients are asking, and positions your firm as the expert.</p>
+      <div class="svc-block__list">
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Practice-area articles built around real search terms</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Keyword research that targets high-intent clients</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Clear, credible writing — human-reviewed, never spammy</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">A steady publishing cadence that compounds over time</span></div>
+      </div>
+    </div>
+    <div class="svc-block__media">
+      <img class="photo website" src="/assets/syncreach-blog.png" alt="Content Creation"> 
+    </div>
+  </section>
+
+  <!-- 6 Automation -->
+  <section class="svc-block svc-block--alt">
+    <div>
+      <div class="svc-block__num">Service 06</div>
+      <div class="svc-block__tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6M12 8a5 5 0 0 0-5 5v3h10v-3a5 5 0 0 0-5-5zM12 16v6"/></svg></div>
+      <h2 class="svc-block__t">Automation &amp; Client Intake</h2>
+      <p class="svc-block__d">Streamline your firm's workflow with automated systems that capture, organize, and follow up with every lead — so nothing slips through the cracks.</p>
+      <div class="svc-block__list">
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Automated intake forms and document collection</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Online scheduling and calendar integration</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Lead tracking and CRM integration</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Automated follow-up so no inquiry is forgotten</span></div>
+      </div>
+    </div>
+    <div class="svc-block__media">
+      <img class="photo automation" src="/assets/syncreach-automation.png" alt="Workflow Automation"> 
+    </div>
+  </section>
+
+  <!-- 7 Branding -->
+  <section class="svc-block">
+    <div>
+      <div class="svc-block__num">Service 07</div>
+      <div class="svc-block__tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7a4 4 0 0 0-5.66-5.66l-7 7a6 6 0 0 0 8.49 8.49"/><circle cx="7.5" cy="14.5" r="1"/></svg></div>
+      <h2 class="svc-block__t">Branding &amp; Design</h2>
+      <p class="svc-block__d">A professional, memorable brand that builds trust and credibility — applied consistently across every client touchpoint.</p>
+      <div class="svc-block__list">
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Logo and visual identity design</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Brand color, type, and usage guidelines</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Business stationery and marketing collateral</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">A consistent look across web, social, and print</span></div>
+      </div>
+    </div>
+    <div class="svc-block__media">
+      <img class="photo branding" src="/assets/syncreach-branding.png" alt="Branding"> 
+    </div>
+  </section>
+
+  <!-- 8 Custom -->
+  <section class="svc-block svc-block--alt">
+    <div>
+      <div class="svc-block__num">Service 08</div>
+      <div class="svc-block__tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-2.82 1.17V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 7 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 3.5 14H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 5 8a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 10 3.5V3a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 17 5l.06-.06a2 2 0 1 1 2.83 2.83L19.83 8A1.65 1.65 0 0 0 20.5 10H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <h2 class="svc-block__t">Custom Project Solutions</h2>
+      <p class="svc-block__d">Have something unique in mind? We build custom, project-based solutions designed around your firm's specific goals and challenges.</p>
+      <div class="svc-block__list">
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Custom development and integrations</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Bespoke automations for your exact workflow</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Technology consulting and process optimization</span></div>
+        <div class="svc-item"><span class="svc-item__ic" data-check></span><span class="svc-item__txt">Scoped, project-based engagements</span></div>
+      </div>
+    </div>
+    <div class="svc-block__media">
+      <img class="photo custom" src="/assets/syncreach-custom.png" alt="Custom"> 
+    </div>
+  </section>
+</main>
+
+<!-- HOW IT FITS TOGETHER -->
+<section class="dark">
+  <span class="dark__motif" data-globe></span>
+  <div class="dark__in">
+    <div class="sec__head">
+      <span class="eyebrow">How it fits together</span>
+      <h2 class="dark__t">Individual services, one connected system.</h2>
+      <p class="dark__p">Each service can stand alone — but they're designed to work as a single growth system across four stages, so your marketing, intake, and follow-up reinforce each other.</p>
+    </div>
+    <div class="recap">
+      <div class="recap__c"><div class="recap__step">Step 1 · Attract</div><div class="recap__t">Get discovered</div><div class="recap__d">Websites, SEO, content, and social bring high-intent clients to you.</div></div>
+      <div class="recap__c"><div class="recap__step">Step 2 · Capture</div><div class="recap__t">Never lose a lead</div><div class="recap__d">Intake forms, scheduling, and CRM capture every inquiry automatically.</div></div>
+      <div class="recap__c"><div class="recap__step">Step 3 · Convert</div><div class="recap__t">Follow up instantly</div><div class="recap__d">Email and SMS automation nurture leads into booked consultations.</div></div>
+      <div class="recap__c"><div class="recap__step">Step 4 · Scale</div><div class="recap__t">Run leaner</div><div class="recap__d">Automated workflows cut admin so you focus on clients and casework.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ctasec">
+  <div class="band">
+    <span class="band__motif" data-globe></span>
+    <div>
+      <h3 class="band__t">Not sure which services your firm needs?</h3>
+      <p class="band__s">Book a free consultation — we'll map the right system to your goals. No commitment.</p>
+    </div>
+    <div class="band__r"><a class="btn btn--light" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book a free consultation</a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <a class="brand" href="index.html" aria-label="SyncReach home">
+    <span class="brand__mark" data-globe-mark style="color:var(--text-strong)"></span>
+    <span class="brand__name"><b>SYNC</b><span>REACH</span></span>
+  </a>
+  <div class="foot__links">
+    <a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="mailto:admin@syncreach.io">admin@syncreach.io</a><a href="tel:+12892701009">+1 (289) 270-1009</a>
+  </div>
+  <span class="foot__c">© 2026 SyncReach Solutions Inc.</span>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
