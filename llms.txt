@@ -1,0 +1,39 @@
+# SyncReach Solutions
+
+> SyncReach Solutions Inc. builds digital growth systems for law firms in North America, combining website design, client intake automation, marketing, branding, content, and custom technology solutions.
+
+SyncReach helps attorneys and law firms turn their online presence, lead capture, client follow-up, and internal workflows into one connected growth system. The company serves new attorneys, solo practitioners, and small to mid-size firms that want more qualified inquiries, faster lead response, and more efficient intake operations.
+
+## Core Pages
+
+- [Home](https://www.syncreach.io/): Overview of SyncReach's law firm growth systems, positioning, services, founders, and consultation CTA.
+- [Services](https://www.syncreach.io/services): Full service list, including website design and development, email marketing, SMS marketing, social media marketing, blog and content writing, automation and client intake, branding and design, and custom project solutions.
+- [About](https://www.syncreach.io/about): Company story, founder information, principles, and the law-firm growth-system approach.
+- [Contact](https://www.syncreach.io/contact): Consultation request form, email, phone, service area, and response expectations.
+
+## Services
+
+- Website design and development for law firms.
+- Client intake automation, scheduling, CRM workflows, and follow-up systems.
+- Email marketing and lead nurture sequences.
+- SMS marketing for reminders, confirmations, and follow-ups.
+- Social media marketing and authority-building content.
+- SEO-focused blog and content writing for legal audiences.
+- Branding and design for law firms.
+- Custom technology, integration, automation, and consulting projects.
+
+## Company Information
+
+- Company: SyncReach Solutions Inc.
+- Website: https://www.syncreach.io/
+- Email: admin@syncreach.io
+- Phone: +1 (289) 270-1009
+- Area served: North America
+- Audience: Attorneys, solo practitioners, new law firms, and small to mid-size law firms.
+- Founders: Shadan Boroumand and Behrad Boroumand.
+
+## Legal and Policy Pages
+
+- [Privacy Policy](https://www.syncreach.io/privacy): Privacy and personal information handling practices.
+- [Terms of Service](https://www.syncreach.io/terms): Terms governing website use and SyncReach services.
+- [Sitemap](https://www.syncreach.io/sitemap.xml): XML sitemap for indexable public pages.
