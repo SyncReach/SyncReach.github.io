@@ -34,7 +34,7 @@ law firms → About (founders) → Book-a-consultation CTA → Footer.
    handler), change the `<form action="…">` in `contact.html`. The form redirects to `thanks.html`
    on success (the `_next` hidden field).
 3. **Consultation buttons** across the site now point to `contact.html`. If you'd rather use a
-   scheduler (e.g. Calendly), change those `href="contact.html"` links instead.
+   scheduler (e.g. Calendly), change those `href="/contact"` links instead.
 4. **Set the social preview image.** Add an `og-image.png` (1200×630) next to `index.html`
    (referenced in `<head>`), or update the `og:image` path.
 5. **Upload** all `.html` files + `favicon.svg` + the `assets/` folder (+ your images +

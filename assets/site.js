@@ -54,7 +54,7 @@
     bar.setAttribute('aria-label', 'Cookie notice');
     bar.innerHTML = ''
       + '<div class="sr-cookie__txt"><b>We use cookies.</b> We use cookies to run this site and understand how it&rsquo;s used. '
-      + 'See our <a href="privacy.html">Privacy Policy</a>.</div>'
+      + 'See our <a href="/privacy">Privacy Policy</a>.</div>'
       + '<div class="sr-cookie__btns">'
       + '<button type="button" class="sr-cookie__b sr-cookie__b--no" data-cc="declined">Decline</button>'
       + '<button type="button" class="sr-cookie__b sr-cookie__b--yes" data-cc="accepted">Accept</button>'
