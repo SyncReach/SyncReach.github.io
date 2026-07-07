@@ -8,6 +8,7 @@ SyncReach helps attorneys and law firms turn their online presence, lead capture
 
 - [Home](https://www.syncreach.io/): Overview of SyncReach's law firm growth systems, positioning, services, founders, and consultation CTA.
 - [Services](https://www.syncreach.io/services): Full service list, including website design and development, email marketing, SMS marketing, social media marketing, blog and content writing, automation and client intake, branding and design, and custom project solutions.
+- [Pricing](https://www.syncreach.io/pricing): Interactive calculator for estimating website, marketing, automation, and branding costs by service and add-on.
 - [About](https://www.syncreach.io/about): Company story, founder information, principles, and the law-firm growth-system approach.
 - [Contact](https://www.syncreach.io/contact): Consultation request form, email, phone, service area, and response expectations.
 
