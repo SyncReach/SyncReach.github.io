@@ -1,0 +1,7 @@
+{
+  "layout": "layouts/post.njk",
+  "tags": "posts",
+  "titleSuffix": " — SyncReach",
+  "ogType": "article",
+  "permalink": "/blog/{{ page.fileSlug }}/"
+}
