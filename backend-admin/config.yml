@@ -2,7 +2,6 @@ backend:
   name: github
   repo: SyncReach/SyncReach.github.io
   branch: main
-  base_url: https://sveltia-cms-auth.winter-bread-c74.workers.dev
 
 app_title: SyncReach Solutions
 logo:
