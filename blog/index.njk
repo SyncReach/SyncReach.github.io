@@ -1,0 +1,36 @@
+---
+layout: layouts/base.njk
+title: "Blog"
+titleSuffix: " — SyncReach"
+description: "SEO-focused insights on law-firm growth: client intake, marketing, automation, and building a system that turns attention into clients."
+permalink: /blog/
+---
+<header class="phead">
+  <span class="phead__motif" data-globe></span>
+  <div class="phead__in">
+    <span class="eyebrow">SyncReach Blog</span>
+    <h1>Insights for growing law firms.</h1>
+    <p>Practical thinking on client intake, marketing, automation, and building a growth system your firm actually controls.</p>
+  </div>
+</header>
+
+<section class="sec">
+  {% set posts = collections.posts | reverse %}
+  {% if posts | length %}
+  <div class="postgrid">
+    {% for post in posts %}
+    <a class="pcard" href="{{ post.url }}">
+      {% if post.data.cover %}<img class="pcard__img" src="{{ post.data.cover }}" alt="{{ post.data.title }}">{% endif %}
+      <div class="pcard__body">
+        <span class="pcard__meta">{{ post.data.date | readableDate }}{% if post.data.author %} · {{ post.data.author }}{% endif %}</span>
+        <h2 class="pcard__title">{{ post.data.title }}</h2>
+        <p class="pcard__excerpt">{{ post.data.excerpt or post.data.description }}</p>
+        <span class="pcard__more">Read article <span data-arrow style="width:15px;height:15px;display:inline-flex;"></span></span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty">No articles published yet — check back soon.</p>
+  {% endif %}
+</section>
