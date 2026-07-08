@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}{{ titleSuffix }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="https://www.syncreach.io{{ page.url }}">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="https://www.syncreach.io{{ page.url }}">
+{% if cover %}<meta property="og:image" content="{{ cover }}">{% endif %}
+<meta name="twitter:card" content="{{ 'summary_large_image' if cover else 'summary' }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* ===== Blog-specific styles (built on the SyncReach design system) ===== */
+.blogwrap{max-width:1200px;margin:0 auto;padding:0 24px;}
+.postmeta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:20px;font-family:var(--font-mono);font-size:12.5px;letter-spacing:.02em;color:var(--text-muted);}
+.postmeta .dot{width:3px;height:3px;border-radius:50%;background:var(--border-strong);}
+.article{max-width:720px;margin:0 auto;padding:56px 24px 8px;}
+.article > *{margin:0 0 20px;}
+.article h2{font-family:var(--font-sans);font-weight:700;font-size:26px;line-height:1.2;letter-spacing:-.02em;color:var(--text-strong);margin:44px 0 14px;}
+.article h3{font-family:var(--font-sans);font-weight:600;font-size:20px;line-height:1.25;color:var(--text-strong);margin:32px 0 10px;}
+.article p{font-size:17.5px;line-height:1.7;color:var(--text-default);}
+.article a{color:var(--text-accent);text-underline-offset:3px;text-decoration:underline;}
+.article ul,.article ol{margin:0 0 20px;padding-left:22px;}
+.article ul{list-style:disc;}
+.article ol{list-style:decimal;}
+.article li{font-size:17.5px;line-height:1.7;margin:0 0 8px;}
+.article li::marker{color:var(--brand-red);}
+.article blockquote{margin:26px 0;padding:6px 0 6px 22px;border-left:3px solid var(--brand-red);font-family:var(--font-serif);font-size:19px;line-height:1.6;color:var(--text-strong);}
+.article img{border-radius:var(--radius-md);border:1px solid var(--border-soft);margin:28px 0;}
+.article code{font-family:var(--font-mono);font-size:.9em;background:var(--surface-sunken);padding:2px 6px;border-radius:var(--radius-xs);}
+.article hr{border:none;border-top:1px solid var(--border-soft);margin:40px 0;}
+.article .cover{width:100%;border-radius:var(--radius-md);border:1px solid var(--border-soft);margin:0 0 8px;}
+.backlink{display:inline-flex;align-items:center;gap:7px;font-size:14px;color:var(--text-muted);}
+.backlink:hover{color:var(--text-accent);}
+
+/* Blog index cards */
+.postgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;}
+.pcard{display:flex;flex-direction:column;background:var(--surface-default);border:1px solid var(--border-soft);border-radius:var(--radius-md);overflow:hidden;transition:border-color var(--ease) .12s,box-shadow var(--ease) .12s;}
+.pcard:hover{border-color:var(--border-strong);box-shadow:var(--shadow-raised);}
+.pcard__img{aspect-ratio:16/9;background:var(--surface-sunken);object-fit:cover;width:100%;}
+.pcard__body{padding:20px 20px 22px;display:flex;flex-direction:column;flex:1;}
+.pcard__meta{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);}
+.pcard__title{font-family:var(--font-sans);font-weight:700;font-size:19px;line-height:1.25;letter-spacing:-.015em;color:var(--text-strong);margin:10px 0 8px;}
+.pcard__excerpt{font-size:14.5px;line-height:1.6;color:var(--text-muted);margin:0 0 16px;}
+.pcard__more{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--text-accent);}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--text-accent);}
+.empty{color:var(--text-muted);font-size:16px;padding:20px 0 60px;}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a class="brand" href="/" aria-label="SyncReach home">
+    <span class="brand__mark" data-globe-mark></span>
+    <span class="brand__name"><b>SYNC</b><span>REACH</span></span>
+  </a>
+  <div class="nav__links">
+    <a href="/services">Services</a><a href="/pricing">Pricing</a><a href="/blog" aria-current="page">Blog</a><a href="/about">About</a><a href="/contact">Contact</a>
+  </div>
+  <span class="nav__sp"></span>
+  <div class="nav__right">
+    <a class="btn btn--sm btn--primary" href="/contact">Book a free consultation</a>
+  </div>
+</nav>
+
+{{ content | safe }}
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <a class="brand" href="/" aria-label="SyncReach home">
+    <span class="brand__mark" data-globe-mark style="color:var(--text-strong)"></span>
+    <span class="brand__name"><b>SYNC</b><span>REACH</span></span>
+  </a>
+  <div class="foot__links">
+    <a href="/">Home</a><a href="/services">Services</a><a href="/pricing">Pricing</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="mailto:admin@syncreach.io">admin@syncreach.io</a><a href="tel:+12892701009">+1 (289) 270-1009</a>
+  </div>
+  <span class="foot__c">© 2026 SyncReach Solutions Inc.</span>
+</footer>
+
+<script src="/assets/site.js"></script>
+</body>
+</html>
