@@ -2,6 +2,7 @@ backend:
   name: github
   repo: SyncReach/SyncReach.github.io
   branch: main
+  auth_methods: [token]
 
 app_title: SyncReach Solutions
 logo:
