@@ -7,7 +7,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("llms.txt");
   eleventyConfig.addPassthroughCopy("vercel.json");
   eleventyConfig.addPassthroughCopy("*.html");
-  eleventyConfig.addPassthroughCopy("admin");
+  eleventyConfig.addPassthroughCopy("backend-admin");
 
   // Readable date filter for post templates
   eleventyConfig.addFilter("readableDate", (d) => {
