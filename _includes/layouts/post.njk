@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+---
+<header class="phead">
+  <span class="phead__motif" data-globe></span>
+  <div class="phead__in">
+    <a class="backlink" href="/blog">&larr; All articles</a>
+    <span class="eyebrow" style="margin-top:14px;">{{ (tags | reject('equalto','posts') | first) or 'Article' }}</span>
+    <h1>{{ title }}</h1>
+    <div class="postmeta">
+      <span>{{ date | readableDate }}</span>
+      <span class="dot"></span>
+      <span>{{ author or 'SyncReach' }}</span>
+    </div>
+  </div>
+</header>
+
+<article class="article">
+  {% if cover %}<img class="cover" src="{{ cover }}" alt="{{ title }}">{% endif %}
+  {{ content | safe }}
+  <hr>
+  <p><a class="backlink" href="/blog">&larr; Back to all articles</a></p>
+</article>
+
+<!-- CTA -->
+<section class="sec sec--tight" style="text-align:center;">
+  <span class="eyebrow" style="justify-content:center;">Work with SyncReach</span>
+  <h2 style="font-family:var(--font-sans);font-weight:700;font-size:clamp(24px,3vw,32px);letter-spacing:-.02em;color:var(--text-strong);margin:16px 0 10px;">Let&rsquo;s build a growth system that fits your firm.</h2>
+  <p style="color:var(--text-muted);max-width:520px;margin:0 auto 22px;">A free consultation on your firm&rsquo;s growth — no commitment.</p>
+  <a class="btn btn--primary" href="/contact">Book a free consultation</a>
+</section>
