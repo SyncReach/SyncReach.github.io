@@ -1,0 +1,27 @@
+backend:
+  name: github
+  repo: SyncReach/SyncReach.github.io
+  branch: main
+  base_url: https://sveltia-cms-auth.winter-bread-c74.workers.dev
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: blog
+    label: "Blog posts"
+    label_singular: "Blog post"
+    description: "Write and publish articles. Saving commits to GitHub and publishes in about a minute."
+    folder: "blog/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}}"
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: "Meta description (for SEO / social)", widget: text }
+      - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { name: author, label: Author, widget: string, default: "SyncReach" }
+      - { name: excerpt, label: "Card excerpt", widget: text, required: false }
+      - { name: cover, label: "Cover image", widget: image, required: false }
+      - { name: body, label: Body, widget: markdown }
