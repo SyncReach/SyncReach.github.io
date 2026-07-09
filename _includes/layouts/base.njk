@@ -56,6 +56,12 @@
 </style>
 </head>
 <body>
+{% set isHome = page.url == '/' or page.url == '/index.html' %}
+{% set isServices = page.url == '/services' or page.url == '/services/' or page.url == '/services.html' %}
+{% set isPricing = page.url == '/pricing' or page.url == '/pricing/' or page.url == '/pricing.html' %}
+{% set isBlog = page.url == '/blog' or page.url == '/blog/' or page.url == '/blog/index.html' or (page.url and page.url.indexOf('/blog/') == 0) %}
+{% set isAbout = page.url == '/about' or page.url == '/about/' or page.url == '/about.html' %}
+{% set isContact = page.url == '/contact' or page.url == '/contact/' or page.url == '/contact.html' %}
 
 <!-- ============ NAV ============ -->
 <nav class="nav">
@@ -64,7 +70,7 @@
     <span class="brand__name"><b>SYNC</b><span>REACH</span></span>
   </a>
   <div class="nav__links">
-    <a href="/#system">Growth System</a><a href="/services">Services</a><a href="/pricing">Pricing</a><a href="/blog">Blog</a><a href="/about" aria-current="page">About</a><a href="/contact">Contact</a>
+    <a href="/#system" {% if isHome %}aria-current="page"{% endif %}>Growth System</a><a href="/services" {% if isServices %}aria-current="page"{% endif %}>Services</a><a href="/pricing" {% if isPricing %}aria-current="page"{% endif %}>Pricing</a><a href="/blog" {% if isBlog %}aria-current="page"{% endif %}>Blog</a><a href="/about" {% if isAbout %}aria-current="page"{% endif %}>About</a><a href="/contact" {% if isContact %}aria-current="page"{% endif %}>Contact</a>
   </div>
   <span class="nav__sp"></span>
   <div class="nav__right">
