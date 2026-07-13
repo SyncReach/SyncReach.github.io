@@ -30,3 +30,96 @@ collections:
       - { name: excerpt, label: "Card excerpt", widget: text, required: false }
       - { name: cover, label: "Cover image", widget: image, required: false }
       - { name: body, label: Body, widget: markdown }
+  - name: pages
+    label: "Site pages"
+    icon: web
+    description: "Edit the HTML of published pages. Careful: this is the full page markup — only change text between tags. Saving commits to GitHub and republishes in about a minute."
+    files:
+      - name: home
+        label: "Home"
+        file: index.html
+        format: raw
+        fields:
+          - name: body
+            label: "Page HTML"
+            widget: code
+            default_language: html
+            allow_language_selection: false
+            output_code_only: true
+      - name: about
+        label: "About"
+        file: about.html
+        format: raw
+        fields:
+          - name: body
+            label: "Page HTML"
+            widget: code
+            default_language: html
+            allow_language_selection: false
+            output_code_only: true
+      - name: services
+        label: "Services"
+        file: services.html
+        format: raw
+        fields:
+          - name: body
+            label: "Page HTML"
+            widget: code
+            default_language: html
+            allow_language_selection: false
+            output_code_only: true
+      - name: pricing
+        label: "Pricing"
+        file: pricing.html
+        format: raw
+        fields:
+          - name: body
+            label: "Page HTML"
+            widget: code
+            default_language: html
+            allow_language_selection: false
+            output_code_only: true
+      - name: contact
+        label: "Contact"
+        file: contact.html
+        format: raw
+        fields:
+          - name: body
+            label: "Page HTML"
+            widget: code
+            default_language: html
+            allow_language_selection: false
+            output_code_only: true
+      - name: privacy
+        label: "Privacy Policy"
+        file: privacy.html
+        format: raw
+        fields:
+          - name: body
+            label: "Page HTML"
+            widget: code
+            default_language: html
+            allow_language_selection: false
+            output_code_only: true
+      - name: terms
+        label: "Terms"
+        file: terms.html
+        format: raw
+        fields:
+          - name: body
+            label: "Page HTML"
+            widget: code
+            default_language: html
+            allow_language_selection: false
+            output_code_only: true
+      - name: thanks
+        label: "Thank You"
+        file: thanks.html
+        format: raw
+        fields:
+          - name: body
+            label: "Page HTML"
+            widget: code
+            default_language: html
+            allow_language_selection: false
+            output_code_only: true
