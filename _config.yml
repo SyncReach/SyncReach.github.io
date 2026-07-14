@@ -1,0 +1,5 @@
+exclude:
+  - "_includes"
+  - "blog/index.njk"
+  - ".eleventy.js"
+  - "package.json"
