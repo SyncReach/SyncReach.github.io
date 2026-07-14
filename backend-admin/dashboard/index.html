@@ -174,11 +174,6 @@ dialog input:focus{outline:2px solid var(--accent);outline-offset:-1px}
   </section>
 
   <section class="panel wide">
-    <h2><span class="msym">show_chart</span> Daily trend <small>GA users · GSC clicks</small></h2>
-    <div id="trendChart" class="status">Trend visualization unavailable.</div>
-  </section>
-
-  <section class="panel wide">
     <h2><span class="msym">mail</span> Contact form submissions <small id="formsCount"></small></h2>
     <div id="formsBody" class="status">Loading…</div>
   </section>
@@ -315,8 +310,6 @@ async function loadGA(){
         + '</tbody></table></div>';
     }
     el.className=''; el.innerHTML = html;
-    window.__gaDaily = d.daily || [];
-    renderTrendChart();
   } catch(e){ errMsg(el, e); }
 }
 async function loadGSC(){
@@ -336,13 +329,21 @@ async function loadGSC(){
         + '</tbody></table></div>';
     }
     el.className=''; el.innerHTML = html;
-    window.__gscDaily = d.daily || [];
-    renderTrendChart();
   } catch(e){ errMsg(el, e); }
 }
 
 function renderMetricChart(id, rows, key, color, label){
-  const data = (Array.isArray(rows) ? rows : []).map(r => Number(r[key])).filter(Number.isFinite);
+  const source = Array.isArray(rows) ? rows : [];
+  const dated = source.map(r=>String(r.date||'')).filter(Boolean).sort();
+  const end = dated.length ? new Date(chartDate(dated[dated.length-1])+' 00:00:00') : new Date();
+  const windowRows = Array.from({length:28},(_,offset)=>{
+    const d = new Date(end); d.setDate(end.getDate()-(27-offset));
+    const iso = d.toISOString().slice(0,10);
+    const match = source.find(r=>String(r.date||'')===iso || String(r.date||'')===iso.replaceAll('-',''));
+    return {date:iso,[key]:match && Number.isFinite(Number(match[key])) ? Number(match[key]) : 0};
+  });
+  const rows = windowRows;
+  const data = rows.map(r => Number(r[key]));
   if (!data.length) return '<div id="'+id+'" class="metric-chart status">No daily '+esc(label.toLowerCase())+' data available.</div>';
   const width = 640, height = 170, padX = 10, padY = 24;
   const min = Math.min(...data), max = Math.max(...data), span = max - min || 1;
@@ -353,13 +354,13 @@ function renderMetricChart(id, rows, key, color, label){
   });
   const path = points.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
   const latest = data[data.length-1];
-  const firstDate = rows?.[0]?.date || '';
-  const lastDate = rows?.[rows.length-1]?.date || '';
+  const firstDate = rows[0].date;
+  const lastDate = rows[rows.length-1].date;
   return '<div id="'+id+'" class="metric-chart" role="img" aria-label="'+esc(label+' over the last '+data.length+' days')+'">'
     + '<svg viewBox="0 0 '+width+' '+height+'" preserveAspectRatio="none" aria-hidden="true">'
     + '<line class="chart-grid" x1="0" y1="24" x2="640" y2="24"/><line class="chart-grid" x1="0" y1="85" x2="640" y2="85"/><line class="chart-grid" x1="0" y1="146" x2="640" y2="146"/>'
     + '<path class="chart-line" d="'+path+'" stroke="'+color+'"/>'
-    + points.map((p,i)=>'<circle class="chart-dot" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3.5" fill="'+color+'"><title>'+esc(chartDate(rows?.[i]?.date)+' · '+label+': '+p[2])+'</title></circle>').join('')
+    + points.map((p,i)=>'<circle class="chart-dot" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3.5" fill="'+color+'"><title>'+esc(chartDate(rows[i].date)+' · '+label+': '+p[2])+'</title></circle>').join('')
     + '<text class="chart-label" x="10" y="166">'+esc(chartDate(firstDate))+'</text><text class="chart-label" x="630" y="166" text-anchor="end">'+esc(chartDate(lastDate))+'</text>'
     + '</svg></div>';
 }
