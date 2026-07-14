@@ -116,7 +116,10 @@ canvas{max-height:180px}
 .metric-chart .chart-grid{stroke:var(--border-2);stroke-width:1}
 .metric-chart .chart-line{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 .metric-chart .chart-dot{stroke:var(--bg-2);stroke-width:2}
-.metric-chart .chart-label{fill:var(--fg-2);font:10.5px var(--font)}
+.metric-chart .chart-label{fill:var(--fg-2);font-family:var(--font);font-size:12px;font-weight:500;letter-spacing:0}
+.trend-legend{display:flex;gap:18px;align-items:center;margin:0 0 8px;color:var(--fg-2);font-size:12px}
+.trend-legend span{display:inline-flex;align-items:center;gap:6px}
+.trend-legend i{display:inline-block;width:8px;height:8px;border-radius:50%}
 
 /* ---- detail view ---- */
 .detail{max-width:820px;margin:0 auto}
@@ -306,6 +309,7 @@ async function loadGA(){
     }
     el.className=''; el.innerHTML = html;
     window.__gaDaily = d.daily || [];
+    renderTrendChart();
   } catch(e){ errMsg(el, e); }
 }
 async function loadGSC(){
@@ -326,6 +330,7 @@ async function loadGSC(){
     }
     el.className=''; el.innerHTML = html;
     window.__gscDaily = d.daily || [];
+    renderTrendChart();
   } catch(e){ errMsg(el, e); }
 }
 
@@ -348,6 +353,31 @@ function renderMetricChart(id, rows, key, color, label){
     + points.map((p,i)=>'<circle class="chart-dot" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3.5" fill="'+color+'"><title>'+esc(String(p[2]))+'</title></circle>').join('')
     + '<text class="chart-label" x="10" y="166">'+esc(label)+'</text><text class="chart-label" x="630" y="166" text-anchor="end">Latest: '+esc(fmt(latest))+'</text>'
     + '</svg></div>';
+}
+
+function renderTrendChart(){
+  const ga = Array.isArray(window.__gaDaily) ? window.__gaDaily : [];
+  const gsc = Array.isArray(window.__gscDaily) ? window.__gscDaily : [];
+  if (!ga.length && !gsc.length) return;
+  const width = 1200, height = 260, padX = 24, top = 26, bottom = 38;
+  const gaVals = ga.map(r=>Number(r.users)).filter(Number.isFinite);
+  const gscVals = gsc.map(r=>Number(r.clicks)).filter(Number.isFinite);
+  const max = Math.max(1, ...gaVals, ...gscVals), plotH = height-top-bottom;
+  const dates = (ga.length ? ga : gsc).map(r=>r.date);
+  const points = (rows,key) => rows.map((r,i)=>{
+    const x = padX + (dates.length === 1 ? (width-padX*2)/2 : i*(width-padX*2)/(dates.length-1));
+    const value = Number(r[key]);
+    return [x, top + plotH - (Number.isFinite(value) ? value/max*plotH : plotH), Number.isFinite(value) ? value : 0];
+  });
+  const path = ps => ps.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+  const gaPoints = points(ga,'users'), gscPoints = points(gsc,'clicks');
+  const grid = [0,.5,1].map(v=>'<line class="chart-grid" x1="'+padX+'" y1="'+(top+plotH*(1-v))+'" x2="'+(width-padX)+'" y2="'+(top+plotH*(1-v))+'"/>').join('');
+  const series = (ps,color,label) => ps.length ? '<path class="chart-line" d="'+path(ps)+'" stroke="'+color+'"/>'+ps.map(p=>'<circle class="chart-dot" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="4" fill="'+color+'"><title>'+esc(label+': '+p[2])+'</title></circle>').join('') : '';
+  $('trendChart').className='metric-chart';
+  $('trendChart').innerHTML = '<div class="trend-legend"><span><i style="background:#4285F4"></i>GA users</span><span><i style="background:#34A853"></i>GSC clicks</span></div>'
+    + '<svg viewBox="0 0 '+width+' '+height+'" preserveAspectRatio="none" role="img" aria-label="Daily GA users and GSC clicks trend">'+grid
+    + series(gaPoints,'#4285F4','GA users')+series(gscPoints,'#34A853','GSC clicks')
+    + '<text class="chart-label" x="'+padX+'" y="'+(height-8)+'">'+esc(dates[0]||'')+'</text><text class="chart-label" x="'+(width-padX)+'" y="'+(height-8)+'" text-anchor="end">'+esc(dates[dates.length-1]||'')+'</text></svg>';
 }
 
 /* ---- submissions list ---- */
