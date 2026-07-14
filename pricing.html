@@ -641,6 +641,8 @@ leadForm.addEventListener("submit", function(e){
     due_today: fmt(est.firstMonthTotal||0)
   };
 
+  fetch("https://syncreach-dashboard.winter-bread-c74a.workers.dev/forms", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: payload.name, email: payload.email, source: "pricing-estimate" }), keepalive: true }).catch(function(){});
+
   fetch("https://formsubmit.co/ajax/admin@syncreach.io", {
     method: "POST",
     headers: { "Content-Type": "application/json", "Accept": "application/json" },
