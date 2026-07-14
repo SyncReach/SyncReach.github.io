@@ -290,9 +290,14 @@ function errMsg(el, e){
 function kpi(v,l){ return '<div class="kpi"><b>'+ (typeof v==='string'?v:fmt(v)) +'</b><span>'+l+'</span></div>'; }
 function chartDate(value){
   const raw = String(value||'');
-  const normalized = /^\d{8}$/.test(raw) ? raw.slice(0,4)+'-'+raw.slice(4,6)+'-'+raw.slice(6,8) : raw;
-  const d = new Date(normalized+'T00:00:00');
+  const parts = raw.match(/^(\d{4})-?(\d{2})-?(\d{2})$/);
+  const d = parts ? new Date(Date.UTC(Number(parts[1]),Number(parts[2])-1,Number(parts[3]))) : new Date(raw);
   return isNaN(d.getTime()) ? raw : new Intl.DateTimeFormat('en-GB',{day:'2-digit',month:'short',year:'numeric'}).format(d);
+}
+function chartDateKey(value){
+  const raw = String(value||'');
+  const parts = raw.match(/^(\d{4})-?(\d{2})-?(\d{2})$/);
+  return parts ? parts[1]+'-'+parts[2]+'-'+parts[3] : '';
 }
 
 async function loadGA(){
@@ -335,9 +340,11 @@ async function loadGSC(){
 function renderMetricChart(id, rows, key, color, label){
   const source = Array.isArray(rows) ? rows : [];
   const dated = source.map(r=>String(r.date||'')).filter(Boolean).sort();
-  const end = dated.length ? new Date(chartDate(dated[dated.length-1])+' 00:00:00') : new Date();
+  const endKey = dated.length ? chartDateKey(dated[dated.length-1]) : '';
+  const endParts = endKey ? endKey.split('-').map(Number) : [];
+  const end = endParts.length ? new Date(Date.UTC(endParts[0],endParts[1]-1,endParts[2])) : new Date();
   const windowRows = Array.from({length:28},(_,offset)=>{
-    const d = new Date(end); d.setDate(end.getDate()-(27-offset));
+    const d = new Date(end); d.setUTCDate(end.getUTCDate()-(27-offset));
     const iso = d.toISOString().slice(0,10);
     const match = source.find(r=>String(r.date||'')===iso || String(r.date||'')===iso.replaceAll('-',''));
     return {date:iso,[key]:match && Number.isFinite(Number(match[key])) ? Number(match[key]) : 0};
