@@ -353,7 +353,17 @@ async function loadGSC(){
 function renderMetricChart(id, rows, key, color, label){
   const source = Array.isArray(rows) ? rows : [];
   const shortDateRows = source.filter(r=>/^(\d{1,2})\/(\d{1,2})$/.test(String(dailyDate(r)).trim()));
-  const normalizedRows = shortDateRows.length ? shortDateRows.map(r=>({date:String(dailyDate(r)).trim(),[key]:Number(r[key])||0})) : null;
+  const shortRows = new Map(shortDateRows.map(r=>{
+    const match = String(dailyDate(r)).trim().match(/^(\d{1,2})\/(\d{1,2})$/);
+    return [match[1].padStart(2,'0')+'/'+match[2].padStart(2,'0'), Number(r[key])||0];
+  }));
+  const shortEnd = shortDateRows.length ? String(dailyDate(shortDateRows[shortDateRows.length-1])).trim().match(/^(\d{1,2})\/(\d{1,2})$/) : null;
+  const shortWindow = shortEnd ? Array.from({length:28},(_,offset)=>{
+    const d = new Date(Date.UTC(2000,Number(shortEnd[1])-1,Number(shortEnd[2])));
+    d.setUTCDate(d.getUTCDate()-(27-offset));
+    const date = String(d.getUTCMonth()+1).padStart(2,'0')+'/'+String(d.getUTCDate()).padStart(2,'0');
+    return {date,[key]:shortRows.get(date)||0};
+  }) : null;
   const dated = source.map(r=>chartDateKey(dailyDate(r))).filter(Boolean).sort();
   const endKey = dated.length ? chartDateKey(dated[dated.length-1]) : '';
   const endParts = endKey ? endKey.split('-').map(Number) : [];
@@ -364,7 +374,7 @@ function renderMetricChart(id, rows, key, color, label){
     const match = source.find(r=>chartDateKey(dailyDate(r))===iso);
     return {date:iso,[key]:match && Number.isFinite(Number(match[key])) ? Number(match[key]) : 0};
   });
-  const chartRows = normalizedRows || windowRows;
+  const chartRows = shortWindow || windowRows;
   const data = chartRows.map(r => Number(r[key]));
   if (!data.length) return '<div id="'+id+'" class="metric-chart status">No daily '+esc(label.toLowerCase())+' data available.</div>';
   const width = 640, height = 170, padX = 10, padY = 24;
