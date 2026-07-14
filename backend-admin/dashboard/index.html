@@ -262,8 +262,18 @@ async function api(path){
   if (!token()) throw new Error('NO_TOKEN');
   const r = await fetch(WORKER_URL + path, { headers: { 'Authorization': 'Bearer ' + token() } });
   if (r.status === 401) throw new Error('BAD_TOKEN');
-  if (!r.ok) throw new Error('HTTP ' + r.status);
-  return r.json();
+  let body;
+  try { body = await r.json(); } catch(e) { body = null; }
+  if (!r.ok) {
+    const detail = body && (body.error || body.message || body.detail);
+    throw new Error(detail ? 'HTTP ' + r.status + ': ' + detail : 'HTTP ' + r.status);
+  }
+  if (!body || typeof body !== 'object') throw new Error('Worker returned an invalid response');
+  if (body.error || body.errors) {
+    const detail = body.error || body.errors;
+    throw new Error(typeof detail === 'string' ? detail : JSON.stringify(detail));
+  }
+  return body;
 }
 function errMsg(el, e){
   if (e.message === 'NO_TOKEN' || e.message === 'BAD_TOKEN')
@@ -276,9 +286,10 @@ async function loadGA(){
   const el = $('gaBody');
   try {
     const d = await api('/ga?days=28');
+    const t = d.totals || {};
     let html = '<div class="kpis">'
-      + kpi(d.totals.activeUsers,'Users') + kpi(d.totals.sessions,'Sessions')
-      + kpi(d.totals.screenPageViews,'Pageviews') + kpi(d.totals.conversions,'Key events') + '</div>';
+      + kpi(t.activeUsers,'Users') + kpi(t.sessions,'Sessions')
+      + kpi(t.screenPageViews,'Pageviews') + kpi(t.conversions,'Key events') + '</div>';
     if (d.topPages?.length){
       html += '<div class="tblwrap"><table><thead><tr><th>Top pages</th><th class="num">Views</th></tr></thead><tbody>'
         + d.topPages.slice(0,8).map(p=>'<tr><td><span class="cell-trunc">'+esc(p.path)+'</span></td><td class="num">'+fmt(p.views)+'</td></tr>').join('')
@@ -293,9 +304,12 @@ async function loadGSC(){
   const el = $('gscBody');
   try {
     const d = await api('/gsc?days=28');
+    const t = d.totals || {};
+    const ctr = Number.isFinite(Number(t.ctr)) ? (Number(t.ctr)*100).toFixed(1)+'%' : '–';
+    const position = Number.isFinite(Number(t.position)) ? Number(t.position).toFixed(1) : '–';
     let html = '<div class="kpis">'
-      + kpi(d.totals.clicks,'Clicks') + kpi(d.totals.impressions,'Impressions')
-      + kpi((d.totals.ctr*100).toFixed(1)+'%','CTR') + kpi(d.totals.position?.toFixed(1),'Avg position') + '</div>';
+      + kpi(t.clicks,'Clicks') + kpi(t.impressions,'Impressions')
+      + kpi(ctr,'CTR') + kpi(position,'Avg position') + '</div>';
     if (d.topQueries?.length){
       html += '<div class="tblwrap"><table><thead><tr><th>Top queries</th><th class="num">Clicks</th><th class="num">Impr.</th></tr></thead><tbody>'
         + d.topQueries.slice(0,8).map(q=>'<tr><td><span class="cell-trunc">'+esc(q.query)+'</span></td><td class="num">'+fmt(q.clicks)+'</td><td class="num">'+fmt(q.impressions)+'</td></tr>').join('')
