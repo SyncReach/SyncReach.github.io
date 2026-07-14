@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
 <style>
 /* ============ Sveltia design tokens (sampled from the live CMS) ============ */
 :root{
@@ -163,7 +162,7 @@ dialog input:focus{outline:2px solid var(--accent);outline-offset:-1px}
 
   <section class="panel wide">
     <h2><span class="msym">show_chart</span> Daily trend <small>GA users · GSC clicks</small></h2>
-    <canvas id="trendChart" height="64"></canvas>
+    <div id="trendChart" class="status">Trend visualization unavailable.</div>
   </section>
 
   <section class="panel wide">
@@ -321,28 +320,8 @@ async function loadGSC(){
   } catch(e){ errMsg(el, e); }
 }
 
-let chart;
 function drawTrend(){
-  const ga = window.__gaDaily, gsc = window.__gscDaily;
-  if (!ga && !gsc) return;
-  // Chart.js is an optional enhancement; analytics panels must still work if its CDN is blocked.
-  if (typeof Chart === 'undefined') {
-    $('trendChart').style.display = 'none';
-    return;
-  }
-  $('trendChart').style.display = '';
-  const css = getComputedStyle(document.documentElement);
-  const fg2 = css.getPropertyValue('--fg-2').trim();
-  const grid = css.getPropertyValue('--border-2').trim();
-  const labels = (ga?.length?ga:gsc||[]).map(r=>r.date);
-  const ds = [];
-  if (ga?.length) ds.push({label:'GA users', data:ga.map(r=>r.users), borderColor:'hsl(210 100% 55%)', backgroundColor:'transparent', tension:.3, pointRadius:0, borderWidth:2});
-  if (gsc?.length) ds.push({label:'GSC clicks', data:gsc.map(r=>r.clicks), borderColor:'hsl(140 55% 50%)', backgroundColor:'transparent', tension:.3, pointRadius:0, borderWidth:2});
-  if (chart) chart.destroy();
-  chart = new Chart($('trendChart'), { type:'line', data:{labels, datasets:ds},
-    options:{ responsive:true, plugins:{legend:{labels:{color:fg2, boxWidth:12, font:{family:'Merriweather Sans', size:11}}}},
-      scales:{ x:{ticks:{color:fg2, maxTicksLimit:10, font:{family:'Merriweather Sans', size:10}}, grid:{color:grid}},
-               y:{ticks:{color:fg2, font:{family:'Merriweather Sans', size:10}}, grid:{color:grid}, beginAtZero:true} } } });
+  // Keep analytics data independent from optional visualization libraries.
 }
 
 /* ---- submissions list ---- */
