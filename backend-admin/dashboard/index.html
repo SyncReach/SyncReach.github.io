@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SyncReach — Site Dashboard</title>
+<meta name="robots" content="noindex,nofollow">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<style>
+:root{--bg:#16191d;--panel:#1e2227;--panel2:#262b31;--border:#343a41;--text:#e6e8ea;--muted:#9aa3ac;--accent:#5ab0f7;--ok:#4ec97f;--warn:#f2b74a;--err:#ef6a6a;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:14px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:24px}
+header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+h1{font-size:20px;font-weight:600}
+h1 span{color:var(--muted);font-weight:400}
+.hdr-actions{display:flex;gap:8px;align-items:center}
+a.btn,button.btn{background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;text-decoration:none;display:inline-block}
+a.btn:hover,button.btn:hover{border-color:var(--accent)}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#10222f;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px}
+.panel h2{font-size:14px;font-weight:600;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.panel h2 small{color:var(--muted);font-weight:400}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px;margin-bottom:14px}
+.kpi{background:var(--panel2);border-radius:8px;padding:10px}
+.kpi b{display:block;font-size:20px;font-weight:700}
+.kpi span{color:var(--muted);font-size:11.5px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{color:var(--muted);text-align:left;font-weight:500;padding:5px 8px;border-bottom:1px solid var(--border)}
+td{padding:5px 8px;border-bottom:1px solid var(--panel2);vertical-align:top}
+td.num,th.num{text-align:right;font-family:var(--mono);white-space:nowrap}
+.status{color:var(--muted);font-size:13px;padding:12px 0}
+.tag{display:inline-block;border-radius:5px;padding:1px 8px;font-size:11.5px;font-family:var(--mono)}
+.tag.ok{background:rgba(78,201,127,.14);color:var(--ok)}
+.tag.err{background:rgba(239,106,106,.14);color:var(--err)}
+.tag.warn{background:rgba(242,183,74,.14);color:var(--warn)}
+.setup{background:var(--panel2);border:1px dashed var(--border);border-radius:8px;padding:12px;color:var(--muted);font-size:13px}
+.setup code{font-family:var(--mono);color:var(--text);font-size:12px}
+canvas{max-height:180px}
+dialog{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:22px;max-width:420px;width:90%}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:8px 10px;margin:12px 0;font-family:var(--mono)}
+.foot{color:var(--muted);font-size:12px;margin-top:20px}
+.wide{grid-column:1/-1}
+@media(max-width:760px){body{padding:14px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>SyncReach Dashboard <span>· www.syncreach.io</span></h1>
+  <div class="hdr-actions">
+    <a class="btn" href="/backend-admin/">&larr; Content Admin</a>
+    <button class="btn" id="tokenBtn">API token</button>
+    <button class="btn btn-primary" id="refreshBtn">Refresh</button>
+  </div>
+</header>
+
+<div class="grid">
+  <section class="panel" id="gaPanel">
+    <h2>Google Analytics <small>last 28 days</small></h2>
+    <div id="gaBody" class="status">Loading…</div>
+  </section>
+
+  <section class="panel" id="gscPanel">
+    <h2>Search Console <small>last 28 days</small></h2>
+    <div id="gscBody" class="status">Loading…</div>
+  </section>
+
+  <section class="panel wide" id="trendPanel">
+    <h2>Daily trend <small>GA users · GSC clicks</small></h2>
+    <canvas id="trendChart" height="70"></canvas>
+    <div id="trendBody" class="status" style="display:none"></div>
+  </section>
+
+  <section class="panel" id="formsPanel">
+    <h2>Contact form submissions <small id="formsCount"></small></h2>
+    <div id="formsBody" class="status">Loading…</div>
+  </section>
+
+  <section class="panel" id="sitemapPanel">
+    <h2>Sitemap check <small id="sitemapMeta"></small></h2>
+    <div id="sitemapBody" class="status">Loading…</div>
+  </section>
+</div>
+
+<p class="foot">Data via Cloudflare Worker (GA4 Data API + Search Console API). Sitemap check runs in your browser. This page is unlisted and robots-blocked, and API access requires the token.</p>
+
+<dialog id="tokenDlg">
+  <h2 style="font-size:15px">Dashboard API token</h2>
+  <p style="color:var(--muted);font-size:13px;margin-top:8px">Stored only in this browser (localStorage). Must match the <code>DASH_TOKEN</code> secret on the Worker.</p>
+  <input id="tokenInput" type="password" placeholder="paste token">
+  <div style="display:flex;gap:8px;justify-content:flex-end">
+    <button class="btn" id="tokenCancel">Cancel</button>
+    <button class="btn btn-primary" id="tokenSave">Save</button>
+  </div>
+</dialog>
+
+<script>
+/* ================= CONFIG ================= */
+const WORKER_URL = ''; // e.g. 'https://syncreach-dashboard.<your-subdomain>.workers.dev' — set after deploying the Worker
+/* ========================================== */
+
+const $ = (id) => document.getElementById(id);
+const token = () => localStorage.getItem('sr_dash_token') || '';
+const fmt = (n) => (n===null||n===undefined||isNaN(n)) ? '–' : Number(n).toLocaleString('en-US',{maximumFractionDigits:1});
+const esc = (s) => String(s??'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+$('tokenBtn').onclick = () => { $('tokenInput').value = token(); $('tokenDlg').showModal(); };
+$('tokenCancel').onclick = () => $('tokenDlg').close();
+$('tokenSave').onclick = () => { localStorage.setItem('sr_dash_token', $('tokenInput').value.trim()); $('tokenDlg').close(); loadAll(); };
+$('refreshBtn').onclick = () => loadAll();
+
+async function api(path){
+  if (!WORKER_URL) throw new Error('WORKER_NOT_CONFIGURED');
+  if (!token()) throw new Error('NO_TOKEN');
+  const r = await fetch(WORKER_URL + path, { headers: { 'Authorization': 'Bearer ' + token() } });
+  if (r.status === 401) throw new Error('BAD_TOKEN');
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  return r.json();
+}
+
+function setupMsg(el){
+  el.innerHTML = '<div class="setup">Worker not connected yet.<br>1. Deploy <code>worker.js</code> on Cloudflare Workers.<br>2. Set <code>WORKER_URL</code> at the top of this page.<br>3. Click <b>API token</b> and paste your <code>DASH_TOKEN</code>.</div>';
+}
+function errMsg(el, e){
+  if (e.message === 'WORKER_NOT_CONFIGURED') return setupMsg(el);
+  if (e.message === 'NO_TOKEN' || e.message === 'BAD_TOKEN')
+    return el.innerHTML = '<div class="setup">'+(e.message==='NO_TOKEN'?'No API token set.':'Token rejected by Worker.')+' Click <b>API token</b> (top right) and paste your <code>DASH_TOKEN</code>.</div>';
+  el.innerHTML = '<div class="setup">Error: '+esc(e.message)+'</div>';
+}
+
+/* ---------- GA ---------- */
+async function loadGA(){
+  const el = $('gaBody');
+  try {
+    const d = await api('/ga?days=28');
+    let html = '<div class="kpis">'
+      + kpi(d.totals.activeUsers,'Users') + kpi(d.totals.sessions,'Sessions')
+      + kpi(d.totals.screenPageViews,'Pageviews') + kpi(d.totals.conversions,'Key events') + '</div>';
+    if (d.topPages?.length){
+      html += '<table><tr><th>Top pages</th><th class="num">Views</th></tr>'
+        + d.topPages.slice(0,8).map(p=>'<tr><td>'+esc(p.path)+'</td><td class="num">'+fmt(p.views)+'</td></tr>').join('')
+        + '</table>';
+    }
+    el.className=''; el.innerHTML = html;
+    window.__gaDaily = d.daily || [];
+    drawTrend();
+  } catch(e){ errMsg(el, e); }
+}
+
+/* ---------- GSC ---------- */
+async function loadGSC(){
+  const el = $('gscBody');
+  try {
+    const d = await api('/gsc?days=28');
+    let html = '<div class="kpis">'
+      + kpi(d.totals.clicks,'Clicks') + kpi(d.totals.impressions,'Impressions')
+      + kpi((d.totals.ctr*100).toFixed(1)+'%','CTR') + kpi(d.totals.position?.toFixed(1),'Avg position') + '</div>';
+    if (d.topQueries?.length){
+      html += '<table><tr><th>Top queries</th><th class="num">Clicks</th><th class="num">Impr.</th></tr>'
+        + d.topQueries.slice(0,8).map(q=>'<tr><td>'+esc(q.query)+'</td><td class="num">'+fmt(q.clicks)+'</td><td class="num">'+fmt(q.impressions)+'</td></tr>').join('')
+        + '</table>';
+    }
+    el.className=''; el.innerHTML = html;
+    window.__gscDaily = d.daily || [];
+    drawTrend();
+  } catch(e){ errMsg(el, e); }
+}
+
+function kpi(v,l){ return '<div class="kpi"><b>'+ (typeof v==='string'?v:fmt(v)) +'</b><span>'+l+'</span></div>'; }
+
+/* ---------- Trend chart ---------- */
+let chart;
+function drawTrend(){
+  const ga = window.__gaDaily, gsc = window.__gscDaily;
+  if (!ga && !gsc) return;
+  const labels = (ga?.length?ga:gsc||[]).map(r=>r.date);
+  const ds = [];
+  if (ga?.length) ds.push({label:'GA users', data:ga.map(r=>r.users), borderColor:'#5ab0f7', backgroundColor:'transparent', tension:.3, pointRadius:0});
+  if (gsc?.length) ds.push({label:'GSC clicks', data:gsc.map(r=>r.clicks), borderColor:'#4ec97f', backgroundColor:'transparent', tension:.3, pointRadius:0});
+  if (chart) chart.destroy();
+  chart = new Chart($('trendChart'), { type:'line', data:{labels, datasets:ds},
+    options:{ responsive:true, plugins:{legend:{labels:{color:'#9aa3ac',boxWidth:12}}},
+      scales:{ x:{ticks:{color:'#9aa3ac',maxTicksLimit:10},grid:{color:'#262b31'}}, y:{ticks:{color:'#9aa3ac'},grid:{color:'#262b31'},beginAtZero:true} } } });
+}
+
+/* ---------- Forms ---------- */
+async function loadForms(){
+  const el = $('formsBody');
+  try {
+    const d = await api('/forms');
+    $('formsCount').textContent = d.items.length + ' logged';
+    if (!d.items.length){ el.innerHTML = '<div class="setup">No submissions logged yet. Logging starts once the form hook is added to the site and the Worker is live. (Older submissions live in the admin@syncreach.io inbox via FormSubmit.)</div>'; return; }
+    el.className='';
+    el.innerHTML = '<table><tr><th>When</th><th>Name</th><th>Email</th><th>Source</th></tr>'
+      + d.items.slice(0,15).map(i=>'<tr><td>'+esc((i.ts||'').replace('T',' ').slice(0,16))+'</td><td>'+esc(i.name)+'</td><td>'+esc(i.email)+'</td><td>'+esc(i.source||'')+'</td></tr>').join('')
+      + '</table>';
+  } catch(e){ errMsg(el, e); }
+}
+
+/* ---------- Sitemap (client-side, same origin) ---------- */
+async function loadSitemap(){
+  const el = $('sitemapBody');
+  try {
+    const r = await fetch('/sitemap.xml?cb=' + Date.now());
+    if (!r.ok) throw new Error('sitemap.xml returned HTTP ' + r.status);
+    const xml = new DOMParser().parseFromString(await r.text(), 'application/xml');
+    const urls = [...xml.querySelectorAll('url > loc')].map(n=>n.textContent.trim());
+    $('sitemapMeta').textContent = urls.length + ' URLs · checked ' + new Date().toLocaleTimeString();
+    const results = [];
+    for (const u of urls){
+      try {
+        const path = new URL(u).pathname;
+        const resp = await fetch(path + '?cb=' + Date.now(), { method:'GET', redirect:'follow' });
+        results.push({u, status: resp.status, ok: resp.ok});
+      } catch(e){ results.push({u, status:'ERR', ok:false}); }
+    }
+    const bad = results.filter(x=>!x.ok);
+    el.className='';
+    el.innerHTML =
+      '<div class="kpis">' + kpi(results.length,'URLs') + kpi(results.length-bad.length,'OK') + kpi(bad.length,'Broken') + '</div>'
+      + '<table><tr><th>URL</th><th class="num">Status</th></tr>'
+      + results.map(x=>'<tr><td>'+esc(new URL(x.u).pathname)+'</td><td class="num"><span class="tag '+(x.ok?'ok':'err')+'">'+x.status+'</span></td></tr>').join('')
+      + '</table>';
+  } catch(e){ el.innerHTML = '<div class="setup">Sitemap check failed: '+esc(e.message)+'</div>'; }
+}
+
+function loadAll(){
+  $('gaBody').className='status'; $('gaBody').textContent='Loading…';
+  $('gscBody').className='status'; $('gscBody').textContent='Loading…';
+  $('formsBody').className='status'; $('formsBody').textContent='Loading…';
+  loadGA(); loadGSC(); loadForms(); loadSitemap();
+}
+loadAll();
+</script>
+</body>
+</html>
