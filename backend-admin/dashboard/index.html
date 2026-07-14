@@ -293,6 +293,10 @@ function errMsg(el, e){
   el.innerHTML = '<div class="setup">Error: '+esc(e.message)+'</div>';
 }
 function kpi(v,l){ return '<div class="kpi"><b>'+ (typeof v==='string'?v:fmt(v)) +'</b><span>'+l+'</span></div>'; }
+function chartDate(value){
+  const d = new Date(String(value||'')+'T00:00:00');
+  return isNaN(d.getTime()) ? String(value||'') : new Intl.DateTimeFormat('en-GB',{day:'2-digit',month:'short',year:'numeric'}).format(d);
+}
 
 async function loadGA(){
   const el = $('gaBody');
@@ -347,12 +351,14 @@ function renderMetricChart(id, rows, key, color, label){
   });
   const path = points.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
   const latest = data[data.length-1];
+  const firstDate = rows?.[0]?.date || '';
+  const lastDate = rows?.[rows.length-1]?.date || '';
   return '<div id="'+id+'" class="metric-chart" role="img" aria-label="'+esc(label+' over the last '+data.length+' days')+'">'
     + '<svg viewBox="0 0 '+width+' '+height+'" preserveAspectRatio="none" aria-hidden="true">'
     + '<line class="chart-grid" x1="0" y1="24" x2="640" y2="24"/><line class="chart-grid" x1="0" y1="85" x2="640" y2="85"/><line class="chart-grid" x1="0" y1="146" x2="640" y2="146"/>'
     + '<path class="chart-line" d="'+path+'" stroke="'+color+'"/>'
-    + points.map((p,i)=>'<circle class="chart-dot" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3.5" fill="'+color+'"><title>'+esc(String(p[2]))+'</title></circle>').join('')
-    + '<text class="chart-label" x="10" y="166">'+esc(label)+'</text><text class="chart-label" x="630" y="166" text-anchor="end">Latest: '+esc(fmt(latest))+'</text>'
+    + points.map((p,i)=>'<circle class="chart-dot" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3.5" fill="'+color+'"><title>'+esc(chartDate(rows?.[i]?.date)+' · '+label+': '+p[2])+'</title></circle>').join('')
+    + '<text class="chart-label" x="10" y="166">'+esc(chartDate(firstDate))+'</text><text class="chart-label" x="630" y="166" text-anchor="end">'+esc(chartDate(lastDate))+'</text>'
     + '</svg></div>';
 }
 
@@ -364,7 +370,7 @@ function renderTrendChart(){
   const gaVals = ga.map(r=>Number(r.users)).filter(Number.isFinite);
   const gscVals = gsc.map(r=>Number(r.clicks)).filter(Number.isFinite);
   const max = Math.max(1, ...gaVals, ...gscVals), plotH = height-top-bottom;
-  const dates = (ga.length ? ga : gsc).map(r=>r.date);
+  const dates = [...new Set([...ga,...gsc].map(r=>r.date).filter(Boolean))].sort();
   const points = (rows,key) => rows.map(r=>{
     const i = Math.max(0, dates.indexOf(r.date));
     const x = padX + (dates.length === 1 ? (width-padX*2)/2 : i*(width-padX*2)/(dates.length-1));
@@ -379,7 +385,7 @@ function renderTrendChart(){
   $('trendChart').innerHTML = '<div class="trend-legend"><span><i style="background:#4285F4"></i>GA users</span><span><i style="background:#34A853"></i>GSC clicks</span></div>'
     + '<svg viewBox="0 0 '+width+' '+height+'" preserveAspectRatio="none" role="img" aria-label="Daily GA users and GSC clicks trend">'+grid
     + series(gaPoints,'#4285F4','GA users')+series(gscPoints,'#34A853','GSC clicks')
-    + '<text class="chart-label" x="'+padX+'" y="'+(height-8)+'">'+esc(dates[0]||'')+'</text><text class="chart-label" x="'+(width-padX)+'" y="'+(height-8)+'" text-anchor="end">'+esc(dates[dates.length-1]||'')+'</text></svg>';
+    + '<text class="chart-label" x="'+padX+'" y="'+(height-8)+'">'+esc(chartDate(dates[0]))+'</text><text class="chart-label" x="'+(width-padX)+'" y="'+(height-8)+'" text-anchor="end">'+esc(chartDate(dates[dates.length-1]))+'</text></svg>';
 }
 
 /* ---- submissions list ---- */
