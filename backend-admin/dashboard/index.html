@@ -352,6 +352,8 @@ async function loadGSC(){
 
 function renderMetricChart(id, rows, key, color, label){
   const source = Array.isArray(rows) ? rows : [];
+  const shortDateRows = source.filter(r=>/^(\d{1,2})\/(\d{1,2})$/.test(String(dailyDate(r)).trim()));
+  const normalizedRows = shortDateRows.length ? shortDateRows.map(r=>({date:String(dailyDate(r)).trim(),[key]:Number(r[key])||0})) : null;
   const dated = source.map(r=>chartDateKey(dailyDate(r))).filter(Boolean).sort();
   const endKey = dated.length ? chartDateKey(dated[dated.length-1]) : '';
   const endParts = endKey ? endKey.split('-').map(Number) : [];
@@ -362,8 +364,8 @@ function renderMetricChart(id, rows, key, color, label){
     const match = source.find(r=>chartDateKey(dailyDate(r))===iso);
     return {date:iso,[key]:match && Number.isFinite(Number(match[key])) ? Number(match[key]) : 0};
   });
-  const normalizedRows = windowRows;
-  const data = normalizedRows.map(r => Number(r[key]));
+  const chartRows = normalizedRows || windowRows;
+  const data = chartRows.map(r => Number(r[key]));
   if (!data.length) return '<div id="'+id+'" class="metric-chart status">No daily '+esc(label.toLowerCase())+' data available.</div>';
   const width = 640, height = 170, padX = 10, padY = 24;
   const min = Math.min(...data), max = Math.max(...data), span = max - min || 1;
@@ -374,13 +376,13 @@ function renderMetricChart(id, rows, key, color, label){
   });
   const path = points.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
   const latest = data[data.length-1];
-  const firstDate = normalizedRows[0].date;
-  const lastDate = normalizedRows[normalizedRows.length-1].date;
+  const firstDate = chartRows[0].date;
+  const lastDate = chartRows[chartRows.length-1].date;
   return '<div id="'+id+'" class="metric-chart" role="img" aria-label="'+esc(label+' over the last '+data.length+' days')+'">'
     + '<svg viewBox="0 0 '+width+' '+height+'" preserveAspectRatio="none" aria-hidden="true">'
     + '<line class="chart-grid" x1="0" y1="24" x2="640" y2="24"/><line class="chart-grid" x1="0" y1="85" x2="640" y2="85"/><line class="chart-grid" x1="0" y1="146" x2="640" y2="146"/>'
     + '<path class="chart-line" d="'+path+'" stroke="'+color+'"/>'
-    + points.map((p,i)=>'<circle class="chart-dot" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3.5" fill="'+color+'"><title>'+esc(chartDate(normalizedRows[i].date)+' · '+label+': '+p[2])+'</title></circle>').join('')
+    + points.map((p,i)=>'<circle class="chart-dot" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="3.5" fill="'+color+'"><title>'+esc(chartDate(chartRows[i].date)+' · '+label+': '+p[2])+'</title></circle>').join('')
     + '<text class="chart-label" x="10" y="166">'+esc(chartDate(firstDate))+'</text><text class="chart-label" x="630" y="166" text-anchor="end">'+esc(chartDate(lastDate))+'</text>'
     + '</svg></div>';
 }
