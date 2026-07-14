@@ -303,7 +303,6 @@ async function loadGA(){
     }
     el.className=''; el.innerHTML = html;
     window.__gaDaily = d.daily || [];
-    drawTrend();
   } catch(e){ errMsg(el, e); }
 }
 async function loadGSC(){
@@ -324,7 +323,6 @@ async function loadGSC(){
     }
     el.className=''; el.innerHTML = html;
     window.__gscDaily = d.daily || [];
-    drawTrend();
   } catch(e){ errMsg(el, e); }
 }
 
