@@ -226,8 +226,13 @@ async function loadForms(){
     $('formsCount').textContent = d.items.length + ' logged';
     if (!d.items.length){ el.innerHTML = '<div class="setup">No submissions logged yet. New submissions on the contact and pricing forms will appear here. (Older ones live in the admin@syncreach.io inbox via FormSubmit.)</div>'; return; }
     el.className='';
-    el.innerHTML = '<table><tr><th>When</th><th>Name</th><th>Email</th><th>Source</th></tr>'
-      + d.items.slice(0,15).map(i=>'<tr><td>'+esc((i.ts||'').replace('T',' ').slice(0,16))+'</td><td>'+esc(i.name)+'</td><td>'+esc(i.email)+'</td><td>'+esc(i.source||'')+'</td></tr>').join('')
+    el.innerHTML = '<table><tr><th>When</th><th>Name</th><th>Email</th><th>Source</th><th>Message</th></tr>'
+      + d.items.slice(0,15).map(i=>{
+          var m = String(i.message||'');
+          var short = m.length > 60 ? esc(m.slice(0,60)) + '…' : esc(m);
+          var cell = m ? '<span title="'+esc(m)+'" style="cursor:help">'+short+'</span>' : '<span style="opacity:.4">–</span>';
+          return '<tr><td>'+esc((i.ts||'').replace('T',' ').slice(0,16))+'</td><td>'+esc(i.name)+'</td><td>'+esc(i.email)+'</td><td>'+esc(i.source||'')+'</td><td>'+cell+'</td></tr>';
+        }).join('')
       + '</table>';
   } catch(e){ errMsg(el, e); }
 }
