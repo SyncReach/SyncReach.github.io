@@ -295,9 +295,12 @@ function chartDate(value){
   return isNaN(d.getTime()) ? raw : new Intl.DateTimeFormat('en-GB',{day:'2-digit',month:'short',year:'numeric'}).format(d);
 }
 function chartDateKey(value){
-  const raw = String(value||'');
-  const parts = raw.match(/^(\d{4})-?(\d{2})-?(\d{2})$/);
-  return parts ? parts[1]+'-'+parts[2]+'-'+parts[3] : '';
+  const raw = String(value||'').trim();
+  const parts = raw.match(/^(\d{4})[-\/]?(\d{2})[-\/]?(\d{2})/);
+  if (parts) return parts[1]+'-'+parts[2]+'-'+parts[3];
+  const parsed = new Date(raw);
+  if (isNaN(parsed.getTime())) return '';
+  return parsed.getUTCFullYear()+'-'+String(parsed.getUTCMonth()+1).padStart(2,'0')+'-'+String(parsed.getUTCDate()).padStart(2,'0');
 }
 
 async function loadGA(){
@@ -309,6 +312,7 @@ async function loadGA(){
       + kpi(t.activeUsers,'Users') + kpi(t.sessions,'Sessions')
       + kpi(t.screenPageViews,'Pageviews') + kpi(t.conversions,'Key events') + '</div>';
     html += renderMetricChart('gaChart', d.daily, 'users', '#4285F4', 'Users');
+    window.__gaDaily = Array.isArray(d.daily) ? d.daily : [];
     if (d.topPages?.length){
       html += '<div class="tblwrap"><table><thead><tr><th>Top pages</th><th class="num">Views</th></tr></thead><tbody>'
         + d.topPages.slice(0,8).map(p=>'<tr><td><span class="cell-trunc">'+esc(p.path)+'</span></td><td class="num">'+fmt(p.views)+'</td></tr>').join('')
@@ -328,6 +332,7 @@ async function loadGSC(){
       + kpi(t.clicks,'Clicks') + kpi(t.impressions,'Impressions')
       + kpi(ctr,'CTR') + kpi(position,'Avg position') + '</div>';
     html += renderMetricChart('gscChart', d.daily, 'clicks', '#34A853', 'Clicks');
+    window.__gscDaily = Array.isArray(d.daily) ? d.daily : [];
     if (d.topQueries?.length){
       html += '<div class="tblwrap"><table><thead><tr><th>Top queries</th><th class="num">Clicks</th><th class="num">Impr.</th></tr></thead><tbody>'
         + d.topQueries.slice(0,8).map(q=>'<tr><td><span class="cell-trunc">'+esc(q.query)+'</span></td><td class="num">'+fmt(q.clicks)+'</td><td class="num">'+fmt(q.impressions)+'</td></tr>').join('')
