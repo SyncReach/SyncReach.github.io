@@ -305,6 +305,9 @@ function chartDateKey(value){
   if (isNaN(parsed.getTime())) return '';
   return parsed.getUTCFullYear()+'-'+String(parsed.getUTCMonth()+1).padStart(2,'0')+'-'+String(parsed.getUTCDate()).padStart(2,'0');
 }
+function dailyDate(row){
+  return row?.date || row?.day || row?.dateRange?.startDate || row?.dimensionValues?.[0]?.value || '';
+}
 
 async function loadGA(){
   const el = $('gaBody');
@@ -347,14 +350,14 @@ async function loadGSC(){
 
 function renderMetricChart(id, rows, key, color, label){
   const source = Array.isArray(rows) ? rows : [];
-  const dated = source.map(r=>chartDateKey(r.date)).filter(Boolean).sort();
+  const dated = source.map(r=>chartDateKey(dailyDate(r))).filter(Boolean).sort();
   const endKey = dated.length ? chartDateKey(dated[dated.length-1]) : '';
   const endParts = endKey ? endKey.split('-').map(Number) : [];
   const end = endParts.length ? new Date(Date.UTC(endParts[0],endParts[1]-1,endParts[2])) : new Date();
   const windowRows = Array.from({length:28},(_,offset)=>{
     const d = new Date(end); d.setUTCDate(end.getUTCDate()-(27-offset));
     const iso = d.toISOString().slice(0,10);
-    const match = source.find(r=>chartDateKey(r.date)===iso);
+    const match = source.find(r=>chartDateKey(dailyDate(r))===iso);
     return {date:iso,[key]:match && Number.isFinite(Number(match[key])) ? Number(match[key]) : 0};
   });
   const normalizedRows = windowRows;
