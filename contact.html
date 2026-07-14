@@ -251,5 +251,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script src="assets/site.js"></script>
+<script>
+(function(){
+  var f = document.querySelector('form.form[action*="formsubmit"]');
+  if (!f) return;
+  f.addEventListener('submit', function(){
+    try {
+      fetch('https://syncreach-dashboard.winter-bread-c74a.workers.dev/forms', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name: f.name.value, email: f.email.value, source: 'contact', _hp: f._honey ? f._honey.value : ''}),
+        keepalive: true
+      }).catch(function(){});
+    } catch(e) {}
+  });
+})();
+</script>
 </body>
 </html>
