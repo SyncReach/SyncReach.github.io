@@ -7,9 +7,41 @@
 </head>
 <body>
 <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
-<a href="/backend-admin/dashboard/" title="Site dashboard: GA, Search Console, forms, sitemap"
-   style="position:fixed;bottom:18px;right:18px;z-index:99999;background:#5ab0f7;color:#10222f;
-   font:600 13px -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:10px 16px;
-   border-radius:24px;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.35)">&#128200; Dashboard</a>
+<script>
+/* Adds a "Dashboard" entry to Sveltia's collections sidebar, styled by cloning
+   an existing collection item. Sveltia has no plugin API, so this re-injects
+   whenever the sidebar re-renders. Links to /backend-admin/dashboard/ */
+(function () {
+  function inject() {
+    if (document.getElementById('sr-dash-nav')) return;
+    var target = null;
+    document.querySelectorAll('button[role="option"] .label').forEach(function (l) {
+      if (l.textContent.trim() === 'Site pages') target = l.closest('.sui.option');
+    });
+    if (!target) return;
+    var clone = target.cloneNode(true);
+    clone.id = 'sr-dash-nav';
+    var btn = clone.querySelector('button');
+    if (!btn) return;
+    btn.setAttribute('aria-selected', 'false');
+    btn.setAttribute('value', 'Dashboard');
+    btn.setAttribute('data-search-value', 'Dashboard');
+    var t = clone.querySelector('.truncated-text');
+    if (t) t.textContent = 'Dashboard';
+    var icon = clone.querySelector('.icon');
+    if (icon) icon.textContent = 'monitoring';
+    var badge = clone.querySelector('.count');
+    if (badge) badge.remove();
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      window.location.href = '/backend-admin/dashboard/';
+    }, true);
+    target.parentElement.appendChild(clone);
+  }
+  new MutationObserver(inject).observe(document.body, { subtree: true, childList: true });
+  inject();
+})();
+</script>
 </body>
 </html>
