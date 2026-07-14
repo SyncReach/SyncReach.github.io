@@ -325,6 +325,12 @@ let chart;
 function drawTrend(){
   const ga = window.__gaDaily, gsc = window.__gscDaily;
   if (!ga && !gsc) return;
+  // Chart.js is an optional enhancement; analytics panels must still work if its CDN is blocked.
+  if (typeof Chart === 'undefined') {
+    $('trendChart').style.display = 'none';
+    return;
+  }
+  $('trendChart').style.display = '';
   const css = getComputedStyle(document.documentElement);
   const fg2 = css.getPropertyValue('--fg-2').trim();
   const grid = css.getPropertyValue('--border-2').trim();
