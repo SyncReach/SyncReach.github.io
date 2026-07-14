@@ -257,12 +257,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   if (!f) return;
   f.addEventListener('submit', function(){
     try {
+      var el = function(n){ return (f.elements[n] || {}).value || ''; };
       fetch('https://syncreach-dashboard.winter-bread-c74a.workers.dev/forms', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({name: f.name.value, email: f.email.value, source: 'contact', _hp: f._honey ? f._honey.value : ''}),
+        body: JSON.stringify({name: el('name'), email: el('email'), message: el('message'), source: 'contact', _hp: el('_honey')}),
         keepalive: true
       }).catch(function(){});
+    } catch(e) {}
+  });
     } catch(e) {}
   });
 })();
