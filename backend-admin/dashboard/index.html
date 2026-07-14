@@ -3,102 +3,143 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SyncReach — Site Dashboard</title>
+<title>Dashboard — SyncReach Solutions</title>
 <meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=block" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
 <style>
-:root{--bg:#16191d;--panel:#1e2227;--panel2:#262b31;--border:#343a41;--text:#e6e8ea;--muted:#9aa3ac;--accent:#5ab0f7;--ok:#4ec97f;--warn:#f2b74a;--err:#ef6a6a;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace}
+/* ============ Sveltia design tokens (sampled from the live CMS) ============ */
+:root{
+  --accent:hsl(210 100% 40%);
+  --accent-text:hsl(210 100% 60%);
+  --bg-1:hsl(210 10% 10%);
+  --bg-2:hsl(210 10% 13%);
+  --bg-3:hsl(210 10% 16%);
+  --fg-1:hsl(210 10% 75%);
+  --fg-2:hsl(210 10% 65%);
+  --fg-strong:hsl(210 10% 95%);
+  --border-1:hsl(210 10% 24%);
+  --border-2:hsl(210 10% 20%);
+  --selected:hsla(210 10% 26% / .75);
+  --ok:hsl(140 50% 45%);
+  --err:hsl(0 65% 55%);
+  --radius:4px;
+  --font:"Merriweather Sans",sans-serif;
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --accent-text:hsl(210 100% 40%);
+    --bg-1:hsl(210 10% 97%);
+    --bg-2:hsl(210 10% 94%);
+    --bg-3:hsl(210 10% 90%);
+    --fg-1:hsl(210 10% 30%);
+    --fg-2:hsl(210 10% 45%);
+    --fg-strong:hsl(210 10% 10%);
+    --border-1:hsl(210 10% 78%);
+    --border-2:hsl(210 10% 84%);
+    --selected:hsla(210 10% 80% / .75);
+  }
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font:14px/1.5 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:24px}
-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px}
-h1{font-size:20px;font-weight:600}
-h1 span{color:var(--muted);font-weight:400}
-.hdr-actions{display:flex;gap:8px;align-items:center}
-a.btn,button.btn{background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;text-decoration:none;display:inline-block}
-a.btn:hover,button.btn:hover{border-color:var(--accent)}
-.btn-primary{background:var(--accent);border-color:var(--accent);color:#10222f;font-weight:600}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px}
-.panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px}
-.panel h2{font-size:14px;font-weight:600;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
-.panel h2 small{color:var(--muted);font-weight:400}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px;margin-bottom:14px}
-.kpi{background:var(--panel2);border-radius:8px;padding:10px}
-.kpi b{display:block;font-size:20px;font-weight:700}
-.kpi span{color:var(--muted);font-size:11.5px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-th{color:var(--muted);text-align:left;font-weight:500;padding:5px 8px;border-bottom:1px solid var(--border)}
-td{padding:5px 8px;border-bottom:1px solid var(--panel2);vertical-align:top}
-td.num,th.num{text-align:right;font-family:var(--mono);white-space:nowrap}
-.status{color:var(--muted);font-size:13px;padding:12px 0}
-.tag{display:inline-block;border-radius:5px;padding:1px 8px;font-size:11.5px;font-family:var(--mono)}
-.tag.ok{background:rgba(78,201,127,.14);color:var(--ok)}
-.tag.err{background:rgba(239,106,106,.14);color:var(--err)}
-.tag.warn{background:rgba(242,183,74,.14);color:var(--warn)}
-.setup{background:var(--panel2);border:1px dashed var(--border);border-radius:8px;padding:12px;color:var(--muted);font-size:13px}
-.setup code{font-family:var(--mono);color:var(--text);font-size:12px}
-canvas{max-height:180px}
-dialog{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:22px;max-width:420px;width:90%}
-dialog::backdrop{background:rgba(0,0,0,.55)}
-dialog input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);padding:8px 10px;margin:12px 0;font-family:var(--mono)}
-.foot{color:var(--muted);font-size:12px;margin-top:20px}
+html,body{height:100%}
+body{background:var(--bg-1);color:var(--fg-1);font:13.5px/1.5 var(--font);display:flex;flex-direction:column}
+.msym{font-family:'Material Symbols Outlined';font-weight:400;font-style:normal;font-size:20px;line-height:1;display:inline-block;vertical-align:-4px;-webkit-font-smoothing:antialiased}
+.toolbar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--border-2);background:var(--bg-1);position:sticky;top:0;z-index:5}
+.toolbar h1{font-size:16px;font-weight:600;color:var(--fg-strong);margin-right:auto;display:flex;align-items:center;gap:8px}
+.toolbar h1 .msym{color:var(--fg-2)}
+.btn{display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--fg-1);border:1px solid transparent;border-radius:var(--radius);padding:6px 12px;font:500 13px var(--font);cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{background:var(--selected)}
+.btn .msym{font-size:18px}
+.btn--outline{border-color:var(--border-1)}
+.btn--primary{background:var(--accent);color:#fff}
+.btn--primary:hover{background:hsl(210 100% 45%)}
+.wrap{flex:1;overflow:auto;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:12px;max-width:1280px;margin:0 auto}
+.panel{background:var(--bg-2);border:1px solid var(--border-2);border-radius:var(--radius);padding:14px 16px}
+.panel h2{font-size:13px;font-weight:600;color:var(--fg-strong);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.panel h2 .msym{font-size:18px;color:var(--fg-2)}
+.panel h2 small{margin-left:auto;color:var(--fg-2);font-weight:400;font-size:11.5px}
 .wide{grid-column:1/-1}
-@media(max-width:760px){body{padding:14px}}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin-bottom:12px}
+.kpi{background:var(--bg-3);border-radius:var(--radius);padding:8px 10px}
+.kpi b{display:block;font-size:19px;font-weight:700;color:var(--fg-strong)}
+.kpi span{color:var(--fg-2);font-size:11px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{color:var(--fg-2);text-align:left;font-weight:500;padding:4px 8px;border-bottom:1px solid var(--border-2);font-size:11.5px}
+td{padding:5px 8px;border-bottom:1px solid var(--border-2);color:var(--fg-1)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--selected)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.status{color:var(--fg-2);font-size:12.5px;padding:10px 0}
+.tag{display:inline-block;border-radius:var(--radius);padding:1px 7px;font-size:11px;font-variant-numeric:tabular-nums}
+.tag.ok{background:hsla(140 50% 45% / .15);color:var(--ok)}
+.tag.err{background:hsla(0 65% 55% / .15);color:var(--err)}
+.setup{background:var(--bg-3);border:1px dashed var(--border-1);border-radius:var(--radius);padding:10px 12px;color:var(--fg-2);font-size:12.5px}
+.setup code{color:var(--fg-1);font-size:11.5px}
+canvas{max-height:170px}
+dialog{background:var(--bg-2);color:var(--fg-1);border:1px solid var(--border-1);border-radius:8px;padding:20px;max-width:420px;width:90%;font-family:var(--font)}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+dialog h2{font-size:14px;color:var(--fg-strong)}
+dialog p{color:var(--fg-2);font-size:12.5px;margin-top:8px}
+dialog input{width:100%;background:var(--bg-1);border:1px solid var(--border-1);border-radius:var(--radius);color:var(--fg-1);padding:8px 10px;margin:12px 0;font:13px var(--font)}
+dialog input:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.dlg-actions{display:flex;gap:8px;justify-content:flex-end}
+@media(max-width:760px){.wrap{padding:10px}}
 </style>
 </head>
 <body>
-<header>
-  <h1>SyncReach Dashboard <span>· www.syncreach.io</span></h1>
-  <div class="hdr-actions">
-    <a class="btn" href="/backend-admin/">&larr; Content Admin</a>
-    <button class="btn" id="tokenBtn">API token</button>
-    <button class="btn btn-primary" id="refreshBtn">Refresh</button>
-  </div>
-</header>
 
+<div class="toolbar">
+  <h1><span class="msym">monitoring</span> Dashboard</h1>
+  <a class="btn" href="/backend-admin/"><span class="msym">arrow_back</span> Content Admin</a>
+  <button class="btn btn--outline" id="tokenBtn"><span class="msym">key</span> API token</button>
+  <button class="btn btn--primary" id="refreshBtn"><span class="msym">refresh</span> Refresh</button>
+</div>
+
+<div class="wrap">
 <div class="grid">
-  <section class="panel" id="gaPanel">
-    <h2>Google Analytics <small>last 28 days</small></h2>
+  <section class="panel">
+    <h2><span class="msym">analytics</span> Google Analytics <small>last 28 days</small></h2>
     <div id="gaBody" class="status">Loading…</div>
   </section>
 
-  <section class="panel" id="gscPanel">
-    <h2>Search Console <small>last 28 days</small></h2>
+  <section class="panel">
+    <h2><span class="msym">search</span> Search Console <small>last 28 days</small></h2>
     <div id="gscBody" class="status">Loading…</div>
   </section>
 
-  <section class="panel wide" id="trendPanel">
-    <h2>Daily trend <small>GA users · GSC clicks</small></h2>
-    <canvas id="trendChart" height="70"></canvas>
-    <div id="trendBody" class="status" style="display:none"></div>
+  <section class="panel wide">
+    <h2><span class="msym">show_chart</span> Daily trend <small>GA users · GSC clicks</small></h2>
+    <canvas id="trendChart" height="64"></canvas>
   </section>
 
-  <section class="panel" id="formsPanel">
-    <h2>Contact form submissions <small id="formsCount"></small></h2>
+  <section class="panel">
+    <h2><span class="msym">mail</span> Contact form submissions <small id="formsCount"></small></h2>
     <div id="formsBody" class="status">Loading…</div>
   </section>
 
-  <section class="panel" id="sitemapPanel">
-    <h2>Sitemap check <small id="sitemapMeta"></small></h2>
+  <section class="panel">
+    <h2><span class="msym">account_tree</span> Sitemap check <small id="sitemapMeta"></small></h2>
     <div id="sitemapBody" class="status">Loading…</div>
   </section>
 </div>
-
-<p class="foot">Data via Cloudflare Worker (GA4 Data API + Search Console API). Sitemap check runs in your browser. This page is unlisted and robots-blocked, and API access requires the token.</p>
+</div>
 
 <dialog id="tokenDlg">
-  <h2 style="font-size:15px">Dashboard API token</h2>
-  <p style="color:var(--muted);font-size:13px;margin-top:8px">Stored only in this browser (localStorage). Must match the <code>DASH_TOKEN</code> secret on the Worker.</p>
+  <h2>Dashboard API token</h2>
+  <p>Stored only in this browser (localStorage). Must match the <code>DASH_TOKEN</code> secret on the Worker.</p>
   <input id="tokenInput" type="password" placeholder="paste token">
-  <div style="display:flex;gap:8px;justify-content:flex-end">
-    <button class="btn" id="tokenCancel">Cancel</button>
-    <button class="btn btn-primary" id="tokenSave">Save</button>
+  <div class="dlg-actions">
+    <button class="btn btn--outline" id="tokenCancel">Cancel</button>
+    <button class="btn btn--primary" id="tokenSave">Save</button>
   </div>
 </dialog>
 
 <script>
-/* ================= CONFIG ================= */
 const WORKER_URL = 'https://syncreach-dashboard.winter-bread-c74a.workers.dev';
-/* ========================================== */
 
 const $ = (id) => document.getElementById(id);
 const token = () => localStorage.getItem('sr_dash_token') || '';
@@ -118,18 +159,13 @@ async function api(path){
   if (!r.ok) throw new Error('HTTP ' + r.status);
   return r.json();
 }
-
-function setupMsg(el){
-  el.innerHTML = '<div class="setup">Worker not connected yet.<br>1. Deploy <code>worker.js</code> on Cloudflare Workers.<br>2. Set <code>WORKER_URL</code> at the top of this page.<br>3. Click <b>API token</b> and paste your <code>DASH_TOKEN</code>.</div>';
-}
 function errMsg(el, e){
-  if (e.message === 'WORKER_NOT_CONFIGURED') return setupMsg(el);
   if (e.message === 'NO_TOKEN' || e.message === 'BAD_TOKEN')
     return el.innerHTML = '<div class="setup">'+(e.message==='NO_TOKEN'?'No API token set.':'Token rejected by Worker.')+' Click <b>API token</b> (top right) and paste your <code>DASH_TOKEN</code>.</div>';
   el.innerHTML = '<div class="setup">Error: '+esc(e.message)+'</div>';
 }
+function kpi(v,l){ return '<div class="kpi"><b>'+ (typeof v==='string'?v:fmt(v)) +'</b><span>'+l+'</span></div>'; }
 
-/* ---------- GA ---------- */
 async function loadGA(){
   const el = $('gaBody');
   try {
@@ -147,8 +183,6 @@ async function loadGA(){
     drawTrend();
   } catch(e){ errMsg(el, e); }
 }
-
-/* ---------- GSC ---------- */
 async function loadGSC(){
   const el = $('gscBody');
   try {
@@ -167,30 +201,30 @@ async function loadGSC(){
   } catch(e){ errMsg(el, e); }
 }
 
-function kpi(v,l){ return '<div class="kpi"><b>'+ (typeof v==='string'?v:fmt(v)) +'</b><span>'+l+'</span></div>'; }
-
-/* ---------- Trend chart ---------- */
 let chart;
 function drawTrend(){
   const ga = window.__gaDaily, gsc = window.__gscDaily;
   if (!ga && !gsc) return;
+  const css = getComputedStyle(document.documentElement);
+  const fg2 = css.getPropertyValue('--fg-2').trim();
+  const grid = css.getPropertyValue('--border-2').trim();
   const labels = (ga?.length?ga:gsc||[]).map(r=>r.date);
   const ds = [];
-  if (ga?.length) ds.push({label:'GA users', data:ga.map(r=>r.users), borderColor:'#5ab0f7', backgroundColor:'transparent', tension:.3, pointRadius:0});
-  if (gsc?.length) ds.push({label:'GSC clicks', data:gsc.map(r=>r.clicks), borderColor:'#4ec97f', backgroundColor:'transparent', tension:.3, pointRadius:0});
+  if (ga?.length) ds.push({label:'GA users', data:ga.map(r=>r.users), borderColor:'hsl(210 100% 55%)', backgroundColor:'transparent', tension:.3, pointRadius:0, borderWidth:2});
+  if (gsc?.length) ds.push({label:'GSC clicks', data:gsc.map(r=>r.clicks), borderColor:'hsl(140 50% 45%)', backgroundColor:'transparent', tension:.3, pointRadius:0, borderWidth:2});
   if (chart) chart.destroy();
   chart = new Chart($('trendChart'), { type:'line', data:{labels, datasets:ds},
-    options:{ responsive:true, plugins:{legend:{labels:{color:'#9aa3ac',boxWidth:12}}},
-      scales:{ x:{ticks:{color:'#9aa3ac',maxTicksLimit:10},grid:{color:'#262b31'}}, y:{ticks:{color:'#9aa3ac'},grid:{color:'#262b31'},beginAtZero:true} } } });
+    options:{ responsive:true, plugins:{legend:{labels:{color:fg2, boxWidth:12, font:{family:'Merriweather Sans', size:11}}}},
+      scales:{ x:{ticks:{color:fg2, maxTicksLimit:10, font:{family:'Merriweather Sans', size:10}}, grid:{color:grid}},
+               y:{ticks:{color:fg2, font:{family:'Merriweather Sans', size:10}}, grid:{color:grid}, beginAtZero:true} } } });
 }
 
-/* ---------- Forms ---------- */
 async function loadForms(){
   const el = $('formsBody');
   try {
     const d = await api('/forms');
     $('formsCount').textContent = d.items.length + ' logged';
-    if (!d.items.length){ el.innerHTML = '<div class="setup">No submissions logged yet. Logging starts once the form hook is added to the site and the Worker is live. (Older submissions live in the admin@syncreach.io inbox via FormSubmit.)</div>'; return; }
+    if (!d.items.length){ el.innerHTML = '<div class="setup">No submissions logged yet. New submissions on the contact and pricing forms will appear here. (Older ones live in the admin@syncreach.io inbox via FormSubmit.)</div>'; return; }
     el.className='';
     el.innerHTML = '<table><tr><th>When</th><th>Name</th><th>Email</th><th>Source</th></tr>'
       + d.items.slice(0,15).map(i=>'<tr><td>'+esc((i.ts||'').replace('T',' ').slice(0,16))+'</td><td>'+esc(i.name)+'</td><td>'+esc(i.email)+'</td><td>'+esc(i.source||'')+'</td></tr>').join('')
@@ -198,7 +232,6 @@ async function loadForms(){
   } catch(e){ errMsg(el, e); }
 }
 
-/* ---------- Sitemap (client-side, same origin) ---------- */
 async function loadSitemap(){
   const el = $('sitemapBody');
   try {
@@ -206,7 +239,7 @@ async function loadSitemap(){
     if (!r.ok) throw new Error('sitemap.xml returned HTTP ' + r.status);
     const xml = new DOMParser().parseFromString(await r.text(), 'application/xml');
     const urls = [...xml.querySelectorAll('url > loc')].map(n=>n.textContent.trim());
-    $('sitemapMeta').textContent = urls.length + ' URLs · checked ' + new Date().toLocaleTimeString();
+    $('sitemapMeta').textContent = urls.length + ' URLs · ' + new Date().toLocaleTimeString();
     const results = [];
     for (const u of urls){
       try {
@@ -226,9 +259,7 @@ async function loadSitemap(){
 }
 
 function loadAll(){
-  $('gaBody').className='status'; $('gaBody').textContent='Loading…';
-  $('gscBody').className='status'; $('gscBody').textContent='Loading…';
-  $('formsBody').className='status'; $('formsBody').textContent='Loading…';
+  ['gaBody','gscBody','formsBody'].forEach(id=>{ $(id).className='status'; $(id).textContent='Loading…'; });
   loadGA(); loadGSC(); loadForms(); loadSitemap();
 }
 loadAll();
