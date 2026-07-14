@@ -294,8 +294,10 @@ function errMsg(el, e){
 }
 function kpi(v,l){ return '<div class="kpi"><b>'+ (typeof v==='string'?v:fmt(v)) +'</b><span>'+l+'</span></div>'; }
 function chartDate(value){
-  const d = new Date(String(value||'')+'T00:00:00');
-  return isNaN(d.getTime()) ? String(value||'') : new Intl.DateTimeFormat('en-GB',{day:'2-digit',month:'short',year:'numeric'}).format(d);
+  const raw = String(value||'');
+  const normalized = /^\d{8}$/.test(raw) ? raw.slice(0,4)+'-'+raw.slice(4,6)+'-'+raw.slice(6,8) : raw;
+  const d = new Date(normalized+'T00:00:00');
+  return isNaN(d.getTime()) ? raw : new Intl.DateTimeFormat('en-GB',{day:'2-digit',month:'short',year:'numeric'}).format(d);
 }
 
 async function loadGA(){
