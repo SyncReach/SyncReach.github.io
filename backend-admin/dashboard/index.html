@@ -289,10 +289,13 @@ function errMsg(el, e){
 }
 function kpi(v,l){ return '<div class="kpi"><b>'+ (typeof v==='string'?v:fmt(v)) +'</b><span>'+l+'</span></div>'; }
 function chartDate(value){
-  const raw = String(value||'');
-  const parts = raw.match(/^(\d{4})-?(\d{2})-?(\d{2})$/);
-  const d = parts ? new Date(Date.UTC(Number(parts[1]),Number(parts[2])-1,Number(parts[3]))) : new Date(raw);
-  return isNaN(d.getTime()) ? raw : new Intl.DateTimeFormat('en-GB',{day:'2-digit',month:'short',year:'numeric'}).format(d);
+  const raw = String(value||'').trim();
+  const parts = raw.match(/^(\d{4})[-\/]?(\d{2})[-\/]?(\d{2})/);
+  if (parts) {
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return Number(parts[3])+' '+months[Number(parts[2])-1]+' '+parts[1];
+  }
+  return raw;
 }
 function chartDateKey(value){
   const raw = String(value||'').trim();
