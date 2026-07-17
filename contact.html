@@ -264,6 +264,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         body: JSON.stringify({name: el('name'), email: el('email'), message: el('message'), source: 'contact', _hp: el('_honey')}),
         keepalive: true
       }).catch(function(){});
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'lead_submit', lead_source: 'contact' });
     } catch(e) {}
   });
     } catch(e) {}
