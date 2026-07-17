@@ -1,0 +1,32 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- set staticPages = [
+  { url: "/", priority: "1.0", freq: "weekly" },
+  { url: "/services", priority: "0.9", freq: "monthly" },
+  { url: "/pricing", priority: "0.9", freq: "monthly" },
+  { url: "/about", priority: "0.7", freq: "monthly" },
+  { url: "/contact", priority: "0.8", freq: "monthly" },
+  { url: "/blog/", priority: "0.8", freq: "weekly" },
+  { url: "/privacy", priority: "0.3", freq: "yearly" },
+  { url: "/terms", priority: "0.3", freq: "yearly" }
+] %}
+{%- for p in staticPages %}
+<url>
+  <loc>https://www.syncreach.io{{ p.url }}</loc>
+  <changefreq>{{ p.freq }}</changefreq>
+  <priority>{{ p.priority }}</priority>
+</url>
+{%- endfor %}
+{%- for post in collections.posts %}
+<url>
+  <loc>https://www.syncreach.io{{ post.url }}</loc>
+  <lastmod>{{ post.date | isoDate }}</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.7</priority>
+</url>
+{%- endfor %}
+</urlset>
