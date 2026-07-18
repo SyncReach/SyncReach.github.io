@@ -4,7 +4,7 @@ description: Explore nine law firm intake automation workflows that help capture
 date: 2026-07-18
 author: Shadan Boroumand
 excerpt: ''
-cover: /assets/uploads/Blog 3.png
+cover: /assets/uploads/Blog 3 (1).png
 ---
 
 Many law firms already know where their intake process breaks down.
