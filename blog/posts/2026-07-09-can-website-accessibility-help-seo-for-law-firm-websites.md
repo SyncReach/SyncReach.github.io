@@ -2,7 +2,7 @@
 title: Can Website Accessibility Help SEO for Law Firm Websites?
 description: Can website accessibility improve SEO for law firms? Learn how accessible website design supports technical SEO, user experience, and long-term search visibility.
 date: 2026-07-12
-author: Shadan Boroumand I Co-Founder
+author: Shadan Boroumand
 excerpt: ''
 cover: /assets/uploads/Blog 2.png
 ---
