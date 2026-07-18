@@ -2,7 +2,7 @@
 title: Is Your Law Firm’s Website ADA Compliant?
 description: Is your law firm's website ADA compliant? Learn 7 accessibility issues that could cost you clients, hurt SEO, and increase legal risk.
 date: 2026-07-09
-author: Shadan Boroumand I Co-Founder
+author: Shadan Boroumand
 excerpt: ''
 cover: /assets/uploads/Blog 1 Image.png
 ---
