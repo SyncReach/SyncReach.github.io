@@ -65,6 +65,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .addon input{margin-top:2px;flex:none;}
   .addon__t{font-size:13.5px;color:var(--text-default);line-height:1.4;}
   .addon__p{font-family:var(--font-mono);font-size:12px;color:var(--text-accent);margin-top:2px;}
+  .platforms{display:flex;flex-direction:column;gap:9px;}
+  .platform{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid var(--border-soft);border-radius:var(--radius-xs);cursor:pointer;}
+  .platform input{margin-top:3px;flex:none;}
 
   /* summary */
   .summary{position:sticky;top:20px;background:var(--surface-inverse);border-radius:var(--radius-sm);padding:26px 24px;color:var(--text-on-inverse);}
@@ -253,14 +256,18 @@ const PRICING = {
     },
     social: {
       name: "Social Media Marketing",
-      description: "Build credibility, increase visibility, and establish authority with professionally managed content.",
+      description: "Platform-specific content packages, fully produced and ready to post — mix and match any combination of platforms.",
+      multiSelect: true,
       plans: [
-        { id:"none", name:"Not needed", price:{}, features:[] },
-        { id:"essential", name:"Essential Social", price:{monthly:45000}, features:["8 posts/month","1 platform","Content calendar & branded graphics"] },
-        { id:"authority", name:"Authority Social", price:{monthly:75000}, badge:"Most Popular", features:["12 posts/month","Up to 2 platforms","Content strategy"] },
-        { id:"multiplatform", name:"Multi-Platform Social", price:{monthly:110000}, features:["16 posts/month","Up to 3 platforms","Platform adaptation"] }
+        { id:"instagram", name:"Instagram", price:{monthly:45000}, features:["8 Reels per month, fully produced and ready to post."] },
+        { id:"tiktok", name:"TikTok", price:{monthly:45000}, features:["8 short-form videos per month, edited for the platform."] },
+        { id:"facebook", name:"Facebook", price:{monthly:30000}, features:["4 short-form videos and 4 carousels per month."] },
+        { id:"youtube", name:"YouTube", price:{monthly:20000}, features:["4 Shorts per month, optimized for the feed."] },
+        { id:"linkedin", name:"LinkedIn", price:{monthly:10000}, features:["2 text-based posts and 2 carousels per month."] }
       ],
-      addOns: []
+      addOns: [
+        { id:"igStories", name:"Instagram Stories", price:{monthly:5000}, note:"Stories in packs of 4 for $50 per pack." }
+      ]
     },
     content: {
       name: "Blog & Content Writing",
@@ -372,7 +379,10 @@ const CATEGORY_ORDER = ["website","seo","social","content","email","sms","automa
 ========================================================= */
 const state = {};
 CATEGORY_ORDER.forEach(function(catId){
-  state[catId] = { plan: "none", addOns: {}, support: "none" };
+  var cat0 = PRICING.categories[catId];
+  state[catId] = cat0.multiSelect
+    ? { plans: {}, addOns: {}, support: "none" }
+    : { plan: "none", addOns: {}, support: "none" };
 });
 
 /* =========================================================
@@ -399,9 +409,17 @@ function buildLines(){
     var cat = PRICING.categories[catId];
     var s = state[catId];
 
-    var plan = findPlan(catId, s.plan);
-    if(plan && s.plan !== "none" && plan.price && (plan.price.oneTime || plan.price.monthly)){
-      lines.push({ cat:catId, label:cat.name + " — " + plan.name, oneTime:plan.price.oneTime||0, monthly:plan.price.monthly||0 });
+    if(cat.multiSelect){
+      cat.plans.forEach(function(p){
+        if(s.plans[p.id] && p.price && (p.price.oneTime || p.price.monthly)){
+          lines.push({ cat:catId, label:cat.name + " — " + p.name, oneTime:p.price.oneTime||0, monthly:p.price.monthly||0 });
+        }
+      });
+    } else {
+      var plan = findPlan(catId, s.plan);
+      if(plan && s.plan !== "none" && plan.price && (plan.price.oneTime || plan.price.monthly)){
+        lines.push({ cat:catId, label:cat.name + " — " + plan.name, oneTime:plan.price.oneTime||0, monthly:plan.price.monthly||0 });
+      }
     }
 
     (cat.addOns||[]).forEach(function(addon){
@@ -449,8 +467,8 @@ function optionLabel(opt){
 
 function renderFeatures(opt){
   if(!opt || !opt.features || !opt.features.length) return "";
-  if(opt.features.length === 1) return "<div class=\"field__desc\">" + opt.features[0] + (opt.badge ? "<div class=\"field__badge\">"+opt.badge+"</div>" : "") + "</div>";
-  return "<div class=\"field__desc\"><ul>" + opt.features.map(function(f){ return "<li>"+f+"</li>"; }).join("") + "</ul>" + (opt.badge ? "<div class=\"field__badge\">"+opt.badge+"</div>" : "") + "</div>";
+  if(opt.features.length === 1) return "<div class="field__desc">" + opt.features[0] + (opt.badge ? "<div class="field__badge">"+opt.badge+"</div>" : "") + "</div>";
+  return "<div class="field__desc"><ul>" + opt.features.map(function(f){ return "<li>"+f+"</li>"; }).join("") + "</ul>" + (opt.badge ? "<div class="field__badge">"+opt.badge+"</div>" : "") + "</div>";
 }
 
 CATEGORY_ORDER.forEach(function(catId){
@@ -461,43 +479,70 @@ CATEGORY_ORDER.forEach(function(catId){
 
   var head = document.createElement("div");
   head.className = "cat__head";
-  head.innerHTML = "<div><div class=\"cat__title\">" + cat.name + "</div><div class=\"cat__sub\">" + cat.description + "</div></div>" +
-    "<div style=\"display:flex;align-items:center;gap:12px;\"><span class=\"cat__chosen\" id=\"chosen-" + catId + "\">Not needed</span>" +
-    "<svg class=\"cat__chev\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m6 9 6 6 6-6\"/></svg></div>";
+  head.innerHTML = "<div><div class="cat__title">" + cat.name + "</div><div class="cat__sub">" + cat.description + "</div></div>" +
+    "<div style="display:flex;align-items:center;gap:12px;"><span class="cat__chosen" id="chosen-" + catId + "">Not needed</span>" +
+    "<svg class="cat__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></div>";
   head.addEventListener("click", function(){ card.classList.toggle("open"); });
   card.appendChild(head);
 
   var body = document.createElement("div");
   body.className = "cat__body";
 
-  // plan select
-  var planField = document.createElement("div");
-  planField.className = "field";
-  var planSelect = document.createElement("select");
-  planSelect.id = "plan-" + catId;
-  cat.plans.forEach(function(p){
-    var o = document.createElement("option");
-    o.value = p.id; o.textContent = optionLabel(p);
-    planSelect.appendChild(o);
-  });
-  var planDesc = document.createElement("div");
-  planDesc.id = "plan-desc-" + catId;
-  planField.innerHTML = "<span class=\"field__label\">Plan</span>";
-  planField.appendChild(planSelect);
-  planField.appendChild(planDesc);
-  body.appendChild(planField);
-  planSelect.addEventListener("change", function(){
-    state[catId].plan = planSelect.value;
-    planDesc.innerHTML = renderFeatures(findPlan(catId, planSelect.value));
-    updateAll();
-  });
-  planDesc.innerHTML = renderFeatures(findPlan(catId,"none"));
+  if(cat.multiSelect){
+    // platform checkboxes (multi-select)
+    var platField = document.createElement("div");
+    platField.className = "field";
+    platField.innerHTML = "<span class="field__label">Platforms</span>";
+    var platGrid = document.createElement("div");
+    platGrid.className = "platforms";
+    cat.plans.forEach(function(p){
+      var label = document.createElement("label");
+      label.className = "platform";
+      var price = p.price.oneTime ? fmt(p.price.oneTime) : "";
+      var monthlyPrice = p.price.monthly ? fmt(p.price.monthly)+"/mo" : "";
+      var priceTxt = [price, monthlyPrice].filter(Boolean).join(" + ");
+      var feat = (p.features && p.features[0]) ? p.features[0] : "";
+      label.innerHTML = "<input type="checkbox" data-cat="" + catId + "" data-plan="" + p.id + ""><span><span class="addon__t"><b>" + p.name + "</b> — <span class="addon__p" style="display:inline;">" + priceTxt + "</span></span>" + (feat ? "<div class="field__desc" style="margin-top:4px;">"+feat+"</div>" : "") + "</span>";
+      platGrid.appendChild(label);
+    });
+    platField.appendChild(platGrid);
+    body.appendChild(platField);
+    platGrid.querySelectorAll("input[type=checkbox]").forEach(function(cb){
+      cb.addEventListener("change", function(){
+        state[catId].plans[cb.dataset.plan] = cb.checked;
+        updateAll();
+      });
+    });
+  } else {
+    // plan select
+    var planField = document.createElement("div");
+    planField.className = "field";
+    var planSelect = document.createElement("select");
+    planSelect.id = "plan-" + catId;
+    cat.plans.forEach(function(p){
+      var o = document.createElement("option");
+      o.value = p.id; o.textContent = optionLabel(p);
+      planSelect.appendChild(o);
+    });
+    var planDesc = document.createElement("div");
+    planDesc.id = "plan-desc-" + catId;
+    planField.innerHTML = "<span class="field__label">Plan</span>";
+    planField.appendChild(planSelect);
+    planField.appendChild(planDesc);
+    body.appendChild(planField);
+    planSelect.addEventListener("change", function(){
+      state[catId].plan = planSelect.value;
+      planDesc.innerHTML = renderFeatures(findPlan(catId, planSelect.value));
+      updateAll();
+    });
+    planDesc.innerHTML = renderFeatures(findPlan(catId,"none"));
+  }
 
   // addOns
   if(cat.addOns && cat.addOns.length){
     var addField = document.createElement("div");
     addField.className = "field";
-    addField.innerHTML = "<span class=\"field__label\">Add-ons</span>";
+    addField.innerHTML = "<span class="field__label">Add-ons</span>";
     var addGrid = document.createElement("div");
     addGrid.className = "addons";
     cat.addOns.forEach(function(addon){
@@ -506,7 +551,7 @@ CATEGORY_ORDER.forEach(function(catId){
       var price = addon.price.oneTime ? fmt(addon.price.oneTime) : "";
       var monthlyPrice = addon.price.monthly ? fmt(addon.price.monthly)+"/mo" : "";
       var priceTxt = [price, monthlyPrice].filter(Boolean).join(" + ");
-      label.innerHTML = "<input type=\"checkbox\" data-cat=\"" + catId + "\" data-addon=\"" + addon.id + "\"><span><span class=\"addon__t\">" + addon.name + "</span><div class=\"addon__p\">" + priceTxt + "</div></span>";
+      label.innerHTML = "<input type="checkbox" data-cat="" + catId + "" data-addon="" + addon.id + ""><span><span class="addon__t">" + addon.name + "</span><div class="addon__p">" + priceTxt + "</div>" + (addon.note ? "<div style="font-size:12px;color:var(--text-muted);margin-top:3px;line-height:1.4;">"+addon.note+"</div>" : "") + "</span>";
       addGrid.appendChild(label);
     });
     addField.appendChild(addGrid);
@@ -530,7 +575,7 @@ CATEGORY_ORDER.forEach(function(catId){
       supSelect.appendChild(opt);
     });
     var supDesc = document.createElement("div");
-    supField.innerHTML = "<span class=\"field__label\">" + cat.support.legend + "</span>";
+    supField.innerHTML = "<span class="field__label">" + cat.support.legend + "</span>";
     supField.appendChild(supSelect);
     supField.appendChild(supDesc);
     body.appendChild(supField);
@@ -554,10 +599,16 @@ function updateAll(){
 
   // per-category chosen label
   CATEGORY_ORDER.forEach(function(catId){
+    var cat = PRICING.categories[catId];
     var s = state[catId];
     var chosenEl = document.getElementById("chosen-"+catId);
     var bits = [];
-    if(s.plan !== "none"){ var p = findPlan(catId, s.plan); if(p) bits.push(p.name); }
+    if(cat.multiSelect){
+      var chosenPlatforms = cat.plans.filter(function(p){ return s.plans[p.id]; }).map(function(p){ return p.name; });
+      if(chosenPlatforms.length) bits.push(chosenPlatforms.join(", "));
+    } else if(s.plan !== "none"){
+      var p = findPlan(catId, s.plan); if(p) bits.push(p.name);
+    }
     var addCount = Object.values(s.addOns).filter(Boolean).length;
     if(addCount) bits.push(addCount + " add-on" + (addCount>1?"s":""));
     if(s.support && s.support !== "none"){ var so = findSupportOption(catId, s.support); if(so) bits.push(so.name); }
@@ -566,13 +617,13 @@ function updateAll(){
 
   var linesEl = document.getElementById("summary-lines");
   if(!lines.length){
-    linesEl.innerHTML = "<div class=\"summary__empty\">Nothing selected yet — choose services on the left.</div>";
+    linesEl.innerHTML = "<div class="summary__empty">Nothing selected yet — choose services on the left.</div>";
   } else {
     linesEl.innerHTML = lines.map(function(l){
       var parts = [];
       if(l.oneTime) parts.push(fmt(l.oneTime));
       if(l.monthly) parts.push(fmt(l.monthly)+"/mo");
-      return "<div class=\"sline\"><b>"+l.label+"</b><span>"+parts.join(" + ")+"</span></div>";
+      return "<div class="sline"><b>"+l.label+"</b><span>"+parts.join(" + ")+"</span></div>";
     }).join("");
   }
 
