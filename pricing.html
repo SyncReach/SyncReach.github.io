@@ -467,8 +467,8 @@ function optionLabel(opt){
 
 function renderFeatures(opt){
   if(!opt || !opt.features || !opt.features.length) return "";
-  if(opt.features.length === 1) return "<div class="field__desc">" + opt.features[0] + (opt.badge ? "<div class="field__badge">"+opt.badge+"</div>" : "") + "</div>";
-  return "<div class="field__desc"><ul>" + opt.features.map(function(f){ return "<li>"+f+"</li>"; }).join("") + "</ul>" + (opt.badge ? "<div class="field__badge">"+opt.badge+"</div>" : "") + "</div>";
+  if(opt.features.length === 1) return "<div class=\"field__desc\">" + opt.features[0] + (opt.badge ? "<div class=\"field__badge\">"+opt.badge+"</div>" : "") + "</div>";
+  return "<div class=\"field__desc\"><ul>" + opt.features.map(function(f){ return "<li>"+f+"</li>"; }).join("") + "</ul>" + (opt.badge ? "<div class=\"field__badge\">"+opt.badge+"</div>" : "") + "</div>";
 }
 
 CATEGORY_ORDER.forEach(function(catId){
@@ -479,9 +479,9 @@ CATEGORY_ORDER.forEach(function(catId){
 
   var head = document.createElement("div");
   head.className = "cat__head";
-  head.innerHTML = "<div><div class="cat__title">" + cat.name + "</div><div class="cat__sub">" + cat.description + "</div></div>" +
-    "<div style="display:flex;align-items:center;gap:12px;"><span class="cat__chosen" id="chosen-" + catId + "">Not needed</span>" +
-    "<svg class="cat__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></div>";
+  head.innerHTML = "<div><div class=\"cat__title\">" + cat.name + "</div><div class=\"cat__sub\">" + cat.description + "</div></div>" +
+    "<div style=\"display:flex;align-items:center;gap:12px;\"><span class=\"cat__chosen\" id=\"chosen-" + catId + "\">Not needed</span>" +
+    "<svg class=\"cat__chev\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m6 9 6 6 6-6\"/></svg></div>";
   head.addEventListener("click", function(){ card.classList.toggle("open"); });
   card.appendChild(head);
 
@@ -492,7 +492,7 @@ CATEGORY_ORDER.forEach(function(catId){
     // platform checkboxes (multi-select)
     var platField = document.createElement("div");
     platField.className = "field";
-    platField.innerHTML = "<span class="field__label">Platforms</span>";
+    platField.innerHTML = "<span class=\"field__label\">Platforms</span>";
     var platGrid = document.createElement("div");
     platGrid.className = "platforms";
     cat.plans.forEach(function(p){
@@ -502,7 +502,7 @@ CATEGORY_ORDER.forEach(function(catId){
       var monthlyPrice = p.price.monthly ? fmt(p.price.monthly)+"/mo" : "";
       var priceTxt = [price, monthlyPrice].filter(Boolean).join(" + ");
       var feat = (p.features && p.features[0]) ? p.features[0] : "";
-      label.innerHTML = "<input type="checkbox" data-cat="" + catId + "" data-plan="" + p.id + ""><span><span class="addon__t"><b>" + p.name + "</b> — <span class="addon__p" style="display:inline;">" + priceTxt + "</span></span>" + (feat ? "<div class="field__desc" style="margin-top:4px;">"+feat+"</div>" : "") + "</span>";
+      label.innerHTML = "<input type=\"checkbox\" data-cat=\"" + catId + "\" data-plan=\"" + p.id + "\"><span><span class=\"addon__t\"><b>" + p.name + "</b> — <span class=\"addon__p\" style=\"display:inline;\">" + priceTxt + "</span></span>" + (feat ? "<div class=\"field__desc\" style=\"margin-top:4px;\">"+feat+"</div>" : "") + "</span>";
       platGrid.appendChild(label);
     });
     platField.appendChild(platGrid);
@@ -526,7 +526,7 @@ CATEGORY_ORDER.forEach(function(catId){
     });
     var planDesc = document.createElement("div");
     planDesc.id = "plan-desc-" + catId;
-    planField.innerHTML = "<span class="field__label">Plan</span>";
+    planField.innerHTML = "<span class=\"field__label\">Plan</span>";
     planField.appendChild(planSelect);
     planField.appendChild(planDesc);
     body.appendChild(planField);
@@ -542,7 +542,7 @@ CATEGORY_ORDER.forEach(function(catId){
   if(cat.addOns && cat.addOns.length){
     var addField = document.createElement("div");
     addField.className = "field";
-    addField.innerHTML = "<span class="field__label">Add-ons</span>";
+    addField.innerHTML = "<span class=\"field__label\">Add-ons</span>";
     var addGrid = document.createElement("div");
     addGrid.className = "addons";
     cat.addOns.forEach(function(addon){
@@ -551,7 +551,7 @@ CATEGORY_ORDER.forEach(function(catId){
       var price = addon.price.oneTime ? fmt(addon.price.oneTime) : "";
       var monthlyPrice = addon.price.monthly ? fmt(addon.price.monthly)+"/mo" : "";
       var priceTxt = [price, monthlyPrice].filter(Boolean).join(" + ");
-      label.innerHTML = "<input type="checkbox" data-cat="" + catId + "" data-addon="" + addon.id + ""><span><span class="addon__t">" + addon.name + "</span><div class="addon__p">" + priceTxt + "</div>" + (addon.note ? "<div style="font-size:12px;color:var(--text-muted);margin-top:3px;line-height:1.4;">"+addon.note+"</div>" : "") + "</span>";
+      label.innerHTML = "<input type=\"checkbox\" data-cat=\"" + catId + "\" data-addon=\"" + addon.id + "\"><span><span class=\"addon__t\">" + addon.name + "</span><div class=\"addon__p\">" + priceTxt + "</div>" + (addon.note ? "<div style=\"font-size:12px;color:var(--text-muted);margin-top:3px;line-height:1.4;\">"+addon.note+"</div>" : "") + "</span>";
       addGrid.appendChild(label);
     });
     addField.appendChild(addGrid);
@@ -575,7 +575,7 @@ CATEGORY_ORDER.forEach(function(catId){
       supSelect.appendChild(opt);
     });
     var supDesc = document.createElement("div");
-    supField.innerHTML = "<span class="field__label">" + cat.support.legend + "</span>";
+    supField.innerHTML = "<span class=\"field__label\">" + cat.support.legend + "</span>";
     supField.appendChild(supSelect);
     supField.appendChild(supDesc);
     body.appendChild(supField);
@@ -617,13 +617,13 @@ function updateAll(){
 
   var linesEl = document.getElementById("summary-lines");
   if(!lines.length){
-    linesEl.innerHTML = "<div class="summary__empty">Nothing selected yet — choose services on the left.</div>";
+    linesEl.innerHTML = "<div class=\"summary__empty\">Nothing selected yet — choose services on the left.</div>";
   } else {
     linesEl.innerHTML = lines.map(function(l){
       var parts = [];
       if(l.oneTime) parts.push(fmt(l.oneTime));
       if(l.monthly) parts.push(fmt(l.monthly)+"/mo");
-      return "<div class="sline"><b>"+l.label+"</b><span>"+parts.join(" + ")+"</span></div>";
+      return "<div class=\"sline\"><b>"+l.label+"</b><span>"+parts.join(" + ")+"</span></div>";
     }).join("");
   }
 
