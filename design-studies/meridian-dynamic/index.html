@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meridian Legal Services — Litigation Support Nationwide</title>
+<meta name="description" content="Court reporting, records retrieval, service of process and digital imaging for law firms nationwide. Nine offices. Since 1991.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.pexels.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Serif:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#F2F4F5; --lifted:#FAFBFB; --white:#fff;
+  --ink:#10222E; --ink-deep:#0A1720;
+  --secondary:#4A5A63; --muted:#5A686F;
+  --rule:#D4DADD;
+  --amber:#B4610A; --amber-tx:#8F4C06; --amber-lt:#E39A3C;
+  --teal:#1F6A6E; --on-ink:#8FA3AD; --on-ink-2:#8593A0;
+  --serif:'Newsreader',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --max:1240px; --gutter:clamp(20px,5vw,60px);
+  --sect:clamp(60px,9vw,116px);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+svg{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--amber);color:#fff}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--secondary);display:flex;align-items:center;gap:9px}
+.eyebrow::before{content:"";width:5px;height:5px;background:var(--amber);flex:none}
+h1,h2{font-family:var(--sans);font-weight:600;letter-spacing:-.03em;line-height:1.06}
+h1{font-size:clamp(38px,6.6vw,80px)}
+h2{font-size:clamp(27px,3.8vw,42px);line-height:1.13}
+h3{font-family:var(--sans);font-size:18px;font-weight:600;letter-spacing:-.012em;line-height:1.35}
+p{max-width:66ch}
+.lede{font-size:clamp(16.5px,1.8vw,19px);line-height:1.62;color:var(--secondary)}
+.skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:12px 20px;z-index:200}
+.skip:focus{left:0}
+:focus-visible{outline:2px solid var(--amber-lt);outline-offset:3px}
+section{padding:var(--sect) 0}
+
+/* ===== header ===== */
+.util{background:var(--ink-deep);color:var(--on-ink-2);font-size:13.5px}
+.util-in{max-width:var(--max);margin:0 auto;padding:9px var(--gutter);display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.util a{text-decoration:none;transition:color .18s}.util a:hover{color:#fff}
+.util .ph{color:#fff;font-weight:600}.util .sp{margin-left:auto}
+.hdr{position:sticky;top:0;z-index:80;background:rgba(16,34,46,.55);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.09);transition:background .3s,border-color .3s}
+.hdr.solid{background:rgba(242,244,245,.94);border-bottom-color:var(--rule)}
+.hdr-in{max-width:var(--max);margin:0 auto;padding:15px var(--gutter);display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff;transition:color .3s}
+.hdr.solid .brand{color:var(--ink)}
+.brand .tx{font-weight:700;font-size:18px;letter-spacing:-.03em}
+.brand .tx b{font-weight:400;opacity:.7}
+.nav-links{display:flex;gap:26px;list-style:none;margin-left:auto}
+.nav-links a{font-size:15px;font-weight:500;color:rgba(255,255,255,.82);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
+.hdr.solid .nav-links a{color:var(--secondary)}
+.nav-links a:hover{color:#fff;border-bottom-color:var(--amber-lt)}
+.hdr.solid .nav-links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:600;letter-spacing:-.01em;padding:12px 22px;border-radius:3px;text-decoration:none;cursor:pointer;border:1.5px solid var(--amber);background:var(--amber);color:#fff;transition:.18s}
+.btn:hover{background:var(--amber-tx);border-color:var(--amber-tx)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.42)}
+.btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+.btn-sm{padding:10px 17px;font-size:14px}
+.menu-btn{display:none;margin-left:auto;background:none;border:1px solid rgba(255,255,255,.35);border-radius:3px;padding:9px 13px;font:600 14px var(--sans);color:#fff;cursor:pointer}
+.hdr.solid .menu-btn{border-color:var(--rule);color:var(--ink)}
+
+/* ===== cinematic hero ===== */
+.hero{position:relative;min-height:min(92vh,860px);display:flex;align-items:flex-end;margin-top:-72px;padding:180px 0 0;color:#fff;overflow:hidden;background:var(--ink-deep)}
+.hero-bg{position:absolute;inset:0;background-color:#0A1720;background-image:url("https://images.pexels.com/photos/13219418/pexels-photo-13219418.jpeg?auto=compress&cs=tinysrgb&w=1900");background-size:cover;background-position:center;transform:scale(1.06);animation:kb 30s var(--ease) infinite alternate}
+@keyframes kb{from{transform:scale(1.06) translate3d(0,0,0)}to{transform:scale(1.16) translate3d(0,-1.5%,0)}}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,23,32,.86) 0%,rgba(10,23,32,.42) 34%,rgba(10,23,32,.72) 72%,rgba(10,23,32,.95) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;padding-bottom:clamp(34px,5vw,60px)}
+.hero .eyebrow{color:rgba(255,255,255,.82)}
+.hero .eyebrow::before{background:var(--amber-lt)}
+.hero h1{margin:20px 0 0;max-width:15ch;text-shadow:0 2px 40px rgba(0,0,0,.35)}
+.hero .lede{margin-top:22px;max-width:48ch;color:rgba(255,255,255,.88)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:32px}
+.hero-bar{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.16);background:rgba(10,23,32,.5);backdrop-filter:blur(6px)}
+.hero-bar .in{max-width:var(--max);margin:0 auto;padding:22px var(--gutter);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,3vw,40px)}
+.hero-bar .n{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.6vw,44px);line-height:1;letter-spacing:-.03em;color:#fff}
+.hero-bar .l{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:9px}
+
+/* ===== logo marquee ===== */
+.marq{background:var(--white);border-bottom:1px solid var(--rule);padding:26px 0;overflow:hidden}
+.marq .cap{max-width:var(--max);margin:0 auto 18px;padding:0 var(--gutter);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.marq-track{display:flex;gap:64px;width:max-content;animation:slide 42s linear infinite;align-items:center}
+.marq:hover .marq-track,.marq:focus-within .marq-track{animation-play-state:paused}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.logo{font-family:var(--serif);font-size:21px;letter-spacing:-.01em;color:#54626A;white-space:nowrap;transition:color .2s}
+.logo:hover{color:var(--ink)}
+
+/* ===== reveal split ===== */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(30px,6vw,84px);align-items:center}
+.shot{position:relative;aspect-ratio:4/3;background-color:#233642;background-size:cover;background-position:center;border-radius:4px;overflow:hidden;clip-path:inset(0 0 100% 0);transition:clip-path 1.05s var(--ease)}
+.shot.in{clip-path:inset(0 0 0 0)}
+.shot::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(16,34,46,0) 45%,rgba(16,34,46,.28))}
+
+/* ===== testimonials ===== */
+.tst{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.6vw,28px)}
+.card{background:var(--white);border:1px solid var(--rule);border-radius:5px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s}
+.card:hover{transform:translateY(-4px)}
+.thumb{position:relative;aspect-ratio:16/11;background-color:#233642;background-size:cover;background-position:center 22%}
+.thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,23,32,.05),rgba(10,23,32,.55))}
+.play{position:absolute;left:18px;bottom:16px;z-index:2;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.94);display:grid;place-items:center;border:0;cursor:pointer;transition:transform .2s,background .2s}
+.card:hover .play{transform:scale(1.08);background:#fff}
+.play svg{width:15px;height:15px;margin-left:2px;fill:var(--ink)}
+.dur{position:absolute;right:14px;bottom:16px;z-index:2;font-size:11.5px;font-weight:600;color:#fff;background:rgba(10,23,32,.62);padding:3px 8px;border-radius:3px;letter-spacing:.02em}
+.card .body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card .firm{font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--amber-tx)}
+.card blockquote{font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.42;letter-spacing:-.015em;color:var(--ink)}
+.card .who{font-size:13.5px;color:var(--muted);margin-top:auto;padding-top:8px;border-top:1px solid var(--rule)}
+.card .who strong{display:block;color:var(--ink);font-weight:600;font-size:14px}
+.filled{font-size:13px;color:var(--teal);font-weight:600}
+
+/* ===== heritage parallax band ===== */
+.heritage{position:relative;min-height:min(70vh,620px);display:flex;align-items:center;color:#fff;overflow:hidden;background:#0A1720}
+.heritage-bg{position:absolute;inset:-12% 0;background-color:#0A1720;background-image:url("https://images.pexels.com/photos/3751006/pexels-photo-3751006.jpeg?auto=compress&cs=tinysrgb&w=1900");background-size:cover;background-position:center 30%;filter:grayscale(1) contrast(1.08);will-change:transform}
+.heritage-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,23,32,.94) 0%,rgba(10,23,32,.74) 46%,rgba(10,23,32,.34) 100%)}
+.heritage .in{position:relative;z-index:2;max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.heritage .yr{font-family:var(--serif);font-weight:300;font-size:clamp(72px,13vw,168px);line-height:.86;letter-spacing:-.045em}
+.heritage h2{margin-top:20px;max-width:17ch}
+.heritage p{margin-top:18px;color:rgba(255,255,255,.82);max-width:46ch}
+
+/* ===== services with hover image ===== */
+.svc{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--rule)}
+.svc a{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:26px 24px 30px;text-decoration:none;display:block;background:var(--lifted);position:relative;overflow:hidden;transition:background .25s}
+.svc a:hover{background:var(--ink);color:#fff}
+.svc .n{font-family:var(--serif);font-size:13px;color:var(--muted);transition:color .25s}
+.svc a:hover .n{color:var(--amber-lt)}
+.svc h3{margin:14px 0 8px}
+.svc p{font-size:14.5px;color:var(--secondary);max-width:30ch;transition:color .25s}
+.svc a:hover p{color:rgba(255,255,255,.8)}
+.svc .go{font-size:13px;font-weight:600;color:var(--amber-tx);margin-top:16px;display:inline-block;transition:color .25s}
+.svc a:hover .go{color:var(--amber-lt)}
+
+/* ===== cta ===== */
+.cta{background:var(--ink);color:#fff;padding:clamp(52px,7vw,96px) 0}
+.cta h2{max-width:19ch}
+.cta p{color:var(--on-ink);margin-top:16px;max-width:46ch}
+.cta .row{display:flex;flex-wrap:wrap;gap:11px;margin-top:30px}
+
+/* ===== sticky mobile action bar ===== */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;background:var(--ink);border-top:1px solid rgba(255,255,255,.14);padding:8px calc(env(safe-area-inset-left) + 8px) calc(env(safe-area-inset-bottom) + 8px)}
+.dock ul{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;list-style:none}
+.dock a{display:flex;flex-direction:column;align-items:center;gap:4px;padding:9px 4px;text-decoration:none;color:#fff;font-size:12px;font-weight:600;border-radius:4px;min-height:48px;justify-content:center}
+.dock a.primary{background:var(--amber)}
+.dock svg{width:17px;height:17px;fill:currentColor}
+
+footer{background:var(--ink-deep);color:var(--on-ink);padding:clamp(44px,5.5vw,70px) 0 30px;font-size:14.5px}
+.f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:clamp(22px,4vw,44px)}
+footer .fh{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#8593A0;margin-bottom:15px}
+footer ul{list-style:none}footer li{margin-bottom:9px}
+footer a{text-decoration:none;transition:color .18s}footer a:hover{color:#fff}
+.f-bot{border-top:1px solid #1C2D38;margin-top:clamp(32px,4.5vw,52px);padding-top:22px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-size:13px;color:#8593A0}
+.disclaimer{max-width:74ch;margin-top:12px;font-size:12.5px;line-height:1.55;color:#8593A0}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:1040px){
+  .svc{grid-template-columns:repeat(2,1fr)}
+  .tst{grid-template-columns:1fr;gap:16px}
+  .split{grid-template-columns:1fr;gap:28px}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .hero-bar .in{grid-template-columns:repeat(2,1fr);gap:20px}
+}
+@media (max-width:760px){
+  .nav-links{display:none}.hdr .btn{display:none}.menu-btn{display:block}
+  .util .sp{display:none}
+  .svc{grid-template-columns:1fr}
+  .dock{display:block}
+  body{padding-bottom:78px}
+  .hero{min-height:auto;padding-top:150px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+  .shot{clip-path:none}
+  .hero-bg{transform:scale(1.02)}
+  .heritage-bg{inset:0;transform:none!important}
+}
+
+/* ===== SyncReach credit ===== */
+.sr-credit{position:relative;overflow:hidden;background:#F1EDE0;color:#02020E;
+  font-family:'IBM Plex Sans',system-ui,sans-serif;padding:30px 0 34px;border-top:1px solid #E0D9C6}
+.sr-ghost{position:absolute;right:-70px;top:50%;transform:translateY(-50%);width:300px;height:300px;
+  color:#E4DECF;pointer-events:none;opacity:.85}
+.sr-ghost svg{width:100%;height:100%}
+.sr-in{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,60px);
+  display:flex;align-items:center;gap:clamp(16px,3vw,34px);flex-wrap:wrap}
+.sr-lock{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;flex:none}
+.sr-mark{width:30px;height:30px;color:#840902;flex:none}
+.sr-wm{display:flex;flex-direction:column;line-height:1}
+.sr-wm b{font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:15px;color:#02020E;letter-spacing:0}
+.sr-wm i{font-family:'IBM Plex Serif',Georgia,serif;font-style:normal;font-weight:400;font-size:9px;
+  letter-spacing:4px;color:#5B6183;margin-top:3px}
+.sr-txt{font-size:13.5px;line-height:1.5;color:#5B6183;max-width:62ch;margin:0}
+.sr-txt strong{color:#02020E;font-weight:600}
+.sr-txt a{color:#840902;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(132,9,2,.35)}
+.sr-txt a:hover{border-bottom-color:#840902}
+.sr-lock:focus-visible,.sr-txt a:focus-visible{outline:2px solid #840902;outline-offset:3px}
+
+.sr-badge-wrap{position:fixed;left:0;top:0;width:0;height:0}
+.sr-badge{position:fixed;left:16px;bottom:16px;z-index:95;display:flex;align-items:center;gap:8px;
+  background:#FFFDF6;border:1px solid #E0D9C6;border-radius:99px;padding:7px 14px 7px 10px;
+  text-decoration:none;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:12.5px;color:#02020E;
+  box-shadow:0 1px 2px rgba(2,2,14,.04),0 8px 22px rgba(2,2,14,.07);transition:transform .2s,box-shadow .2s}
+.sr-badge:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(2,2,14,.05),0 14px 30px rgba(2,2,14,.11)}
+.sr-badge svg{width:17px;height:17px;color:#840902;flex:none}
+.sr-badge b{font-weight:700}
+@media (max-width:860px){.sr-badge,.sr-badge-wrap{display:none}.sr-ghost{right:-120px;width:230px;height:230px}}
+@media (prefers-reduced-motion:reduce){.sr-badge{transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<nav class="util" aria-label="Utility">
+  <div class="util-in">
+    <span>Nationwide litigation support since 1991</span>
+    <span class="sp"><a href="#offices">9 offices</a></span>
+    <a href="#">Client portal</a>
+    <a class="ph" href="tel:+18005550188">(800) 555-0188</a>
+  </div>
+</nav>
+
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="#">
+      <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="3" fill="currentColor" opacity=".16"/><path d="M8 22V10l8 7 8-7v12" stroke="#E39A3C" stroke-width="2.2" fill="none" stroke-linejoin="round"/></svg>
+      <span class="tx">Meridian <b>Legal Services</b></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#stories">Client stories</a></li>
+      <li><a href="#offices">Offices</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn btn-sm" href="#contact">Book a call</a>
+    <button class="menu-btn" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- CINEMATIC HERO -->
+<section class="hero" style="padding-bottom:0">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-in">
+    <div class="wrap">
+      <p class="eyebrow rv">Litigation support · Nationwide</p>
+      <h1 class="rv">Everything between filing and verdict.</h1>
+      <p class="lede rv">Court reporting, records retrieval, service of process and digital imaging for law firms in nine markets. One account, one portal, one invoice.</p>
+      <div class="hero-cta rv">
+        <a class="btn" href="#contact">Book a call</a>
+        <a class="btn btn-ghost" href="#services">See all services</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <div class="in">
+      <div><div class="n" data-count="34" data-suffix="">0</div><div class="l">Years serving law firms</div></div>
+      <div><div class="n" data-count="9">0</div><div class="l">Offices, five states</div></div>
+      <div><div class="n" data-count="41800" data-fmt="1">0</div><div class="l">Depositions in 2025</div></div>
+      <div><div class="n" data-count="99.2" data-suffix="%" data-dec="1">0</div><div class="l">On-time delivery</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO MARQUEE -->
+<div class="marq">
+  <p class="cap">Trusted by firms of every size</p>
+  <div class="marq-track" id="marq" aria-label="Client firms">
+    <span class="logo">Whitfield &amp; Roe</span><span class="logo">Calderon Legal Group</span><span class="logo">Bayard Strand LLP</span><span class="logo">Ellis Marchetti</span><span class="logo">Pruitt &amp; Hale</span><span class="logo">Northgate Counsel</span><span class="logo">Vance Ortiz PC</span>
+    <span class="logo" aria-hidden="true">Whitfield &amp; Roe</span><span class="logo" aria-hidden="true">Calderon Legal Group</span><span class="logo" aria-hidden="true">Bayard Strand LLP</span><span class="logo" aria-hidden="true">Ellis Marchetti</span><span class="logo" aria-hidden="true">Pruitt &amp; Hale</span><span class="logo" aria-hidden="true">Northgate Counsel</span><span class="logo" aria-hidden="true">Vance Ortiz PC</span>
+  </div>
+</div>
+
+<!-- SPLIT REVEAL -->
+<section>
+  <div class="wrap split">
+    <div class="shot" data-shot style="background-image:url('https://images.pexels.com/photos/946310/pexels-photo-946310.jpeg?auto=compress&cs=tinysrgb&w=1200')" role="img" aria-label="Detail of a modern office building facade"></div>
+    <div>
+      <p class="eyebrow rv">Why firms consolidate</p>
+      <h2 class="rv" style="margin-top:16px">One account manager who knows your matters.</h2>
+      <p class="lede rv" style="margin-top:18px">Most firms come to us for one service and move the rest within a year. The reason is almost never technical. It is that nobody has to chase a status update again.</p>
+      <p class="lede rv" style="margin-top:14px">Every office carries its own reporters, process servers and imaging capacity. Nothing is routed to a call centre, and nothing is subcontracted without telling you.</p>
+      <div class="rv" style="margin-top:28px"><a class="btn" href="#services">How it works</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO TESTIMONIALS -->
+<section id="stories" style="background:var(--lifted);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
+  <div class="wrap">
+    <div style="max-width:60ch;margin-bottom:clamp(30px,4vw,50px)">
+      <p class="eyebrow rv">Client stories</p>
+      <h2 class="rv" style="margin-top:16px">Hear it from the firms.</h2>
+      <p class="lede rv" style="margin-top:16px">Short conversations with the people who run litigation operations day to day.</p>
+    </div>
+    <div class="tst">
+      <article class="card rv">
+        <div class="thumb" style="background-image:url('https://images.pexels.com/photos/38453564/pexels-photo-38453564.jpeg?auto=compress&cs=tinysrgb&w=800')">
+          <button class="play" aria-label="Play video testimonial from Bayard Strand LLP"><svg viewBox="0 0 12 14" aria-hidden="true"><path d="M0 0l12 7-12 7z"/></svg></button>
+          <span class="dur">2:14</span>
+        </div>
+        <div class="body">
+          <div class="firm">Bayard Strand LLP</div>
+          <blockquote>&ldquo;We consolidated six vendors into one and our paralegals stopped chasing status updates entirely.&rdquo;</blockquote>
+          <div class="filled">Depositions · Records · Imaging</div>
+          <div class="who"><strong>Director of Litigation Operations</strong>Defense firm, 90 attorneys · Client since 2019</div>
+        </div>
+      </article>
+      <article class="card rv">
+        <div class="thumb" style="background-image:url('https://images.pexels.com/photos/34381971/pexels-photo-34381971.jpeg?auto=compress&cs=tinysrgb&w=800')">
+          <button class="play" aria-label="Play video testimonial from Calderon Legal Group"><svg viewBox="0 0 12 14" aria-hidden="true"><path d="M0 0l12 7-12 7z"/></svg></button>
+          <span class="dur">1:47</span>
+        </div>
+        <div class="body">
+          <div class="firm">Calderon Legal Group</div>
+          <blockquote>&ldquo;Four-hour rush turnaround is not a marketing claim for them. We have tested it more than once.&rdquo;</blockquote>
+          <div class="filled">Service of process · Court services</div>
+          <div class="who"><strong>Managing Partner</strong>Plaintiff-side firm, 34 attorneys · Client since 2021</div>
+        </div>
+      </article>
+      <article class="card rv">
+        <div class="thumb" style="background-image:url('https://images.pexels.com/photos/27086761/pexels-photo-27086761.jpeg?auto=compress&cs=tinysrgb&w=800')">
+          <button class="play" aria-label="Play video testimonial from Northgate Counsel"><svg viewBox="0 0 12 14" aria-hidden="true"><path d="M0 0l12 7-12 7z"/></svg></button>
+          <span class="dur">2:31</span>
+        </div>
+        <div class="body">
+          <div class="firm">Northgate Counsel</div>
+          <blockquote>&ldquo;One invoice across nine markets changed what our finance team spends its month doing.&rdquo;</blockquote>
+          <div class="filled">Full service, all offices</div>
+          <div class="who"><strong>Firm Administrator</strong>Regional firm, 120 attorneys · Client since 2017</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HERITAGE PARALLAX -->
+<section class="heritage" style="padding:0">
+  <div class="heritage-bg" id="hbg" aria-hidden="true"></div>
+  <div class="heritage-scrim" aria-hidden="true"></div>
+  <div class="in" style="padding-top:clamp(56px,8vw,100px);padding-bottom:clamp(56px,8vw,100px)">
+    <p class="eyebrow" style="color:rgba(255,255,255,.82)">Since 1991</p>
+    <div class="yr rv">1991</div>
+    <h2 class="rv">Thirty-four years inside the same courthouses.</h2>
+    <p class="rv">We were filing by hand before we were filing electronically. That history is why our people know which clerk to ask, and why nothing about a deadline surprises us.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div style="max-width:60ch;margin-bottom:clamp(30px,4vw,50px)">
+      <p class="eyebrow rv">Services</p>
+      <h2 class="rv" style="margin-top:16px">Eight service lines, one point of contact.</h2>
+    </div>
+    <div class="svc">
+      <a href="#" class="rv"><div class="n">01</div><h3>Court reporting</h3><p>Remote and in-person depositions, videography, real-time and rough drafts.</p><span class="go">Learn more &rarr;</span></a>
+      <a href="#" class="rv"><div class="n">02</div><h3>Records retrieval</h3><p>Medical and business records, subpoena preparation, custodian follow-through.</p><span class="go">Learn more &rarr;</span></a>
+      <a href="#" class="rv"><div class="n">03</div><h3>Service of process</h3><p>Summons, complaints, subpoenas, writs and levies. Certified in every market.</p><span class="go">Learn more &rarr;</span></a>
+      <a href="#" class="rv"><div class="n">04</div><h3>E-filing</h3><p>Reviewed filing with rejection handling, or direct self-filing through the portal.</p><span class="go">Learn more &rarr;</span></a>
+      <a href="#" class="rv"><div class="n">05</div><h3>Digital imaging</h3><p>High-volume scanning, exhibit preparation and trial binders, same-day.</p><span class="go">Learn more &rarr;</span></a>
+      <a href="#" class="rv"><div class="n">06</div><h3>Investigations</h3><p>Skip traces, locates, field investigation and surveillance by licensed investigators.</p><span class="go">Learn more &rarr;</span></a>
+      <a href="#" class="rv"><div class="n">07</div><h3>Court services</h3><p>Filings, small claims appearances, bond posting and settlement support.</p><span class="go">Learn more &rarr;</span></a>
+      <a href="#" class="rv"><div class="n">08</div><h3>Messenger &amp; notary</h3><p>GPS-tracked courier and mobile notary, available outside business hours.</p><span class="go">Learn more &rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICES SPLIT -->
+<section id="offices" style="background:var(--lifted);border-top:1px solid var(--rule)">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow rv">Offices</p>
+      <h2 class="rv" style="margin-top:16px">Staffed locally, coordinated centrally.</h2>
+      <p class="lede rv" style="margin-top:18px">Los Angeles · Orange County · San Diego · Bay Area · Riverside · Sacramento · Houston · Chicago · Jacksonville</p>
+      <div class="rv" style="margin-top:26px"><a class="btn" href="#">Find your office</a></div>
+    </div>
+    <div class="shot" data-shot style="background-image:url('https://images.unsplash.com/photo-1598139384902-5a8217874645?auto=format&fit=crop&w=1200&q=72')" role="img" aria-label="Interior of a modern office with floor to ceiling glass"></div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--on-ink)">Get started</p>
+    <h2 style="margin-top:16px">Open an account in a single call.</h2>
+    <p>No minimums, no onboarding fee, no contract term. Most firms place a first order the same day.</p>
+    <div class="row">
+      <a class="btn" href="#">Book a call</a>
+      <a class="btn btn-ghost" href="tel:+18005550188">(800) 555-0188</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px">
+          <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="3" fill="#1C2D38"/><path d="M8 22V10l8 7 8-7v12" stroke="#E39A3C" stroke-width="2.2" fill="none" stroke-linejoin="round"/></svg>
+          <span style="color:#fff;font-weight:700;font-size:18px;letter-spacing:-.03em">Meridian Legal Services</span>
+        </div>
+        <p style="margin-top:14px;max-width:36ch">Nationwide litigation support for law firms. Nine offices, affiliates coast to coast.</p>
+        <p style="margin-top:12px"><a href="tel:+18005550188" style="color:#fff;font-weight:600">(800) 555-0188</a></p>
+      </div>
+      <div><h3 class="fh">Services</h3><ul><li><a href="#services">Court reporting</a></li><li><a href="#services">Records retrieval</a></li><li><a href="#services">Service of process</a></li><li><a href="#services">E-filing</a></li></ul></div>
+      <div><h3 class="fh">Company</h3><ul><li><a href="#offices">Offices</a></li><li><a href="#stories">Client stories</a></li><li><a href="#">Careers</a></li><li><a href="#">Client portal</a></li></ul></div>
+      <div><h3 class="fh">Legal</h3><ul><li><a href="#">Privacy policy</a></li><li><a href="#">Terms of service</a></li><li><a href="#">Accessibility</a></li></ul></div>
+    </div>
+    <div class="f-bot"><div>© 2026 Meridian Legal Services. All rights reserved.</div><div>CalSPro certified · NV firm #000F</div></div>
+    <p class="disclaimer">Concept study. Meridian Legal Services is a fictional company created to demonstrate design direction. All names, figures, quotations and client stories are illustrative. Photography is licensed stock from Pexels and Unsplash used for demonstration only; people shown are models and are not clients, employees, or endorsers.</p>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="Quick actions">
+  <ul>
+    <li><a href="tel:+18005550188"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1z"/></svg>Call</a></li>
+    <li><a href="mailto:hello@example.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5z"/></svg>Email</a></li>
+    <li><a class="primary" href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm0 16H5V10h14z"/></svg>Book a call</a></li>
+  </ul>
+</nav>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hdr=document.getElementById('hdr');
+  var hero=document.querySelector('.hero');
+
+  function onScroll(){
+    var past = window.scrollY > (hero ? hero.offsetHeight - 90 : 90);
+    hdr.classList.toggle('solid', past);
+    if(!reduce){
+      var hbg=document.getElementById('hbg');
+      if(hbg){
+        var r=hbg.parentElement.getBoundingClientRect();
+        if(r.top<window.innerHeight && r.bottom>0){
+          var p=(window.innerHeight-r.top)/(window.innerHeight+r.height);
+          hbg.style.transform='translate3d(0,'+((p-.5)*10).toFixed(2)+'%,0)';
+        }
+      }
+    }
+  }
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+  var items=document.querySelectorAll('.rv');
+  var shots=document.querySelectorAll('[data-shot]');
+  if(reduce||!('IntersectionObserver' in window)){
+    items.forEach(function(e){e.classList.add('in')});
+    shots.forEach(function(e){e.classList.add('in')});
+    document.querySelectorAll('[data-count]').forEach(function(e){e.textContent=fmt(+e.dataset.count,e)});
+  } else {
+    var io=new IntersectionObserver(function(es){es.forEach(function(e,i){
+      if(e.isIntersecting){setTimeout(function(){e.target.classList.add('in')},Math.min(i*65,260));io.unobserve(e.target);}
+    })},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    items.forEach(function(e){io.observe(e)});
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');so.unobserve(e.target);}
+    })},{threshold:.2});
+    shots.forEach(function(e){so.observe(e)});
+
+    var co=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return; co.unobserve(e.target); count(e.target);
+    })},{threshold:.5});
+    document.querySelectorAll('[data-count]').forEach(function(e){co.observe(e)});
+  }
+
+  function fmt(v,el){
+    var d=+(el.dataset.dec||0), s=el.dataset.suffix||'';
+    var n=d?v.toFixed(d):Math.round(v);
+    if(el.dataset.fmt) n=Number(n).toLocaleString('en-US');
+    return n+s;
+  }
+  function count(el){
+    var target=+el.dataset.count, dur=1500, t0=null;
+    function step(t){
+      if(!t0)t0=t;
+      var p=Math.min((t-t0)/dur,1);
+      var e=1-Math.pow(1-p,4);
+      el.textContent=fmt(target*e,el);
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var mb=document.querySelector('.menu-btn');
+  if(mb){mb.addEventListener('click',function(){
+    var open=mb.getAttribute('aria-expanded')==='true';
+    mb.setAttribute('aria-expanded',String(!open));
+    var ul=document.querySelector('.nav-links');
+    if(open){ul.style.cssText='';return;}
+    ul.style.cssText='display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--canvas);padding:18px var(--gutter) 24px;border-bottom:1px solid var(--rule);gap:14px;margin-left:0;list-style:none';
+    hdr.classList.add('solid');
+  });}
+
+  document.querySelectorAll('.play').forEach(function(b){
+    b.addEventListener('click',function(e){e.preventDefault();
+      b.setAttribute('aria-label', b.getAttribute('aria-label').replace('Play','Play'));
+    });
+  });
+})();
+</script>
+
+<aside class="sr-credit" aria-label="Design credit">
+  <div class="sr-ghost" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></div>
+  <div class="sr-in">
+    <a class="sr-lock" href="https://syncreach.io/" target="_blank" rel="noopener">
+      <span class="sr-mark"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true" focusable="false"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></span>
+      <span class="sr-wm"><b>SYNC</b><i>REACH</i></span>
+    </a>
+    <p class="sr-txt">Concept study designed and built by <strong>SyncReach</strong>. Digital growth systems for law firms: websites, client intake, search and AI visibility, automation. <a href="https://syncreach.io/" target="_blank" rel="noopener">syncreach.io</a></p>
+  </div>
+</aside>
+<aside class="sr-badge-wrap" aria-label="SyncReach credit badge"><a class="sr-badge" href="https://syncreach.io/" target="_blank" rel="noopener"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg><span>Concept by <b>SyncReach</b></span></a></aside>
+<script>
+(function(){
+  var badge=document.querySelector('.sr-badge-wrap'), credit=document.querySelector('.sr-credit');
+  if(!badge||!credit||!('IntersectionObserver' in window))return;
+  badge.style.transition='opacity .3s,transform .3s';
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    var hide=e.isIntersecting;
+    badge.style.opacity=hide?'0':'1';
+    badge.style.transform=hide?'translateY(10px)':'none';
+    badge.style.pointerEvents=hide?'none':'auto';
+  })},{threshold:0.05});
+  io.observe(credit);
+})();
+</script>
+</body>
+</html>
