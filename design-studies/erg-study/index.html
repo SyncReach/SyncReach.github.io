@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=IBM+Plex+Serif:wght@400&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://images.unsplash.com">
 <style>
   :root{
@@ -185,6 +186,37 @@
     .footer-cta .row{flex-direction:column}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.logo-track{animation:none}}
+
+  /* ===== SyncReach credit ===== */
+  .sr-credit{position:relative;overflow:hidden;background:#F1EDE0;color:#02020E;
+    font-family:'IBM Plex Sans',system-ui,sans-serif;padding:30px 0 34px;border-top:1px solid #E0D9C6}
+  .sr-ghost{position:absolute;right:-70px;top:50%;transform:translateY(-50%);width:300px;height:300px;
+    color:#E4DECF;pointer-events:none;opacity:.85}
+  .sr-ghost svg{width:100%;height:100%}
+  .sr-in{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,60px);
+    display:flex;align-items:center;gap:clamp(16px,3vw,34px);flex-wrap:wrap}
+  .sr-lock{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;flex:none}
+  .sr-mark{width:30px;height:30px;color:#840902;flex:none}
+  .sr-wm{display:flex;flex-direction:column;line-height:1}
+  .sr-wm b{font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:15px;color:#02020E;letter-spacing:0}
+  .sr-wm i{font-family:'IBM Plex Serif',Georgia,serif;font-style:normal;font-weight:400;font-size:9px;
+    letter-spacing:4px;color:#5B6183;margin-top:3px}
+  .sr-txt{font-size:13.5px;line-height:1.5;color:#5B6183;max-width:62ch;margin:0}
+  .sr-txt strong{color:#02020E;font-weight:600}
+  .sr-txt a{color:#840902;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(132,9,2,.35)}
+  .sr-txt a:hover{border-bottom-color:#840902}
+  .sr-lock:focus-visible,.sr-txt a:focus-visible{outline:2px solid #840902;outline-offset:3px}
+
+  .sr-badge-wrap{position:fixed;left:0;top:0;width:0;height:0}
+  .sr-badge{position:fixed;left:16px;bottom:16px;z-index:95;display:flex;align-items:center;gap:8px;
+    background:#FFFDF6;border:1px solid #E0D9C6;border-radius:99px;padding:7px 14px 7px 10px;
+    text-decoration:none;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:12.5px;color:#02020E;
+    box-shadow:0 1px 2px rgba(2,2,14,.04),0 8px 22px rgba(2,2,14,.07);transition:transform .2s,box-shadow .2s}
+  .sr-badge:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(2,2,14,.05),0 14px 30px rgba(2,2,14,.11)}
+  .sr-badge svg{width:17px;height:17px;color:#840902;flex:none}
+  .sr-badge b{font-weight:700}
+  @media (max-width:860px){.sr-badge,.sr-badge-wrap{display:none}.sr-ghost{right:-120px;width:230px;height:230px}}
+  @media (prefers-reduced-motion:reduce){.sr-badge{transition:none}}
 </style>
 </head>
 <body>
@@ -455,6 +487,32 @@
   </div>
 </footer>
 <div class="disclaimer-band">Design concept only. Client names, video testimonials, and figures are placeholders pending confirmation and approval before publication.</div>
+
+<aside class="sr-credit" aria-label="Design credit">
+  <div class="sr-ghost" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></div>
+  <div class="sr-in">
+    <a class="sr-lock" href="https://syncreach.io/" target="_blank" rel="noopener">
+      <span class="sr-mark"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true" focusable="false"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></span>
+      <span class="sr-wm"><b>SYNC</b><i>REACH</i></span>
+    </a>
+    <p class="sr-txt">Concept study designed and built by <strong>SyncReach</strong>. Digital growth systems for law firms: websites, client intake, search and AI visibility, automation. <a href="https://syncreach.io/" target="_blank" rel="noopener">syncreach.io</a></p>
+  </div>
+</aside>
+<aside class="sr-badge-wrap" aria-label="SyncReach credit badge"><a class="sr-badge" href="https://syncreach.io/" target="_blank" rel="noopener"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg><span>Concept by <b>SyncReach</b></span></a></aside>
+<script>
+(function(){
+  var badge=document.querySelector('.sr-badge-wrap'), credit=document.querySelector('.sr-credit');
+  if(!badge||!credit||!('IntersectionObserver' in window))return;
+  badge.style.transition='opacity .3s,transform .3s';
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    var hide=e.isIntersecting;
+    badge.style.opacity=hide?'0':'1';
+    badge.style.transform=hide?'translateY(10px)':'none';
+    badge.style.pointerEvents=hide?'none':'auto';
+  })},{threshold:0.05});
+  io.observe(credit);
+})();
+</script>
 
 </body>
 </html>
