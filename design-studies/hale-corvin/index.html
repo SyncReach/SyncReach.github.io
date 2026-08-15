@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hale &amp; Corvin LLP — Commercial Litigation, San Francisco</title>
+<meta name="description" content="Hale &amp; Corvin is a commercial litigation boutique representing companies in high-stakes disputes across California and the Ninth Circuit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Serif:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#101B2D; --navy-dp:#0A1220; --navy-lt:#1B2C46;
+  --parch:#F6F2E9; --parch-dp:#EFE9DA; --white:#FFFDF8;
+  --ink:#171410; --sec:#57544C; --mut:#7A766B;
+  --rule:#DFD8C5; --rule-navy:rgba(246,242,233,.14); --mut:#6B675C;
+  --brass:#A9822F; --brass-lt:#C9A65C; --brass-dp:#7C5F20;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --max:1280px; --g:clamp(20px,4.6vw,64px);
+  --sect:clamp(72px,10vw,132px);
+  --e:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--parch);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--brass);color:var(--navy-dp)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--g)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.05;color:var(--navy)}
+h1{font-weight:300}
+h2{font-size:clamp(30px,4.3vw,50px);line-height:1.08}
+h3{font-size:clamp(19px,1.9vw,22px);line-height:1.3;font-weight:500}
+p{max-width:62ch}
+.lede{font-size:clamp(17px,1.7vw,20px);line-height:1.62;color:var(--sec)}
+em{font-style:italic;color:var(--brass-dp)}
+.eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-dp);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--brass)}
+.skip{position:absolute;left:-9999px;background:var(--navy);color:var(--parch);padding:12px 20px;z-index:300}
+.skip:focus{left:0}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+/* reveal animation */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--e),transform .8s var(--e)}
+.rv.in{opacity:1;transform:none}
+.rv2{transition-delay:.12s}
+.rv3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:90;background:rgba(246,242,233,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:20px var(--g);display:flex;align-items:center;gap:40px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:30px;height:30px}
+.brand .tx{font-family:var(--serif);font-size:19px;letter-spacing:-.01em;color:var(--navy)}
+.brand .tx b{font-weight:500}
+.nav-links{display:flex;gap:32px;list-style:none;margin-left:auto}
+.nav-links a{font-size:14.5px;font-weight:500;text-decoration:none;color:var(--sec);padding:4px 0;border-bottom:1px solid transparent;transition:.2s}
+.nav-links a:hover{color:var(--navy);border-color:var(--brass)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;letter-spacing:.01em;padding:13px 24px;text-decoration:none;cursor:pointer;border:1px solid var(--navy);background:var(--navy);color:var(--parch);transition:.2s;border-radius:1px}
+.btn:hover{background:var(--navy-lt);border-color:var(--navy-lt)}
+.btn-outline{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:var(--parch)}
+.btn-lt{background:var(--brass);border-color:var(--brass);color:var(--navy-dp)}
+.btn-lt:hover{background:var(--brass-lt);border-color:var(--brass-lt)}
+.menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--rule);padding:9px 14px;font:600 13px var(--sans);color:var(--navy);cursor:pointer}
+
+/* hero */
+.hero{position:relative;padding:clamp(64px,9vw,120px) 0 clamp(56px,7vw,96px);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,80px);align-items:center}
+.hero h1{font-size:clamp(42px,6.2vw,78px);letter-spacing:-.02em;margin:22px 0 26px;max-width:14ch}
+.hero .lede{max-width:46ch;margin-bottom:36px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero-fig{position:relative;border-radius:2px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 40px 80px -20px rgba(16,27,45,.35)}
+.hero-fig img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 4s var(--e)}
+.hero-fig:hover img{transform:scale(1)}
+.hero-fig::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(16,27,45,0) 55%,rgba(16,27,45,.55));pointer-events:none}
+.hero-fig .cap{position:absolute;left:20px;bottom:20px;right:20px;color:var(--parch);font-size:13px;font-weight:500;display:flex;align-items:center;gap:9px}
+.hero-fig .cap .d{width:7px;height:7px;border-radius:50%;background:var(--brass-lt);flex:none}
+.hero-rule{margin-top:clamp(56px,7vw,90px);border-top:1px solid var(--rule);padding-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.hero-rule .s .n{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.4vw,40px);color:var(--navy);letter-spacing:-.02em}
+.hero-rule .s .l{font-size:13px;color:var(--mut);margin-top:6px}
+
+section{padding:var(--sect) 0}
+.sec-head{max-width:60ch;margin-bottom:clamp(40px,5vw,64px)}
+.sec-head h2{margin-top:14px}
+.sec-head .lede{margin-top:16px}
+
+/* practice areas — editorial rows */
+.practice{border-top:1px solid var(--rule)}
+.p-row{display:grid;grid-template-columns:120px 1fr auto;gap:32px;align-items:center;padding:32px 0;border-bottom:1px solid var(--rule);text-decoration:none;transition:.25s}
+.p-row:hover{background:var(--parch-dp)}
+.p-row .no{font-family:var(--serif);font-size:14px;color:var(--brass-dp);letter-spacing:.04em}
+.p-row h3{color:var(--navy)}
+.p-row p{color:var(--sec);font-size:14.5px;margin-top:6px;max-width:52ch}
+.p-row .go{font-size:13px;font-weight:600;color:var(--navy);white-space:nowrap;display:flex;align-items:center;gap:8px}
+.p-row:hover .go{color:var(--brass-dp)}
+
+/* dark band — attorneys */
+.band{background:var(--navy);color:var(--parch)}
+.band .eyebrow{color:var(--brass-lt)}
+.band .eyebrow::before{background:var(--brass-lt)}
+.band h2{color:var(--parch)}
+.band .lede{color:#B7C0CF}
+.people{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-navy);margin-top:48px;border:1px solid var(--rule-navy)}
+.person{background:var(--navy);padding:0}
+.p-img{aspect-ratio:3/4;overflow:hidden;position:relative}
+.p-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(.55) contrast(1.05);transition:filter .5s var(--e),transform .5s var(--e)}
+.person:hover .p-img img{filter:grayscale(0) contrast(1);transform:scale(1.04)}
+.p-body{padding:22px 24px 30px}
+.p-body h3{color:var(--parch)}
+.p-body .role{font-size:12.5px;color:var(--brass-lt);text-transform:uppercase;letter-spacing:.1em;margin-top:6px;font-weight:600}
+.p-body p{font-size:13.5px;color:#9CA7B8;margin-top:10px}
+
+/* matters / results */
+.matters{background:var(--parch)}
+.m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.m-card{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:34px 30px;background:var(--white)}
+.m-card .amt{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3vw,36px);color:var(--navy);letter-spacing:-.02em}
+.m-card .desc{font-size:14px;color:var(--sec);margin-top:12px}
+.m-card .tag{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-dp);margin-top:16px;display:block}
+
+/* quote */
+.quote-sec{background:var(--parch-dp);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.quote-in{max-width:820px;margin:0 auto;text-align:center}
+.quote-in svg{margin:0 auto 26px;opacity:.7}
+.quote-in blockquote{font-family:var(--serif);font-weight:300;font-size:clamp(24px,3.2vw,34px);line-height:1.35;letter-spacing:-.01em;color:var(--navy)}
+.quote-in .who{margin-top:28px;font-size:14px;color:var(--sec)}
+.quote-in .who strong{color:var(--navy);font-weight:600}
+
+/* cta */
+.cta{background:var(--navy-dp);color:var(--parch);text-align:center}
+.cta h2{color:var(--parch);max-width:20ch;margin:0 auto}
+.cta .lede{color:#AEB8C7;margin:18px auto 36px;max-width:52ch}
+.cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+footer{background:var(--navy-dp);color:#9CA7B8;padding:clamp(50px,6vw,76px) 0 30px;font-size:14.5px;border-top:1px solid rgba(255,255,255,.06)}
+.f-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:clamp(24px,4vw,48px)}
+footer .fh{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#7A8699;margin-bottom:16px}
+footer ul{list-style:none}
+footer li{margin-bottom:10px}
+footer a{text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--brass-lt)}
+.f-bot{border-top:1px solid rgba(255,255,255,.08);margin-top:clamp(30px,4vw,48px);padding-top:22px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font-size:12.5px;color:#8291A5}
+.disclaimer{max-width:74ch;margin-top:14px;font-size:12px;line-height:1.6;color:#8291A5}
+
+@media (max-width:1040px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .hero-fig{max-width:520px}
+  .hero-rule{grid-template-columns:repeat(2,1fr)}
+  .people{grid-template-columns:repeat(2,1fr)}
+  .m-grid{grid-template-columns:repeat(2,1fr)}
+  .f-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .nav-links{display:none}.nav .btn{display:none}.menu-btn{display:block}
+  .p-row{grid-template-columns:1fr;gap:10px}
+  .people{grid-template-columns:1fr}
+  .m-grid{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* ===== SyncReach credit ===== */
+.sr-credit{position:relative;overflow:hidden;background:#F1EDE0;color:#02020E;
+  font-family:'IBM Plex Sans',system-ui,sans-serif;padding:30px 0 34px;border-top:1px solid #E0D9C6}
+.sr-ghost{position:absolute;right:-70px;top:50%;transform:translateY(-50%);width:300px;height:300px;
+  color:#E4DECF;pointer-events:none;opacity:.85}
+.sr-ghost svg{width:100%;height:100%}
+.sr-in{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,60px);
+  display:flex;align-items:center;gap:clamp(16px,3vw,34px);flex-wrap:wrap}
+.sr-lock{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;flex:none}
+.sr-mark{width:30px;height:30px;color:#840902;flex:none}
+.sr-wm{display:flex;flex-direction:column;line-height:1}
+.sr-wm b{font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:15px;color:#02020E;letter-spacing:0}
+.sr-wm i{font-family:'IBM Plex Serif',Georgia,serif;font-style:normal;font-weight:400;font-size:9px;
+  letter-spacing:4px;color:#5B6183;margin-top:3px}
+.sr-txt{font-size:13.5px;line-height:1.5;color:#5B6183;max-width:62ch;margin:0}
+.sr-txt strong{color:#02020E;font-weight:600}
+.sr-txt a{color:#840902;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(132,9,2,.35)}
+.sr-txt a:hover{border-bottom-color:#840902}
+.sr-lock:focus-visible,.sr-txt a:focus-visible{outline:2px solid #840902;outline-offset:3px}
+
+.sr-badge-wrap{position:fixed;left:0;top:0;width:0;height:0}
+.sr-badge{position:fixed;left:16px;bottom:16px;z-index:95;display:flex;align-items:center;gap:8px;
+  background:#FFFDF6;border:1px solid #E0D9C6;border-radius:99px;padding:7px 14px 7px 10px;
+  text-decoration:none;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:12.5px;color:#02020E;
+  box-shadow:0 1px 2px rgba(2,2,14,.04),0 8px 22px rgba(2,2,14,.07);transition:transform .2s,box-shadow .2s}
+.sr-badge:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(2,2,14,.05),0 14px 30px rgba(2,2,14,.11)}
+.sr-badge svg{width:17px;height:17px;color:#840902;flex:none}
+.sr-badge b{font-weight:700}
+@media (max-width:860px){.sr-badge,.sr-badge-wrap{display:none}.sr-ghost{right:-120px;width:230px;height:230px}}
+@media (prefers-reduced-motion:reduce){.sr-badge{transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#101B2D"/><path d="M9 21V11l7 6 7-6v10" stroke="#C9A65C" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
+      <span class="tx">Hale &amp; <b>Corvin</b></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#practice">Practice</a></li>
+      <li><a href="#people">Attorneys</a></li>
+      <li><a href="#matters">Matters</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn" href="#contact">Speak With Us</a>
+    <button class="menu-btn" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow rv in">Commercial litigation · San Francisco</p>
+      <h1 class="rv in">Judgment, earned <em>the old way.</em></h1>
+      <p class="lede rv in rv2">A litigation boutique built on trial experience, not headcount. We take the disputes other firms won't, and we try them to win.</p>
+      <div class="hero-cta rv in rv3">
+        <a class="btn" href="#contact">Speak With Us</a>
+        <a class="btn btn-outline" href="#matters">Representative Matters</a>
+      </div>
+    </div>
+    <div class="hero-fig rv in rv2">
+      <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1000&q=80" alt="Grand marble staircase in a historic courthouse building" loading="eager">
+      <div class="cap"><span class="d"></span>Ninth Circuit &amp; California State Courts</div>
+    </div>
+  </div>
+  <div class="wrap hero-rule">
+    <div class="s rv"><div class="n">1998</div><div class="l">Founded in San Francisco</div></div>
+    <div class="s rv rv2"><div class="n">$2.4B</div><div class="l">Aggregate matter value litigated</div></div>
+    <div class="s rv rv3"><div class="n">61</div><div class="l">Jury and bench trials to verdict</div></div>
+    <div class="s rv" style="transition-delay:.36s"><div class="n">14</div><div class="l">Partners, no associates layer</div></div>
+  </div>
+</section>
+
+<section class="practice" id="practice">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">Practice</p>
+      <h2 class="rv">Four practices. No overflow work.</h2>
+      <p class="lede rv">Each matter is staffed by partners who have tried the underlying claim type before, not assigned down a bench.</p>
+    </div>
+    <a href="#" class="p-row rv">
+      <span class="no">01</span>
+      <div><h3>Commercial Contract Disputes</h3><p>Breach, indemnification, and complex commercial agreements between sophisticated parties.</p></div>
+      <span class="go">View practice →</span>
+    </a>
+    <a href="#" class="p-row rv">
+      <span class="no">02</span>
+      <div><h3>Shareholder &amp; Partnership Disputes</h3><p>Derivative claims, buyout disputes, and governance disputes among closely held companies.</p></div>
+      <span class="go">View practice →</span>
+    </a>
+    <a href="#" class="p-row rv">
+      <span class="no">03</span>
+      <div><h3>Trade Secret &amp; Unfair Competition</h3><p>Misappropriation claims, non-compete enforcement, and departing-employee disputes.</p></div>
+      <span class="go">View practice →</span>
+    </a>
+    <a href="#" class="p-row rv">
+      <span class="no">04</span>
+      <div><h3>Appellate &amp; Post-Trial</h3><p>Writs, appeals, and post-judgment strategy before the Ninth Circuit and California appellate courts.</p></div>
+      <span class="go">View practice →</span>
+    </a>
+  </div>
+</section>
+
+<section class="band" id="people">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">Attorneys</p>
+      <h2 class="rv">Fourteen partners. Every one of them tries cases.</h2>
+      <p class="lede rv">No non-equity tier, no career associates running your matter unsupervised.</p>
+    </div>
+    <div class="people">
+      <div class="person rv">
+        <div class="p-img"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80" alt="Portrait of a senior litigation partner in an office setting"></div>
+        <div class="p-body"><h3>Margaret Hale</h3><div class="role">Founding Partner</div><p>Thirty years trying commercial disputes to verdict across California.</p></div>
+      </div>
+      <div class="person rv rv2">
+        <div class="p-img"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=500&q=80" alt="Portrait of a litigation partner reviewing case materials"></div>
+        <div class="p-body"><h3>Daniel Corvin</h3><div class="role">Founding Partner</div><p>Leads the firm's appellate and post-trial practice before the Ninth Circuit.</p></div>
+      </div>
+      <div class="person rv rv3">
+        <div class="p-img"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500&q=80" alt="Portrait of a litigation partner in professional attire"></div>
+        <div class="p-body"><h3>Renata Osei</h3><div class="role">Partner, Trade Secrets</div><p>Represents technology and life sciences clients in departing-employee disputes.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="matters" id="matters">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow rv">Representative Matters</p>
+      <h2 class="rv">Outcomes, not adjectives.</h2>
+    </div>
+    <div class="m-grid">
+      <div class="m-card rv"><div class="amt">$340M</div><p class="desc">Defense verdict for a logistics company in a multi-plaintiff breach of contract trial.</p><span class="tag">Jury Trial · 2024</span></div>
+      <div class="m-card rv rv2"><div class="amt">$118M</div><p class="desc">Settlement secured for a founder in a shareholder oppression and buyout dispute.</p><span class="tag">Settlement · 2023</span></div>
+      <div class="m-card rv rv3"><div class="amt">Reversed</div><p class="desc">Ninth Circuit reversal of summary judgment in a trade secret misappropriation case.</p><span class="tag">Appeal · 2023</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-sec">
+  <div class="wrap quote-in">
+    <svg width="34" height="26" viewBox="0 0 34 26" fill="none" aria-hidden="true"><path d="M0 17C0 7.6 7.6 0 17 0v5.4C10.6 5.4 5.4 10.6 5.4 17H13.6v9H0V17zm18.4 0C18.4 7.6 26 0 35.4 0" stroke="#A9822F" stroke-width="1.6" opacity=".7"/></svg>
+    <blockquote class="rv">&ldquo;They tried our case like it was their only case. That's rare at this level.&rdquo;</blockquote>
+    <p class="who rv rv2"><strong>General Counsel</strong>, publicly traded logistics client</p>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <p class="eyebrow rv" style="justify-content:center">Get in touch</p>
+    <h2 class="rv" style="margin-top:16px">A dispute worth trying deserves trial lawyers.</h2>
+    <p class="lede rv rv2">Consultations are confidential. Most calls are returned within one business day.</p>
+    <div class="cta-row rv rv3">
+      <a class="btn btn-lt" href="#">Request a Consultation</a>
+      <a class="btn btn-outline" style="color:var(--parch);border-color:rgba(246,242,233,.4)" href="tel:+14155550142">(415) 555-0142</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:11px">
+          <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#1B2C46"/><path d="M9 21V11l7 6 7-6v10" stroke="#C9A65C" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
+          <span style="font-family:'Fraunces',serif;color:var(--parch);font-size:18px">Hale &amp; Corvin LLP</span>
+        </div>
+        <p style="margin-top:14px;max-width:34ch">Commercial litigation boutique. San Francisco, California.</p>
+        <p style="margin-top:12px"><a href="tel:+14155550142" style="color:var(--parch);font-weight:600">(415) 555-0142</a></p>
+      </div>
+      <div><h3 class="fh">Practice</h3><ul><li><a href="#practice">Contract Disputes</a></li><li><a href="#practice">Shareholder Disputes</a></li><li><a href="#practice">Trade Secrets</a></li><li><a href="#practice">Appellate</a></li></ul></div>
+      <div><h3 class="fh">Firm</h3><ul><li><a href="#people">Attorneys</a></li><li><a href="#matters">Matters</a></li><li><a href="#">Careers</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h3 class="fh">Legal</h3><ul><li><a href="#">Privacy policy</a></li><li><a href="#">Disclaimer</a></li><li><a href="#">Accessibility</a></li></ul></div>
+    </div>
+    <div class="f-bot"><div>© 2026 Hale &amp; Corvin LLP. All rights reserved.</div><div>Attorney advertising</div></div>
+    <p class="disclaimer">Concept study. Hale &amp; Corvin LLP is a fictional firm created to demonstrate design direction. All names, figures, and matters are illustrative and do not describe any real entity or outcome.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items=document.querySelectorAll('.rv');
+  if(reduce||!('IntersectionObserver' in window)){items.forEach(function(e){e.classList.add('in')});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    })},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    items.forEach(function(e){if(!e.classList.contains('in'))io.observe(e)});
+  }
+  var mb=document.querySelector('.menu-btn');
+  if(mb){mb.addEventListener('click',function(){
+    var open=mb.getAttribute('aria-expanded')==='true';
+    mb.setAttribute('aria-expanded',String(!open));
+    var ul=document.querySelector('.nav-links');
+    if(open){ul.style.display='';return;}
+    ul.style.cssText='display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--parch);padding:18px var(--g) 24px;border-bottom:1px solid var(--rule);gap:14px;margin-left:0;list-style:none';
+  });}
+})();
+</script>
+
+<aside class="sr-credit" aria-label="Design credit">
+  <div class="sr-ghost" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></div>
+  <div class="sr-in">
+    <a class="sr-lock" href="https://syncreach.io/" target="_blank" rel="noopener">
+      <span class="sr-mark"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true" focusable="false"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></span>
+      <span class="sr-wm"><b>SYNC</b><i>REACH</i></span>
+    </a>
+    <p class="sr-txt">Concept study designed and built by <strong>SyncReach</strong>. Digital growth systems for law firms: websites, client intake, search and AI visibility, automation. <a href="https://syncreach.io/" target="_blank" rel="noopener">syncreach.io</a></p>
+  </div>
+</aside>
+<aside class="sr-badge-wrap" aria-label="SyncReach credit badge"><a class="sr-badge" href="https://syncreach.io/" target="_blank" rel="noopener"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg><span>Concept by <b>SyncReach</b></span></a></aside>
+<script>
+(function(){
+  var badge=document.querySelector('.sr-badge-wrap'), credit=document.querySelector('.sr-credit');
+  if(!badge||!credit||!('IntersectionObserver' in window))return;
+  badge.style.transition='opacity .3s,transform .3s';
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    var hide=e.isIntersecting;
+    badge.style.opacity=hide?'0':'1';
+    badge.style.transform=hide?'translateY(10px)':'none';
+    badge.style.pointerEvents=hide?'none':'auto';
+  })},{threshold:0.05});
+  io.observe(credit);
+})();
+</script>
+</body>
+</html>
