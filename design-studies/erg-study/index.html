@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Express Recruiting Group — Legal Recruiting Division of Express Network</title>
+<meta name="description" content="Express Recruiting Group is the legal recruiting division of Express Network, connecting law firms with exceptional legal talent nationwide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://images.unsplash.com">
+<style>
+  :root{
+    --navy:#193059; --navy-dk:#0F1E3B; --navy-md:#195182;
+    --orange:#D25527; --orange-dk:#B84118; --orange-tx:#A83915;
+    --powder:#D8E8F2; --powder-dk:#B9D3E4;
+    --ink:#193059; --muted:#4E6178;
+    --line:#D8E8F2; --bg:#FFFFFF; --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:'Poppins',sans-serif}
+  a{text-decoration:none;color:inherit}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+  .skip-link{position:absolute;left:-999px;top:0;background:var(--navy);color:#fff;padding:12px 20px;z-index:1000}
+  .skip-link:focus{left:0}
+
+  /* utility bar */
+  .util{background:var(--navy-dk);color:#B9C7D6;font-size:.82rem}
+  .util-in{max-width:1200px;margin:0 auto;padding:9px 32px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+  .util a{transition:color .18s}
+  .util a:hover{color:#fff}
+  .util .ph{color:#fff;font-weight:700;letter-spacing:-.01em}
+  .util .sp{margin-left:auto;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+
+  header{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 32px;max-width:1200px;margin:0 auto;gap:20px}
+  .logo{display:flex;align-items:center;gap:10px;line-height:1.2}
+  .logo-img{height:92px;width:auto;display:block}
+  .foot-logo{background:#fff;padding:14px 18px;border-radius:8px;display:inline-flex;width:fit-content}
+  .foot-logo .logo-img{height:70px}
+  nav ul{list-style:none;display:flex;gap:28px;align-items:center}
+  nav a{font-weight:600;font-size:.92rem;color:var(--navy)}
+  nav a:hover{color:var(--orange)}
+  nav a:focus-visible{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
+  .nav-ctas{display:flex;gap:10px;align-items:center}
+  .nav-cta{background:var(--orange-dk);color:#fff;padding:11px 20px;border-radius:999px;font-weight:700;font-size:.86rem;white-space:nowrap;transition:background .2s}
+  .nav-cta:hover{background:var(--orange-dk)}
+  .nav-cta.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+  .nav-cta.ghost:hover{background:var(--navy);color:#fff}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+  .nav-toggle span{display:block;width:24px;height:2px;background:var(--navy);margin:5px 0}
+
+  .hero{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--navy-dk) 0%,var(--navy) 55%,#123A63 100%);color:#fff;padding:90px 0 110px}
+  .hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 15% 20%, rgba(210,85,39,.18), transparent 45%),radial-gradient(circle at 85% 75%, rgba(25,81,130,.18), transparent 45%)}
+  .hero-inner{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(210,85,39,.15);border:1px solid rgba(210,85,39,.4);color:#F5B79A;padding:7px 16px;border-radius:999px;font-size:.78rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;margin-bottom:22px}
+  .hero h1{font-size:clamp(2.2rem,4.2vw,3.3rem);line-height:1.1;font-weight:800;margin-bottom:20px}
+  .hero h1 em{font-style:normal;color:var(--orange)}
+  .hero p.lead{font-size:1.1rem;color:#C9D6E4;max-width:540px;line-height:1.6;margin-bottom:30px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:999px;font-weight:700;font-size:.92rem;transition:transform .2s,box-shadow .2s,background .2s;border:2px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--orange-dk);color:#fff;box-shadow:0 8px 24px rgba(210,85,39,.35)}
+  .btn-primary:hover{background:var(--orange-dk);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+  .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+  .btn:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+  .hero-visual{position:relative;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+  .hero-visual img{width:100%;height:420px;object-fit:cover}
+  .hero-visual .tag{position:absolute;bottom:18px;left:18px;background:rgba(15,42,74,.85);backdrop-filter:blur(6px);color:#fff;padding:11px 16px;border-radius:10px;font-size:.82rem;font-weight:600;display:flex;align-items:center;gap:9px}
+  .tag .dot{width:8px;height:8px;border-radius:50%;background:var(--navy-md)}
+
+  /* parent brand strip */
+  .parent-strip{background:var(--white);border-bottom:1px solid var(--line);padding:22px 0}
+  .parent-in{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;text-align:center}
+  .parent-in p{color:var(--muted);font-size:.95rem;max-width:760px}
+  .parent-in strong{color:var(--navy)}
+
+  section{padding:88px 0}
+  .section-head{max-width:680px;margin:0 auto 48px;text-align:center}
+  .section-head .kicker{color:var(--orange-tx);font-weight:700;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:12px;display:block}
+  .section-head h2{font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:14px}
+  .section-head p{color:var(--muted);font-size:1.02rem;line-height:1.6}
+
+  /* about / division section */
+  .about{background:var(--white)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about-img{border-radius:16px;overflow:hidden;box-shadow:0 20px 44px rgba(15,42,74,.15)}
+  .about-img img{width:100%;height:400px;object-fit:cover}
+  .about-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px}
+  .about-stat{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:20px}
+  .about-stat .n{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.7rem;color:var(--navy)}
+  .about-stat .l{font-size:.82rem;color:var(--muted);margin-top:3px}
+
+  /* logo carousel */
+  .logos{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:52px 0}
+  .logos .section-head{margin-bottom:32px}
+  .logo-track-wrap{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .logo-track{display:flex;gap:64px;align-items:center;width:max-content;animation:scroll-logos 32s linear infinite}
+  .logo-track span{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.15rem;color:var(--muted);white-space:nowrap;opacity:.7}
+  @keyframes scroll-logos{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .logos-note{text-align:center;color:var(--muted);font-size:.82rem;margin-top:18px}
+
+  /* success stories / video testimonials */
+  .stories{background:var(--powder)}
+  .story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .story-card{background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+  .story-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(15,42,74,.14)}
+  .story-vid{position:relative;aspect-ratio:16/10;overflow:hidden}
+  .story-vid img{width:100%;height:100%;object-fit:cover}
+  .play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(15,42,74,.25)}
+  .play-btn span{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+  .play-btn svg{margin-left:3px}
+  .story-body{padding:22px}
+  .story-body .firm{font-weight:700;color:var(--navy);font-size:.98rem}
+  .story-body .role{font-size:.8rem;color:var(--orange-tx);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-top:4px}
+  .story-body p{color:var(--muted);font-size:.88rem;margin-top:10px;line-height:1.55}
+
+  /* practice areas */
+  .practice{background:var(--white)}
+  .practice-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .practice-col h3{color:var(--navy);font-size:1.15rem;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--orange)}
+  .practice-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .practice-col li{display:flex;align-items:center;gap:10px;font-size:.94rem;color:var(--ink)}
+  .practice-col li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--navy-md);flex-shrink:0}
+
+  /* audience split */
+  .split{background:var(--navy-dk);padding:0}
+  .split-grid{display:grid;grid-template-columns:1fr 1fr}
+  .split-panel{padding:70px 48px;position:relative}
+  .split-panel.employers{background:linear-gradient(160deg,var(--navy) 0%,#123A63 100%)}
+  .split-panel.candidates{background:linear-gradient(160deg,#2A4270 0%,#12203D 100%)}
+  .split-panel .eyebrow{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#fff}
+  .split-panel h3{color:#fff;font-size:1.6rem;margin-bottom:14px}
+  .split-panel p{color:#C9D6E4;font-size:.98rem;line-height:1.6;margin-bottom:24px;max-width:44ch}
+  .split-panel ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:26px}
+  .split-panel li{color:#C9D6E4;font-size:.9rem;display:flex;align-items:center;gap:9px}
+  .split-panel li::before{content:"→";color:#F5B79A;font-weight:700}
+
+  /* why us */
+  .why{background:var(--white)}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .why-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:26px}
+  .why-card .icn{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--navy-md),var(--navy));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;margin-bottom:14px}
+  .why-card h4{font-size:1rem;color:var(--navy);margin-bottom:8px;font-weight:700}
+  .why-card p{font-size:.86rem;color:var(--muted);line-height:1.55}
+
+  /* footer CTA */
+  .footer-cta{background:linear-gradient(120deg,var(--orange),#FF8A63);padding:56px 0;color:#fff;text-align:center}
+  .footer-cta h2{font-size:1.9rem;font-weight:800;margin-bottom:12px}
+  .footer-cta p{color:rgba(255,255,255,.9);margin-bottom:28px}
+  .footer-cta .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .footer-cta .btn-primary{background:var(--navy)}
+  .footer-cta .btn-primary:hover{background:var(--navy-dk)}
+
+  footer{background:var(--navy-dk);color:#B9C7D6;padding:60px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:40px;margin-bottom:44px}
+  .foot-brand .logo{color:#fff;margin-bottom:14px}
+  .foot-brand p{font-size:.88rem;line-height:1.6;color:#93A4B7;max-width:300px}
+  .foot-col h4{color:#fff;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;font-weight:700}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .foot-col a{font-size:.88rem;color:#B9C7D6}
+  .foot-col a:hover{color:var(--orange)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:.8rem;color:#7E90A3}
+  .foot-bottom a{color:#7E90A3}
+  .foot-bottom a:hover{color:#fff}
+  .disclaimer-band{background:#08182B;color:#6B7D90;font-size:.76rem;text-align:center;padding:16px 24px;line-height:1.5}
+
+  @media (max-width:960px){
+    .util .sp{display:none}
+    nav ul{display:none}.nav-toggle{display:block}.nav-ctas .ghost{display:none}
+    .hero-inner{grid-template-columns:1fr}.hero-visual{order:-1}
+    .about-grid{grid-template-columns:1fr}
+    .story-grid{grid-template-columns:1fr}
+    .practice-cols{grid-template-columns:1fr}
+    .split-grid{grid-template-columns:1fr}
+    .why-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 20px}
+    .foot-grid{grid-template-columns:1fr}
+    .footer-cta .row{flex-direction:column}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.logo-track{animation:none}}
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<div class="util">
+  <div class="util-in">
+    <span>Legal Recruiting Division of Express Network</span>
+    <div class="sp">
+      <a href="tel:+18005550188" class="ph">(800) 555-0188</a>
+      <a href="#book">Book a Call</a>
+      <a href="#contact">Email Us</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="nav-inner">
+    <a href="#" class="logo"><img src="https://static.wixstatic.com/media/4f89bb_bcd4618cdfed4a4e90d2ae2a32650279~mv2.png" alt="Express Recruiting Group, by Express Network" class="logo-img"></a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#employers">Employers</a></li>
+        <li><a href="#candidates">Candidates</a></li>
+        <li><a href="#practice">Positions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-ctas">
+      <a href="#candidates" class="nav-cta ghost">Find a Position</a>
+      <a href="#book" class="nav-cta">Book a Call</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow">Backed by Express Network · Est. 1985</span>
+        <h1>Legal Talent. <em>Delivered.</em></h1>
+        <p class="lead">Express Recruiting Group is the legal recruiting division of Express Network — connecting exceptional legal talent with leading law firms nationwide, backed by decades of infrastructure, relationships, and legal industry experience.</p>
+        <div class="hero-ctas">
+          <a href="#employers" class="btn btn-primary">Hire Legal Talent</a>
+          <a href="#book" class="btn btn-ghost">Book a Call</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" alt="Legal recruiting team reviewing candidate profiles in a bright office" loading="eager">
+        <div class="tag"><span class="dot"></span>Now placing across 8 nationwide offices</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="parent-strip">
+    <div class="wrap parent-in">
+      <p><strong>Express Recruiting Group</strong> operates as part of <strong>Express Network</strong>, a nationwide provider of litigation, court, deposition, and legal support services since 1985 — bringing the same infrastructure and legal industry relationships to talent acquisition.</p>
+    </div>
+  </div>
+
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <span class="eyebrow" style="background:rgba(25,81,130,.12);border-color:rgba(25,81,130,.35);color:var(--navy)">About Us</span>
+        <h2 style="font-size:2rem;font-weight:800;color:var(--navy);margin:16px 0 20px;line-height:1.2">More than a recruiting agency. A division of Express Network.</h2>
+        <p class="lede" style="color:var(--muted);line-height:1.65;margin-bottom:20px">Express Recruiting Group was created to bring Express Network's decades of legal industry experience to a new service: legal talent acquisition. We understand law firm operations because our parent organization has served law firms nationwide since 1985 — we're not an outside agency learning the industry, we're already part of it.</p>
+        <p class="lede" style="color:var(--muted);line-height:1.65">We work with national, regional, plaintiff-side, and defense law firms, recruiting everyone from attorneys to legal support and operations staff, with a personalized approach every step of the way.</p>
+        <div class="about-stats">
+          <div class="about-stat"><div class="n">1985</div><div class="l">Express Network founded</div></div>
+          <div class="about-stat"><div class="n">8</div><div class="l">Offices nationwide</div></div>
+          <div class="about-stat"><div class="n">117+</div><div class="l">U.S.-based full-time employees</div></div>
+          <div class="about-stat"><div class="n">40+</div><div class="l">Years serving the legal industry</div></div>
+        </div>
+      </div>
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" alt="Legal recruiting professionals collaborating in a modern office">
+      </div>
+    </div>
+  </section>
+
+  <section class="logos">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Who We Work With</span>
+        <h2>Trusted by law firms nationwide</h2>
+        <p>Placeholder logos shown for design purposes. Final client logos to be confirmed and approved before publication.</p>
+      </div>
+      <div class="logo-track-wrap">
+        <div class="logo-track" aria-label="Client law firm names">
+          <span>Morgan &amp; Morgan</span><span>Sweet James</span><span>Miller Barondess</span><span>Barnes &amp; Thornburg</span><span>Milbank</span><span>Robert Sanders Law</span><span>LADP</span>
+          <span aria-hidden="true">Morgan &amp; Morgan</span><span aria-hidden="true">Sweet James</span><span aria-hidden="true">Miller Barondess</span><span aria-hidden="true">Barnes &amp; Thornburg</span><span aria-hidden="true">Milbank</span><span aria-hidden="true">Robert Sanders Law</span><span aria-hidden="true">LADP</span>
+        </div>
+      </div>
+      <p class="logos-note">Placeholder client names for concept purposes only.</p>
+    </div>
+  </section>
+
+  <section class="stories">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Client Success Stories</span>
+        <h2>Trusted by law firms to deliver the right talent</h2>
+        <p>Short video testimonials from firms we've helped fill critical positions. New stories can be added easily as they come in.</p>
+      </div>
+      <div class="story-grid">
+        <div class="story-card">
+          <div class="story-vid">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=500&q=80" alt="Video testimonial thumbnail from a law firm managing partner">
+            <div class="play-btn"><span><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 2.5L15 9L4 15.5V2.5Z" fill="#0F2A4A"/></svg></span></div>
+          </div>
+          <div class="story-body">
+            <div class="firm">Regional Litigation Firm</div>
+            <div class="role">Senior Associate Placed</div>
+            <p>"They found us a candidate who fit our culture, not just the job description."</p>
+          </div>
+        </div>
+        <div class="story-card">
+          <div class="story-vid">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80" alt="Video testimonial thumbnail from a law firm operations director">
+            <div class="play-btn"><span><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 2.5L15 9L4 15.5V2.5Z" fill="#0F2A4A"/></svg></span></div>
+          </div>
+          <div class="story-body">
+            <div class="firm">Plaintiff-Side Firm</div>
+            <div class="role">Director of Operations Placed</div>
+            <p>"The process was fast, confidential, and genuinely personalized."</p>
+          </div>
+        </div>
+        <div class="story-card">
+          <div class="story-vid">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500&q=80" alt="Video testimonial thumbnail from a law firm hiring partner">
+            <div class="play-btn"><span><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 2.5L15 9L4 15.5V2.5Z" fill="#0F2A4A"/></svg></span></div>
+          </div>
+          <div class="story-body">
+            <div class="firm">Defense Firm</div>
+            <div class="role">Paralegal Team Placed</div>
+            <p>"Backed by Express Network's reach, they moved faster than any agency we'd used."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="practice" id="practice">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Legal Recruiting Positions</span>
+        <h2>Who we recruit for</h2>
+        <p>Additional recruiting categories can be added easily as your needs grow.</p>
+      </div>
+      <div class="practice-cols">
+        <div class="practice-col">
+          <h3>Attorneys</h3>
+          <ul>
+            <li>Commercial Litigation Attorneys</li>
+            <li>Employment Attorneys</li>
+            <li>Personal Injury Attorneys</li>
+            <li>Plaintiff-Side Attorneys</li>
+            <li>Defense Attorneys</li>
+            <li>Corporate Attorneys</li>
+            <li>Other Legal Practice Areas</li>
+          </ul>
+        </div>
+        <div class="practice-col">
+          <h3>Legal Support &amp; Management</h3>
+          <ul>
+            <li>Paralegals</li>
+            <li>Legal Assistants</li>
+            <li>Case Managers</li>
+            <li>Intake Professionals</li>
+            <li>Office Managers</li>
+            <li>Directors of Operations</li>
+            <li>HR &amp; Legal Billing Professionals</li>
+            <li>Lien Negotiators</li>
+            <li>Administrative &amp; Executive Support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="split" id="pathways">
+    <div class="split-grid">
+      <div class="split-panel employers" id="employers">
+        <span class="eyebrow">For Law Firms</span>
+        <h3>Fast-Track Your Search for Legal Talent</h3>
+        <p>Submit your hiring needs and let our recruiting team get to work — backed by Express Network's nationwide reach and legal industry relationships.</p>
+        <ul>
+          <li>Submit a hiring need</li>
+          <li>Book a consultation</li>
+          <li>Contact our recruiting team</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Start Your Search</a>
+      </div>
+      <div class="split-panel candidates" id="candidates">
+        <span class="eyebrow">For Candidates</span>
+        <h3>Looking for Your Next Legal Opportunity?</h3>
+        <p>Your search stays private. Your next opportunity starts here — view current openings or submit your resume confidentially.</p>
+        <ul>
+          <li>View current opportunities</li>
+          <li>Submit your resume confidentially</li>
+          <li>Connect with our recruiting team</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" style="background:var(--navy-md)">Submit Your Resume Confidentially</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Why Express Recruiting Group</span>
+        <h2>Backed by Express Network. Focused on legal.</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card"><div class="icn">1</div><h4>Legal Industry Specialization</h4><p>Every search is legal-focused, from attorneys through legal support and operations staff.</p></div>
+        <div class="why-card"><div class="icn">2</div><h4>Part of Express Network</h4><p>Backed by an organization established in 1985, with the infrastructure and resources of a national platform.</p></div>
+        <div class="why-card"><div class="icn">3</div><h4>Nationwide Reach</h4><p>Eight offices and established relationships within the legal community, coast to coast.</p></div>
+        <div class="why-card"><div class="icn">4</div><h4>Personalized Approach</h4><p>A concierge-style process focused on cultural fit, not just filling a vacancy.</p></div>
+        <div class="why-card"><div class="icn">5</div><h4>Confidential Representation</h4><p>Candidate searches are handled with discretion from first contact through placement.</p></div>
+        <div class="why-card"><div class="icn">6</div><h4>Operational Understanding</h4><p>We understand how law firms actually run, because Express Network has served them for decades.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer-cta" id="book">
+    <div class="wrap">
+      <h2>Need Legal Talent?</h2>
+      <p>Let's discuss your hiring needs — or find your next opportunity.</p>
+      <div class="row">
+        <a href="tel:+18005550188" class="btn btn-primary">Call (800) 555-0188</a>
+        <a href="#book" class="btn btn-ghost" style="border-color:var(--navy);color:var(--navy)">Book a Call</a>
+        <a href="#employers" class="btn btn-ghost" style="border-color:var(--navy);color:var(--navy)">Start Your Search</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="logo foot-logo"><img src="https://static.wixstatic.com/media/4f89bb_bcd4618cdfed4a4e90d2ae2a32650279~mv2.png" alt="Express Recruiting Group, by Express Network" class="logo-img"></a>
+        <p>The legal recruiting division of Express Network. Serving law firms nationwide since 1985, through eight offices and decades of legal industry experience.</p>
+        <p style="margin-top:12px"><a href="tel:+18005550188" style="color:#fff;font-weight:700">(800) 555-0188</a></p>
+      </div>
+      <div class="foot-col">
+        <h4>Law Firms</h4>
+        <ul><li><a href="#employers">Hire Legal Talent</a></li><li><a href="#book">Book a Call</a></li><li><a href="#contact">Submit a Hiring Need</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Candidates</h4>
+        <ul><li><a href="#candidates">Current Opportunities</a></li><li><a href="#candidates">Submit Your Resume</a></li><li><a href="#contact">Connect With a Recruiter</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Express Network</h4>
+        <ul><li><a href="#">Express Network</a></li><li><a href="#">Express Deposition Services</a></li><li><a href="#">Office Locations</a></li></ul>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <ul><li><a href="#">LinkedIn</a></li><li><a href="#">Facebook</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Express Recruiting Group, a division of Express Network. All rights reserved.</span>
+      <span><a href="#">Terms</a> · <a href="#">Privacy</a></span>
+    </div>
+  </div>
+</footer>
+<div class="disclaimer-band">Design concept only. Client names, video testimonials, and figures are placeholders pending confirmation and approval before publication.</div>
+
+</body>
+</html>
