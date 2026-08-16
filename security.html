@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PW9V9Z63');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vulnerability Disclosure Policy — SyncReach</title>
+<meta name="description" content="How to report a security vulnerability to SyncReach Solutions Inc., our scope, and the safe-harbor terms for good-faith researchers.">
+<link rel="canonical" href="https://www.syncreach.io/security">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "WebPage",
+"@id": "https://www.syncreach.io/security#webpage",
+"url": "https://www.syncreach.io/security",
+"name": "Vulnerability Disclosure Policy — SyncReach",
+"description": "How to report a security vulnerability to SyncReach Solutions Inc.",
+"isPartOf": {"@id": "https://www.syncreach.io/#website"},
+"about": {"@id": "https://www.syncreach.io/#organization"}
+}
+</script>
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "BreadcrumbList",
+"itemListElement": [
+{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.syncreach.io/"},
+{"@type": "ListItem", "position": 2, "name": "Vulnerability Disclosure Policy", "item": "https://www.syncreach.io/security"}
+]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .legal{max-width:1040px;margin:0 auto;padding:48px 24px 72px;display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start;}
+  .toc{position:sticky;top:24px;font-size:13.5px;}
+  .toc__lab{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:12px;}
+  .toc ol{list-style:none;margin:0;padding:0;counter-reset:toc;display:flex;flex-direction:column;gap:7px;}
+  .toc a{display:flex;gap:9px;color:var(--text-muted);line-height:1.35;}
+  .toc a::before{counter-increment:toc;content:counter(toc,decimal-leading-zero);font-family:var(--font-mono);font-size:11px;color:var(--text-faint);padding-top:2px;}
+  .toc a:hover{color:var(--text-accent);}
+  .legal__body{max-width:680px;}
+  .legal__body h2{font-family:var(--font-sans);font-weight:700;font-size:21px;letter-spacing:-0.01em;color:var(--text-strong);margin:38px 0 12px;scroll-margin-top:24px;display:flex;gap:12px;align-items:baseline;}
+  .legal__body h2 .n{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--text-accent);flex:none;}
+  .legal__body h3{font-family:var(--font-sans);font-weight:600;font-size:16px;color:var(--text-strong);margin:22px 0 8px;}
+  .legal__body p{font-size:15.5px;color:var(--text-default);line-height:1.7;margin:0 0 14px;}
+  .legal__body ul{margin:0 0 14px;padding:0;display:flex;flex-direction:column;gap:8px;}
+  .legal__body li{position:relative;padding-left:20px;font-size:15.5px;color:var(--text-default);line-height:1.6;}
+  .legal__body li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:1px;background:var(--brand-red);}
+  .legal__body a{color:var(--text-accent);text-underline-offset:2px;}
+  .legal__intro{font-size:16.5px;color:var(--text-muted);line-height:1.7;margin:0 0 8px;}
+  .disclaimer{display:flex;gap:13px;background:var(--red-50);border:1px solid var(--red-100);border-radius:var(--radius-sm);padding:16px 18px;margin:22px 0 0;}
+  .disclaimer svg{flex:none;width:19px;height:19px;color:var(--brand-red);margin-top:1px;}
+  .disclaimer p{font-size:13.5px;color:var(--text-default);line-height:1.6;margin:0;}
+  .updated{font-family:var(--font-mono);font-size:12px;color:var(--text-faint);margin-top:18px;}
+  @media (max-width:860px){
+    .legal{grid-template-columns:1fr;gap:24px;}
+    .toc{position:static;}
+    .toc ol{display:grid;grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW9V9Z63"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="brand" href="/" aria-label="SyncReach home">
+    <span class="brand__mark" data-globe-mark></span>
+    <span class="brand__name"><b>SYNC</b><span>REACH</span></span>
+  </a>
+  <div class="nav__links">
+    <a href="/#system">Growth System</a><a href="/services">Services</a><a href="/pricing">Pricing</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a>
+  </div>
+  <span class="nav__sp"></span>
+  <div class="nav__right">
+    <a class="btn btn--sm btn--primary" href="/contact">Book a free consultation</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="phead">
+  <span class="phead__motif" data-globe></span>
+  <div class="phead__in">
+    <span class="eyebrow">Security</span>
+    <h1>Vulnerability Disclosure Policy</h1>
+    <p>SyncReach takes the security of our systems seriously. If you believe you've found a security vulnerability, here's how to report it.</p>
+    <div class="updated">Last updated: August 2026</div>
+  </div>
+</header>
+
+<!-- BODY -->
+<div class="legal">
+  <nav class="toc" aria-label="Sections">
+    <div class="toc__lab">On this page</div>
+    <ol>
+      <li><a href="#bounty">No bug bounty program</a></li>
+      <li><a href="#report">How to report</a></li>
+      <li><a href="#scope">Scope</a></li>
+      <li><a href="#rules">Ground rules &amp; safe harbor</a></li>
+      <li><a href="#process">What happens after you report</a></li>
+    </ol>
+  </nav>
+
+  <div class="legal__body">
+    <p class="legal__intro">If you believe you've found a security vulnerability affecting SyncReach, we want to know about it. This page explains how to report it, what's in scope, and the ground rules that keep good-faith research protected.</p>
+
+    <h2 id="bounty"><span class="n">01</span> No bug bounty program</h2>
+    <p>We do not currently offer a paid bug bounty program, and we do not commit to compensation of any kind for reports submitted through this process. We may, at our sole discretion, acknowledge valid reports.</p>
+
+    <h2 id="report"><span class="n">02</span> How to report</h2>
+    <p>Email <a href="mailto:admin@syncreach.io">admin@syncreach.io</a> with:</p>
+    <ul>
+      <li>A description of the vulnerability and its potential impact</li>
+      <li>Step-by-step reproduction instructions or a proof of concept</li>
+      <li>Any relevant logs, screenshots, or scripts</li>
+    </ul>
+    <p>We aim to acknowledge reports within 5 business days.</p>
+
+    <h2 id="scope"><span class="n">03</span> Scope</h2>
+    <p><strong>In scope:</strong> syncreach.io and its subdomains, and our public GitHub repositories under github.com/SyncReach.</p>
+    <p><strong>Out of scope:</strong> third-party services we integrate with (e.g. Cloudflare, GitHub Pages, our email provider) — please report those directly to the respective vendor.</p>
+
+    <h2 id="rules"><span class="n">04</span> Ground rules &amp; safe harbor</h2>
+    <p>We will not pursue legal action against researchers who, in good faith:</p>
+    <ul>
+      <li>Report a vulnerability promptly and do not disclose it publicly before we've had a reasonable opportunity to address it</li>
+      <li>Avoid privacy violations, data destruction, and service disruption during testing</li>
+      <li>Do not access, modify, or exfiltrate data beyond what's needed to demonstrate the issue</li>
+      <li>Do not use automated scanning tools that generate excessive traffic</li>
+      <li>Interact only with test/demo accounts or their own account, never another user's data</li>
+      <li>Comply with applicable Canadian law, including the Criminal Code provisions on unauthorized computer access — this policy authorizes good-faith testing within the scope and rules above, but does not authorize illegal activity</li>
+    </ul>
+    <div class="disclaimer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p>If your research stays within these guidelines, we consider it authorized and won't pursue civil or criminal legal action, or refer the matter to law enforcement, on account of it.</p>
+    </div>
+
+    <h2 id="process"><span class="n">05</span> What happens after you report</h2>
+    <ul>
+      <li>We confirm receipt.</li>
+      <li>We investigate and validate the finding.</li>
+      <li>We work on a fix, with priority based on severity.</li>
+      <li>We may follow up with you for clarification.</li>
+      <li>We don't currently publish a public researcher hall of fame, but we're happy to credit you privately if you'd like.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <a class="brand" href="/" aria-label="SyncReach home">
+    <span class="brand__mark" data-globe-mark style="color:var(--text-strong)"></span>
+    <span class="brand__name"><b>SYNC</b><span>REACH</span></span>
+  </a>
+  <div class="foot__links">
+    <a href="/">Home</a><a href="/services">Services</a><a href="/pricing">Pricing</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/security">Security</a><a href="mailto:admin@syncreach.io">admin@syncreach.io</a><a href="tel:+12892701009">+1 (289) 270-1009</a>
+  </div>
+  <span class="foot__c">© 2026 SyncReach Solutions Inc.</span>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
