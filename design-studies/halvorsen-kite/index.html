@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halvorsen Kite | IP &amp; Technology Counsel, Seattle</title>
+<meta name="description" content="Seattle intellectual property and technology law firm. Patent prosecution, trademark, open source and technology transactions for engineering-led companies.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B0C0E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&family=IBM+Plex+Serif:wght@400&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --ink:#0B0C0E; --ink-2:#131519; --ink-3:#1B1E24;
+  --fg:#E8E6E1; --mut:#9A9995;
+  --violet:#9B82FF;          /* 6.55:1 on ink, and ink on it is 6.55:1 */
+  --violet-dim:rgba(155,130,255,.16);
+  --rule:rgba(232,230,225,.14);
+  --card:#131519;
+  --disp:'Space Grotesk',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --sans:'Inter',system-ui,sans-serif;
+  --max:1240px; --g:clamp(20px,5vw,56px);
+}
+html[data-theme="light"]{
+  --ink:#F4F3F1; --ink-2:#FFFFFF; --ink-3:#EAE8E4;
+  --fg:#16171A; --mut:#5A5A57;
+  --violet:#5B36E8;          /* 6.04:1 on light bg */
+  --violet-dim:rgba(91,54,232,.10);
+  --rule:rgba(22,23,26,.14);
+  --card:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--fg);font-family:var(--sans);font-size:16.5px;line-height:1.64;
+  -webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--disp);font-weight:600;line-height:1.06;letter-spacing:-.035em}
+h2{font-size:clamp(28px,4.4vw,50px)}
+h3{font-size:clamp(17px,1.8vw,21px);letter-spacing:-.02em}
+p{max-width:62ch}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--g)}
+section{padding:clamp(60px,8vw,112px) 0}
+.skip{position:absolute;left:-9999px;background:var(--violet);color:var(--ink);padding:12px 20px;z-index:300}
+.skip:focus{left:0}
+:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
+.lede{font-size:clamp(16.5px,1.6vw,19px);color:var(--mut)}
+
+/* mono metadata label — the system's signature */
+.meta{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);display:block;margin-bottom:16px}
+.meta::before{content:"// "}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 24px;
+  font-family:var(--sans);font-size:14.5px;font-weight:600;text-decoration:none;cursor:pointer;
+  background:var(--violet);color:var(--ink);border:1px solid var(--violet);border-radius:4px;transition:.18s}
+.btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-out{background:transparent;color:var(--fg);border-color:var(--rule)}
+.btn-out:hover{border-color:var(--fg);background:var(--violet-dim);filter:none}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:90;background:color-mix(in srgb,var(--ink) 92%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:13px var(--g);display:flex;align-items:center;gap:30px}
+.brand{font-family:var(--disp);font-weight:600;font-size:18px;letter-spacing:-.04em;text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand svg{width:20px;height:20px;color:var(--violet);flex:none}
+.nav-links{display:flex;gap:24px;list-style:none;margin-left:auto}
+.nav-links a{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--mut);text-decoration:none}
+.nav-links a:hover{color:var(--fg)}
+.theme-btn{background:transparent;border:1px solid var(--rule);border-radius:4px;padding:8px 12px;
+  font:500 11.5px var(--mono);letter-spacing:.1em;color:var(--mut);cursor:pointer;min-height:36px;text-transform:uppercase}
+.theme-btn:hover{color:var(--fg);border-color:var(--fg)}
+.menu-btn{display:none;background:none;border:1px solid var(--rule);padding:8px 12px;font:500 12px var(--mono);color:var(--fg);cursor:pointer}
+
+/* hero with technical hairline grid */
+.hero{position:relative;overflow:hidden;padding:clamp(56px,8vw,104px) 0 clamp(56px,7vw,92px)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 70% 30%,#000,transparent 72%);
+  mask-image:radial-gradient(ellipse 70% 60% at 70% 30%,#000,transparent 72%)}
+.hero-in{position:relative;z-index:1}
+.hero h1{font-size:clamp(36px,6.2vw,74px);letter-spacing:-.045em;max-width:17ch;margin-bottom:22px}
+.hero h1 em{font-style:normal;color:var(--violet)}
+.hero .lede{max-width:52ch;margin-bottom:30px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-spec{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:56px}
+.hero-spec div{background:var(--ink);padding:20px 18px}
+.hero-spec .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.hero-spec .v{font-family:var(--disp);font-weight:600;font-size:clamp(20px,2.3vw,28px);letter-spacing:-.03em;margin-top:8px}
+
+/* clients — the proof band. IP sites lead with clients, not lawyers. */
+.clients{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--ink-2)}
+.cl-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:34px}
+.cl{background:var(--ink-2);padding:26px 14px;text-align:center;font-family:var(--disp);font-weight:600;
+  font-size:14px;letter-spacing:-.02em;color:var(--mut);display:flex;align-items:center;justify-content:center;min-height:84px}
+.cl-note{font-family:var(--mono);font-size:11.5px;color:var(--mut);margin-top:16px;letter-spacing:.03em}
+
+/* services as a technical spec table */
+.spec{margin-top:44px;border-top:1px solid var(--rule)}
+.spec-row{display:grid;grid-template-columns:88px 1fr 1.3fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--rule);
+  text-decoration:none;transition:background .2s;align-items:baseline}
+.spec-row:hover{background:var(--violet-dim)}
+.spec-row .id{font-family:var(--mono);font-size:12px;color:var(--violet);letter-spacing:.08em}
+.spec-row p{font-size:15px;color:var(--mut);max-width:none}
+
+/* matters */
+.mt{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.m-card{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:26px 24px}
+.m-card .tag{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--violet);display:block;margin-bottom:14px}
+.m-card h3{margin-bottom:10px}
+.m-card p{font-size:14.5px;color:var(--mut);max-width:none}
+
+/* approach */
+.appr{background:var(--ink-2);border-top:1px solid var(--rule)}
+.ap{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:44px}
+.ap div{border-top:2px solid var(--violet);padding-top:18px}
+.ap h3{margin-bottom:9px}
+.ap p{font-size:15px;color:var(--mut);max-width:none}
+
+/* CTA */
+.cta{text-align:center}
+.cta h2{max-width:20ch;margin:0 auto 16px}
+.cta p{color:var(--mut);margin:0 auto 30px;max-width:52ch}
+
+/* compliance */
+.compliance{background:var(--ink-3);border-top:1px solid var(--rule);padding:clamp(44px,6vw,64px) 0}
+.compliance__h{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--violet);margin-bottom:22px}
+.compliance__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 34px}
+.compliance p{font-size:13.5px;line-height:1.6;color:var(--mut);max-width:58ch}
+.compliance strong{color:var(--fg)}
+.compliance__note{margin-top:24px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px}
+
+footer{background:var(--ink);border-top:1px solid var(--rule);color:var(--mut);padding:52px 0 30px}
+.f-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:34px;margin-bottom:34px}
+footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg);margin-bottom:14px;font-weight:500}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+footer a{font-size:14px;text-decoration:none;color:var(--mut)}
+footer a:hover{color:var(--violet)}
+.f-bot{border-top:1px solid var(--rule);padding-top:20px;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:960px){
+  .nav-links{display:none}.menu-btn{display:block}
+  .hero-spec{grid-template-columns:repeat(2,1fr)}
+  .cl-grid{grid-template-columns:repeat(3,1fr)}
+  .spec-row{grid-template-columns:1fr;gap:10px}
+  .mt,.ap,.f-grid,.compliance__grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){ .hero-spec,.cl-grid{grid-template-columns:1fr} }
+
+/* Narrow-viewport nav. With the links collapsed the row is brand + controls;
+   without min-width:0 the brand refuses to shrink and pushes the row wide. */
+@media (max-width:560px){
+  .nav-in{gap:12px}
+  .brand{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:17px}
+  .menu-btn{margin-left:auto;flex:none}
+}
+@media (max-width:560px){ .theme-btn{flex:none;padding:8px 10px} }
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+
+.sr-credit{position:relative;overflow:hidden;background:#F1EDE0;color:#02020E;
+  font-family:'IBM Plex Sans',system-ui,sans-serif;padding:32px 0;border-top:1px solid #E0D9C6}
+.sr-ghost{position:absolute;right:-70px;top:50%;transform:translateY(-50%);width:300px;height:300px;color:#E4DECF;pointer-events:none;opacity:.85}
+.sr-ghost svg{width:100%;height:100%}
+.sr-in{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,60px);
+  display:flex;align-items:center;gap:clamp(16px,3vw,34px);flex-wrap:wrap}
+.sr-lock{display:flex;align-items:center;gap:11px;color:inherit;flex:none;text-decoration:none}
+.sr-mark{width:30px;height:30px;color:#840902;flex:none}
+.sr-wm{display:flex;flex-direction:column;line-height:1}
+.sr-wm b{font-weight:700;font-size:15px}
+.sr-wm i{font-family:'IBM Plex Serif',Georgia,serif;font-style:normal;font-size:9px;letter-spacing:4px;color:#5B6183;margin-top:3px}
+.sr-txt{font-size:13.5px;line-height:1.5;color:#5B6183;max-width:62ch;margin:0}
+.sr-txt strong{color:#02020E;font-weight:600}
+.sr-txt a{color:#840902;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(132,9,2,.35)}
+.sr-badge-wrap{position:fixed;left:0;top:0;width:0;height:0}
+.sr-badge{position:fixed;left:16px;bottom:16px;z-index:95;display:flex;align-items:center;gap:8px;
+  background:#FFFDF6;border:1px solid #E0D9C6;border-radius:99px;padding:7px 14px 7px 10px;text-decoration:none;
+  font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:12.5px;color:#02020E;
+  box-shadow:0 1px 2px rgba(2,2,14,.04),0 8px 22px rgba(2,2,14,.07);transition:transform .2s,opacity .3s}
+.sr-badge:hover{transform:translateY(-2px)}
+.sr-badge svg{width:17px;height:17px;color:#840902;flex:none}
+@media (max-width:860px){.sr-badge,.sr-badge-wrap{display:none}.sr-ghost{right:-120px;width:230px;height:230px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M12 22V12M3 7l9 5 9-5"/></svg>Halvorsen Kite</a>
+    <nav aria-label="Primary"><ul class="nav-links">
+      <li><a href="#services">services</a></li>
+      <li><a href="#matters">matters</a></li>
+      <li><a href="#approach">approach</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul></nav>
+    <button class="theme-btn" data-theme-toggle aria-pressed="false">Light</button>
+    <button class="menu-btn" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap hero-in">
+      <span class="meta">Intellectual Property &amp; Technology &middot; Seattle</span>
+      <h1>Counsel for people who <em>build the thing.</em></h1>
+      <p class="lede">Patent, trademark and technology counsel for engineering-led companies. Every attorney here has shipped something, and the person who drafts your application is the person who prosecutes it.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#contact">Start a conversation</a>
+        <a class="btn btn-out" href="#services">See what we do</a>
+      </div>
+      <div class="hero-spec">
+        <div><div class="k">Founded</div><div class="v">2014</div></div>
+        <div><div class="k">Attorneys</div><div class="v">11</div></div>
+        <div><div class="k">Registered before USPTO</div><div class="v">All</div></div>
+        <div><div class="k">With an engineering degree</div><div class="v">All</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clients">
+    <div class="wrap">
+      <span class="meta">Who we work for</span>
+      <h2 style="font-size:clamp(20px,2.2vw,26px)">The work belongs to the client. So does the billing.</h2>
+      <div class="cl-grid">
+        <div class="cl">Northline AI</div>
+        <div class="cl">Kestrel Robotics</div>
+        <div class="cl">Alder Bio</div>
+        <div class="cl">Ravel Systems</div>
+        <div class="cl">Two Rivers Data</div>
+        <div class="cl">Foldwell</div>
+      </div>
+      <p class="cl-note">Placeholder client names for concept purposes only. Final client references to be confirmed and approved before publication.</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <span class="meta">Services</span>
+      <h2>Six things, done properly.</h2>
+      <div class="spec">
+        <a class="spec-row" href="#contact"><span class="id">IP-01</span><h3>Patent prosecution</h3><p>US and PCT filings for software, hardware and life-science clients. Drafting done by the attorney who will prosecute it.</p></a>
+        <a class="spec-row" href="#contact"><span class="id">IP-02</span><h3>Trademark &amp; brand</h3><p>Clearance, registration and enforcement across classes, including opposition practice before the TTAB.</p></a>
+        <a class="spec-row" href="#contact"><span class="id">IP-03</span><h3>Open source &amp; licensing</h3><p>Licence compatibility review, contribution policy, and the audit that happens before a raise or an acquisition.</p></a>
+        <a class="spec-row" href="#contact"><span class="id">IP-04</span><h3>Technology transactions</h3><p>SaaS, data, API and reseller agreements written to be read by engineers as well as counsel.</p></a>
+        <a class="spec-row" href="#contact"><span class="id">IP-05</span><h3>Trade secret</h3><p>Protection programmes, departing-employee matters and injunctive relief.</p></a>
+        <a class="spec-row" href="#contact"><span class="id">IP-06</span><h3>Diligence &amp; exits</h3><p>IP diligence on both sides of a transaction, delivered on the timetable the deal actually has.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="matters">
+    <div class="wrap">
+      <span class="meta">Representative matters</span>
+      <h2>What the work looks like.</h2>
+      <div class="mt">
+        <article class="m-card"><span class="tag">Portfolio</span><h3>Seed to Series C, 41 filings</h3><p>Built and prosecuted a machine-learning portfolio through three financings, coordinating US, EP and JP counsel from a single docket.</p></article>
+        <article class="m-card"><span class="tag">Opposition</span><h3>TTAB, mark preserved</h3><p>Defended a registration against a well-resourced opponent and preserved the client's mark in all contested classes.</p></article>
+        <article class="m-card"><span class="tag">Diligence</span><h3>Acquisition, 9-day turnaround</h3><p>Full IP and open-source diligence on a target with 2,400 dependencies, delivered inside the exclusivity window.</p></article>
+      </div>
+      <p class="cl-note" style="margin-top:22px">Matters are illustrative and describe no actual client engagement. Prior results do not guarantee a similar outcome.</p>
+    </div>
+  </section>
+
+  <section class="appr" id="approach">
+    <div class="wrap">
+      <span class="meta">Approach</span>
+      <h2>Three commitments, and we will hold to them in writing.</h2>
+      <div class="ap">
+        <div><h3>Attorneys who read the code</h3><p>Every attorney here has an engineering background. You should not have to translate your own invention before the drafting starts.</p></div>
+        <div><h3>Flat fees where they fit</h3><p>Prosecution, clearance and standard agreements are quoted flat. You will know the number before we start, not after.</p></div>
+        <div><h3>One docket, one owner</h3><p>The attorney who drafts is the attorney who prosecutes and the attorney who answers your email. No handoffs to a name you have never met.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <span class="meta" style="text-align:center">Contact</span>
+      <h2>Tell us what you are building.</h2>
+      <p>A first conversation costs nothing and does not obligate you to file anything. If the timing is wrong we will say so.</p>
+      <a class="btn" href="mailto:hello@halvorsenkite.example">hello@halvorsenkite.example</a>
+    </div>
+  </section>
+
+  <section class="compliance" aria-labelledby="compliance-h">
+    <div class="wrap">
+      <h2 id="compliance-h" class="compliance__h">Attorney Advertising</h2>
+      <div class="compliance__grid">
+        <p><strong>This website is attorney advertising.</strong> The information here is legal information, not legal advice, and should not be relied upon as a substitute for advice about your specific circumstances.</p>
+        <p><strong>No attorney&ndash;client relationship</strong> is created by visiting this site, submitting a form, or sending email. Representation begins only when a written engagement agreement is signed by both parties.</p>
+        <p><strong>Licensed in the State of Washington and before the USPTO.</strong> Halvorsen Kite LLP does not seek to represent anyone in any jurisdiction where this site would not comply with local rules.</p>
+        <p><strong>Prior results do not guarantee a similar outcome.</strong> Every matter turns on its own facts. Any figures shown are illustrative and describe no actual client.</p>
+      </div>
+      <p class="compliance__note">Concept study. <strong>Halvorsen Kite LLP</strong> is a fictional firm created to demonstrate design direction. All names, people, figures, matters and testimonials are illustrative and describe no real entity, person or outcome.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="brand" style="font-size:18px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M12 22V12M3 7l9 5 9-5"/></svg>Halvorsen Kite</div>
+        <p style="margin-top:12px;font-size:14px;max-width:34ch">Intellectual property and technology counsel. Seattle, Washington.</p>
+      </div>
+      <div><h4>Services</h4><ul><li><a href="#services">Patent</a></li><li><a href="#services">Trademark</a></li><li><a href="#services">Open source</a></li><li><a href="#services">Transactions</a></li></ul></div>
+      <div><h4>Firm</h4><ul><li><a href="#matters">Matters</a></li><li><a href="#approach">Approach</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Accessibility</a></li></ul></div>
+    </div>
+    <div class="f-bot"><span>&copy; 2026 Halvorsen Kite LLP</span><span>Attorney advertising</span></div>
+  </div>
+</footer>
+<aside class="sr-credit" aria-label="Design credit">
+  <div class="sr-ghost" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></div>
+  <div class="sr-in">
+    <a class="sr-lock" href="https://syncreach.io/" target="_blank" rel="noopener">
+      <span class="sr-mark"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></span>
+      <span class="sr-wm"><b>SYNC</b><i>REACH</i></span>
+    </a>
+    <p class="sr-txt">Concept study designed and built by <strong>SyncReach</strong>. Digital growth systems for law firms: websites, client intake, search and AI visibility, automation. <a href="https://syncreach.io/" target="_blank" rel="noopener">syncreach.io</a></p>
+  </div>
+</aside>
+<aside class="sr-badge-wrap" aria-label="SyncReach credit badge"><a class="sr-badge" href="https://syncreach.io/" target="_blank" rel="noopener"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg><span>Concept by <b>SyncReach</b></span></a></aside>
+<script>
+
+(function(){
+  // Dark-first, but honour the OS preference and remember an explicit choice.
+  var root=document.documentElement, btn=document.querySelector('[data-theme-toggle]');
+  function apply(t){
+    if(t==='light') root.setAttribute('data-theme','light'); else root.removeAttribute('data-theme');
+    if(btn){ btn.textContent = t==='light' ? 'Dark' : 'Light';
+             btn.setAttribute('aria-pressed', String(t==='light'));
+             btn.setAttribute('aria-label', t==='light' ? 'Switch to dark theme' : 'Switch to light theme'); }
+  }
+  // Dark is the brand, so dark is the default even on a light-preference OS —
+  // otherwise the identity this study exists to demonstrate never renders.
+  // An explicit user choice always wins and is remembered.
+  var saved=null;
+  try{ saved=localStorage.getItem('hk-theme'); }catch(e){}
+  apply(saved || 'dark');
+
+  if(btn) btn.addEventListener('click',function(){
+    var next = root.getAttribute('data-theme')==='light' ? 'dark' : 'light';
+    apply(next);
+    try{ localStorage.setItem('hk-theme', next); }catch(e){}
+  });
+
+  var m=document.querySelector('.menu-btn'), ul=document.querySelector('.nav-links');
+  if(m&&ul) m.addEventListener('click',function(){
+    var open=ul.style.display==='flex';
+    ul.style.cssText=open?'':'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--ink);padding:18px var(--g) 22px;border-bottom:1px solid var(--rule);gap:14px;margin-left:0';
+    m.setAttribute('aria-expanded',String(!open));
+  });
+})();
+
+(function(){
+  var b=document.querySelector('.sr-badge-wrap'), c=document.querySelector('.sr-credit');
+  if(!b||!c||!('IntersectionObserver' in window))return;
+  b.style.transition='opacity .3s,transform .3s';
+  new IntersectionObserver(function(es){es.forEach(function(e){
+    var h=e.isIntersecting; b.style.opacity=h?'0':'1';
+    b.style.transform=h?'translateY(10px)':'none'; b.style.pointerEvents=h?'none':'auto';
+  })},{threshold:0.05}).observe(c);
+})();
+</script>
+</body>
+</html>
