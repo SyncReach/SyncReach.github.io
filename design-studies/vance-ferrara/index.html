@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vance Ferrara | Injury &amp; Wrongful Death Lawyers, Miami</title>
+<meta name="description" content="Miami plaintiff-side injury and wrongful death trial lawyers. Free consultation, available 24 hours, no fee unless we recover.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#141210">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&family=IBM+Plex+Serif:wght@400&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --black:#141210; --black-dp:#0C0B09; --char:#211E1A;
+  --bone:#F5F1EA; --bone-dp:#E8E2D7;
+  --amber:#E8A020;           /* 8.44:1 on black — text-safe */
+  --amber-dp:#C4841300;      /* unused placeholder */
+  --mut:#A39B8D;             /* 6.79:1 on black */
+  --mut-dk:#5C554A;          /* 6.54:1 on bone */
+  --rule:rgba(245,241,234,.16);
+  --disp:'Archivo',system-ui,sans-serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --max:1240px; --g:clamp(20px,5vw,56px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--bone);font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--disp);font-weight:800;line-height:1.02;letter-spacing:-.03em;text-transform:uppercase}
+h2{font-size:clamp(30px,5vw,58px)}
+h3{font-size:clamp(17px,1.8vw,21px);letter-spacing:-.01em}
+p{max-width:62ch}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--g)}
+section{padding:clamp(60px,8vw,110px) 0}
+.skip{position:absolute;left:-9999px;background:var(--amber);color:var(--black);padding:12px 20px;z-index:300}
+.skip:focus{left:0}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.eyebrow{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:14px}
+.lede{font-size:clamp(17px,1.7vw,20px);color:var(--mut)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:16px 28px;
+  font-family:var(--disp);font-size:15px;font-weight:700;letter-spacing:.01em;text-transform:uppercase;
+  background:var(--amber);color:var(--black);border:2px solid var(--amber);text-decoration:none;cursor:pointer;transition:.18s}
+.btn:hover{background:#F2B141;border-color:#F2B141;transform:translateY(-2px)}
+.btn-out{background:transparent;color:var(--bone);border-color:rgba(245,241,234,.45)}
+.btn-out:hover{background:rgba(245,241,234,.1);border-color:var(--bone);transform:translateY(-2px)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:90;background:rgba(20,18,16,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:14px var(--g);display:flex;align-items:center;gap:34px}
+.brand{font-family:var(--disp);font-weight:800;font-size:19px;letter-spacing:-.02em;text-transform:uppercase;text-decoration:none;display:flex;align-items:center;gap:9px}
+.brand span{width:9px;height:9px;background:var(--amber);display:block}
+.nav-links{display:flex;gap:26px;list-style:none;margin-left:auto}
+.nav-links a{font-size:14px;font-weight:600;color:var(--mut);text-decoration:none}
+.nav-links a:hover{color:var(--bone)}
+.nav-tel{font-family:var(--disp);font-weight:800;font-size:17px;color:var(--amber);text-decoration:none;white-space:nowrap}
+.menu-btn{display:none;background:none;border:1px solid var(--rule);padding:9px 13px;font:600 13px var(--sans);color:var(--bone);cursor:pointer}
+
+/* hero — video with poster + solid fallback beneath */
+.hero{position:relative;min-height:min(88vh,760px);display:flex;align-items:flex-end;overflow:hidden;background:var(--black-dp)}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero .poster{z-index:0}
+.hero video{z-index:1}
+.hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(75deg,rgba(12,11,9,.94) 0%,rgba(12,11,9,.86) 46%,rgba(12,11,9,.55) 100%)}
+.hero-in{position:relative;z-index:3;width:100%;padding:clamp(56px,8vw,96px) 0 clamp(40px,5vw,64px)}
+.hero h1{font-size:clamp(40px,7.4vw,92px);max-width:15ch;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero .lede{max-width:48ch;margin-bottom:30px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:38px;padding-top:22px;border-top:1px solid var(--rule)}
+.hero-trust div{font-size:14px;color:var(--mut);display:flex;align-items:center;gap:8px}
+.hero-trust i{width:7px;height:7px;background:var(--amber);display:block;flex:none}
+
+/* results */
+.results{background:var(--char)}
+.r-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:44px}
+.r{background:var(--char);padding:30px 24px}
+.r .fig{font-family:var(--disp);font-weight:800;font-size:clamp(30px,3.6vw,46px);color:var(--amber);letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1}
+.r .lab{font-size:13.5px;color:var(--mut);margin-top:10px}
+/* The disclaimer is a designed part of this component, not fine print —
+   ABA Model Rule 7.1 makes results claims a regulated element. */
+.r-note{margin-top:22px;padding:16px 20px;border-left:3px solid var(--amber);background:rgba(232,160,32,.07);font-size:13.5px;color:var(--mut);max-width:none}
+.r-note strong{color:var(--bone)}
+
+/* practice */
+.pr{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:44px}
+.p-card{background:var(--black);padding:30px 26px;text-decoration:none;display:block;transition:background .2s}
+.p-card:hover{background:var(--char)}
+.p-card .n{font-family:var(--disp);font-size:13px;color:var(--amber);letter-spacing:.08em;display:block;margin-bottom:14px}
+.p-card h3{margin-bottom:9px}
+.p-card p{font-size:14.5px;color:var(--mut);max-width:none}
+
+/* process */
+.proc{background:var(--bone);color:var(--black)}
+.proc h2,.proc h3{color:var(--black)}
+.proc .eyebrow{color:#9A6A0E}
+.proc .lede{color:var(--mut-dk)}
+.pr-list{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:44px}
+.pr-item{border-top:3px solid var(--black);padding-top:18px}
+.pr-item .n{font-family:var(--disp);font-weight:800;font-size:34px;letter-spacing:-.03em;display:block;margin-bottom:8px}
+.pr-item p{font-size:15px;color:var(--mut-dk);max-width:none}
+
+/* testimonial */
+.tst{background:var(--black-dp);text-align:center}
+.tst blockquote{font-family:var(--disp);font-weight:700;font-size:clamp(22px,3.2vw,38px);line-height:1.24;letter-spacing:-.02em;max-width:20ch;margin:0 auto 24px;text-transform:none}
+.tst cite{font-style:normal;font-size:14px;color:var(--mut)}
+.tst .disc{font-size:13px;color:var(--mut);margin:26px auto 0;max-width:56ch}
+
+/* CTA */
+.cta{background:var(--amber);color:var(--black);text-align:center}
+.cta h2{color:var(--black);max-width:18ch;margin:0 auto 16px}
+.cta p{color:#3D2E0C;margin:0 auto 30px;max-width:50ch}
+.cta .btn{background:var(--black);color:var(--amber);border-color:var(--black)}
+.cta .btn:hover{background:var(--char);border-color:var(--char)}
+
+/* sticky mobile call bar */
+.dock{display:none;position:fixed;bottom:0;left:0;right:0;z-index:95;background:var(--black-dp);
+  border-top:1px solid var(--rule);padding:9px 9px calc(9px + env(safe-area-inset-bottom));gap:9px}
+.dock a{flex:1;display:flex;align-items:center;justify-content:center;min-height:48px;
+  font-family:var(--disp);font-weight:700;font-size:14px;text-transform:uppercase;text-decoration:none;
+  border:2px solid rgba(245,241,234,.45);color:var(--bone)}
+.dock a.p{background:var(--amber);border-color:var(--amber);color:var(--black)}
+
+/* compliance */
+.compliance{background:var(--char);border-top:1px solid var(--rule);padding:clamp(44px,6vw,64px) 0}
+.compliance__h{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:22px}
+.compliance__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 34px}
+.compliance p{font-size:13.5px;line-height:1.6;color:var(--mut);max-width:58ch}
+.compliance strong{color:var(--bone)}
+.compliance__note{margin-top:24px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px}
+
+footer{background:var(--black-dp);color:var(--mut);padding:52px 0 30px}
+.f-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:36px;margin-bottom:36px}
+footer h4{font-family:var(--sans);font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--bone);margin-bottom:14px;font-weight:700}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+footer a{font-size:14px;text-decoration:none;color:var(--mut)}
+footer a:hover{color:var(--amber)}
+.f-bot{border-top:1px solid var(--rule);padding-top:20px;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:960px){
+  .nav-links{display:none}.menu-btn{display:block;margin-left:auto}
+  .r-grid,.pr,.pr-list,.f-grid,.compliance__grid{grid-template-columns:1fr}
+  .dock{display:flex}body{padding-bottom:76px}
+  .hero{min-height:0}
+}
+@media (max-width:560px){ .r-grid{grid-template-columns:1fr} }
+
+/* Narrow-viewport nav. With the links collapsed the row is brand + controls;
+   without min-width:0 the brand refuses to shrink and pushes the row wide. */
+@media (max-width:560px){
+  .nav-in{gap:12px}
+  .brand{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:17px}
+  .menu-btn{margin-left:auto;flex:none}
+}
+@media (max-width:560px){ .nav-tel{font-size:15px;flex:none} }
+@media (max-width:400px){ .nav-tel{display:none} }  /* the dock carries Call */
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}html{scroll-behavior:auto}
+  .hero video{display:none}   /* poster carries it */
+}
+
+
+.sr-credit{position:relative;overflow:hidden;background:#F1EDE0;color:#02020E;
+  font-family:'IBM Plex Sans',system-ui,sans-serif;padding:32px 0;border-top:1px solid #E0D9C6}
+.sr-ghost{position:absolute;right:-70px;top:50%;transform:translateY(-50%);width:300px;height:300px;color:#E4DECF;pointer-events:none;opacity:.85}
+.sr-ghost svg{width:100%;height:100%}
+.sr-in{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,60px);
+  display:flex;align-items:center;gap:clamp(16px,3vw,34px);flex-wrap:wrap}
+.sr-lock{display:flex;align-items:center;gap:11px;color:inherit;flex:none;text-decoration:none}
+.sr-mark{width:30px;height:30px;color:#840902;flex:none}
+.sr-wm{display:flex;flex-direction:column;line-height:1}
+.sr-wm b{font-weight:700;font-size:15px}
+.sr-wm i{font-family:'IBM Plex Serif',Georgia,serif;font-style:normal;font-size:9px;letter-spacing:4px;color:#5B6183;margin-top:3px}
+.sr-txt{font-size:13.5px;line-height:1.5;color:#5B6183;max-width:62ch;margin:0}
+.sr-txt strong{color:#02020E;font-weight:600}
+.sr-txt a{color:#840902;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(132,9,2,.35)}
+.sr-badge-wrap{position:fixed;left:0;top:0;width:0;height:0}
+.sr-badge{position:fixed;left:16px;bottom:16px;z-index:95;display:flex;align-items:center;gap:8px;
+  background:#FFFDF6;border:1px solid #E0D9C6;border-radius:99px;padding:7px 14px 7px 10px;text-decoration:none;
+  font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:12.5px;color:#02020E;
+  box-shadow:0 1px 2px rgba(2,2,14,.04),0 8px 22px rgba(2,2,14,.07);transition:transform .2s,opacity .3s}
+.sr-badge:hover{transform:translateY(-2px)}
+.sr-badge svg{width:17px;height:17px;color:#840902;flex:none}
+@media (max-width:860px){.sr-badge,.sr-badge-wrap{display:none}.sr-ghost{right:-120px;width:230px;height:230px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#"><span></span>Vance Ferrara</a>
+    <nav aria-label="Primary"><ul class="nav-links">
+      <li><a href="#results">Results</a></li>
+      <li><a href="#practice">Practice areas</a></li>
+      <li><a href="#process">How it works</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+    <a class="nav-tel" href="tel:+13055550119">(305) 555-0119</a>
+    <button class="menu-btn" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <img class="poster" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80" alt="" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80" aria-hidden="true">
+      <source src="https://videos.pexels.com/video-files/8731589/8731589-hd_1920_1080_25fps.mp4" type="video/mp4">
+    </video>
+    <div class="hero-in">
+      <div class="wrap">
+        <span class="eyebrow">Injury &amp; Wrongful Death &middot; Miami, Florida</span>
+        <h1>The insurer already has <em>a team.</em></h1>
+        <p class="lede">Within hours of a serious collision, the other side has adjusters, investigators and counsel working the file. You should have the same. Free consultation, and no fee unless we recover.</p>
+        <div class="hero-cta">
+          <a class="btn" href="tel:+13055550119">Call (305) 555-0119</a>
+          <a class="btn btn-out" href="#contact">Start a free case review</a>
+        </div>
+        <div class="hero-trust">
+          <div><i></i>Available 24 hours</div>
+          <div><i></i>No fee unless we recover</div>
+          <div><i></i>Se habla espa&ntilde;ol</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="results" id="results">
+    <div class="wrap">
+      <span class="eyebrow">Representative results</span>
+      <h2>Recoveries, with the context that makes them mean something.</h2>
+      <div class="r-grid">
+        <div class="r"><div class="fig">$14.2M</div><div class="lab">Commercial truck collision, Broward County</div></div>
+        <div class="r"><div class="fig">$6.8M</div><div class="lab">Construction site fall, Miami-Dade</div></div>
+        <div class="r"><div class="fig">$3.1M</div><div class="lab">Rideshare collision, catastrophic injury</div></div>
+        <div class="r"><div class="fig">$2.4M</div><div class="lab">Premises liability, traumatic brain injury</div></div>
+      </div>
+      <p class="r-note"><strong>Prior results do not guarantee a similar outcome.</strong> Every case turns on its own facts, its own injuries and its own insurance limits. The figures above are illustrative and describe no actual client. A recovery in one matter says nothing about what any other matter is worth.</p>
+    </div>
+  </section>
+
+  <section id="practice">
+    <div class="wrap">
+      <span class="eyebrow">What we handle</span>
+      <h2>Serious injury. Plaintiff side only.</h2>
+      <p class="lede" style="margin-top:14px;max-width:56ch">We have never represented an insurance company, and we do not take defence work. That is a deliberate limit, and it is the whole practice.</p>
+      <div class="pr">
+        <a class="p-card" href="#contact"><span class="n">01</span><h3>Truck &amp; commercial vehicle</h3><p>Federal carrier rules, black-box data and corporate defendants who lawyer up within hours.</p></a>
+        <a class="p-card" href="#contact"><span class="n">02</span><h3>Catastrophic injury</h3><p>Spinal, brain and amputation cases where the number has to cover a lifetime, not a year.</p></a>
+        <a class="p-card" href="#contact"><span class="n">03</span><h3>Rideshare &amp; delivery</h3><p>Layered insurance policies that turn on which app was open and when.</p></a>
+        <a class="p-card" href="#contact"><span class="n">04</span><h3>Premises liability</h3><p>Falls, negligent security and the maintenance records that decide these cases.</p></a>
+        <a class="p-card" href="#contact"><span class="n">05</span><h3>Wrongful death</h3><p>Survivor claims handled with the pace the family sets, not the insurer.</p></a>
+        <a class="p-card" href="#contact"><span class="n">06</span><h3>Insurance bad faith</h3><p>When the carrier had the chance to settle fairly and did not take it.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="proc" id="process">
+    <div class="wrap">
+      <span class="eyebrow">How it works</span>
+      <h2>Three steps, and the first one costs nothing.</h2>
+      <div class="pr-list">
+        <div class="pr-item"><span class="n">1</span><h3>Call us</h3><p>Free. Any hour. We will tell you in the first conversation whether you have a case worth bringing.</p></div>
+        <div class="pr-item"><span class="n">2</span><h3>We investigate</h3><p>Scene, records, witnesses and experts &mdash; funded by us, not by you.</p></div>
+        <div class="pr-item"><span class="n">3</span><h3>You pay nothing unless we win</h3><p>No fee unless we recover. Costs are advanced by the firm.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tst">
+    <div class="wrap">
+      <blockquote>&ldquo;They took the call at eleven at night and had an investigator at the scene before the tow truck left.&rdquo;</blockquote>
+      <cite>&mdash; Illustrative client statement, Miami-Dade County</cite>
+      <p class="disc">Testimonial is illustrative and does not describe an actual client. Testimonials do not constitute a guarantee, warranty or prediction regarding the outcome of your legal matter.</p>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <h2>Tell us what happened.</h2>
+      <p>Free case review, any hour. If we are not the right firm for your matter we will say so and refer you on.</p>
+      <a class="btn" href="tel:+13055550119">Call (305) 555-0119</a>
+    </div>
+  </section>
+
+  <section class="compliance" aria-labelledby="compliance-h">
+    <div class="wrap">
+      <h2 id="compliance-h" class="compliance__h">Attorney Advertising</h2>
+      <div class="compliance__grid">
+        <p><strong>This website is attorney advertising.</strong> The information here is legal information, not legal advice, and should not be relied upon as a substitute for advice about your specific circumstances.</p>
+        <p><strong>No attorney&ndash;client relationship</strong> is created by visiting this site, submitting a form, or sending email. Representation begins only when a written engagement agreement is signed by both parties.</p>
+        <p><strong>Licensed in the State of Florida.</strong> Vance Ferrara P.A. does not seek to represent anyone in any jurisdiction where this site would not comply with local rules.</p>
+        <p><strong>Prior results do not guarantee a similar outcome.</strong> Every matter turns on its own facts. Any figures shown are illustrative and describe no actual client. No fee unless a recovery is obtained; costs and expenses may be the client&rsquo;s responsibility.</p>
+      </div>
+      <p class="compliance__note">Concept study. <strong>Vance Ferrara P.A.</strong> is a fictional firm created to demonstrate design direction. All names, people, figures, matters and testimonials are illustrative and describe no real entity, person or outcome.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="brand" style="font-size:19px;color:var(--bone)"><span></span>Vance Ferrara</div>
+        <p style="margin-top:12px;font-size:14px;max-width:34ch">Plaintiff-side injury and wrongful death trial lawyers. Miami, Florida.</p>
+        <p style="margin-top:14px"><a href="tel:+13055550119" style="color:var(--amber);font-weight:700;font-family:var(--disp)">(305) 555-0119</a></p>
+      </div>
+      <div><h4>Practice</h4><ul><li><a href="#practice">Truck collisions</a></li><li><a href="#practice">Catastrophic injury</a></li><li><a href="#practice">Rideshare</a></li><li><a href="#practice">Wrongful death</a></li></ul></div>
+      <div><h4>Firm</h4><ul><li><a href="#results">Results</a></li><li><a href="#process">How it works</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Accessibility</a></li></ul></div>
+    </div>
+    <div class="f-bot"><span>&copy; 2026 Vance Ferrara P.A.</span><span>Attorney advertising</span></div>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="Quick contact">
+  <a class="p" href="tel:+13055550119">Call now</a>
+  <a href="#contact">Free case review</a>
+</nav>
+<aside class="sr-credit" aria-label="Design credit">
+  <div class="sr-ghost" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></div>
+  <div class="sr-in">
+    <a class="sr-lock" href="https://syncreach.io/" target="_blank" rel="noopener">
+      <span class="sr-mark"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></span>
+      <span class="sr-wm"><b>SYNC</b><i>REACH</i></span>
+    </a>
+    <p class="sr-txt">Concept study designed and built by <strong>SyncReach</strong>. Digital growth systems for law firms: websites, client intake, search and AI visibility, automation. <a href="https://syncreach.io/" target="_blank" rel="noopener">syncreach.io</a></p>
+  </div>
+</aside>
+<aside class="sr-badge-wrap" aria-label="SyncReach credit badge"><a class="sr-badge" href="https://syncreach.io/" target="_blank" rel="noopener"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg><span>Concept by <b>SyncReach</b></span></a></aside>
+<script>
+
+(function(){
+  var m=document.querySelector('.menu-btn'), ul=document.querySelector('.nav-links');
+  if(m&&ul) m.addEventListener('click',function(){
+    var open=ul.style.display==='flex';
+    ul.style.cssText=open?'':'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--black-dp);padding:18px var(--g) 22px;border-bottom:1px solid var(--rule);gap:14px;margin-left:0';
+    m.setAttribute('aria-expanded',String(!open));
+  });
+  // Count-up on the results figures. Reduced motion gets the final value only.
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce && 'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting||e.target.dataset.done) return;
+      e.target.dataset.done='1';
+      var el=e.target, txt=el.textContent, num=parseFloat(txt.replace(/[^0-9.]/g,''));
+      if(isNaN(num)) return;
+      var pre=txt.match(/^[^0-9.]*/)[0], post=txt.match(/[^0-9.]*$/)[0], t0=null;
+      function step(t){ if(!t0)t0=t; var k=Math.min((t-t0)/900,1);
+        el.textContent=pre+(num*(1-Math.pow(1-k,3))).toFixed(1)+post;
+        if(k<1) requestAnimationFrame(step); else el.textContent=txt; }
+      requestAnimationFrame(step);
+    })},{threshold:.4});
+    document.querySelectorAll('.r .fig').forEach(function(f){io.observe(f);});
+  }
+})();
+
+(function(){
+  var b=document.querySelector('.sr-badge-wrap'), c=document.querySelector('.sr-credit');
+  if(!b||!c||!('IntersectionObserver' in window))return;
+  b.style.transition='opacity .3s,transform .3s';
+  new IntersectionObserver(function(es){es.forEach(function(e){
+    var h=e.isIntersecting; b.style.opacity=h?'0':'1';
+    b.style.transform=h?'translateY(10px)':'none'; b.style.pointerEvents=h?'none':'auto';
+  })},{threshold:0.05}).observe(c);
+})();
+</script>
+</body>
+</html>
