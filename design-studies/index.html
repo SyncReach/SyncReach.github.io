@@ -18,7 +18,7 @@
 .card{display:flex;flex-direction:column;background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow:hidden;transition:border-color var(--ease) .16s,box-shadow var(--ease) .16s;}
 .card:hover{border-color:var(--brand-red);box-shadow:var(--shadow-overlay);}
 .shot{position:relative;overflow:hidden;border-bottom:1px solid var(--border-default);background:var(--brand-navy);display:flex;align-items:center;justify-content:center;}
-.shot img{width:100%;height:100%;object-fit:cover;object-position:top center;position:relative;z-index:2;}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;z-index:2;}/* absolute, not relative: .shot is display:flex, and a relatively-positioned img shrinks to its aspect-ratio width (948px in a 1150px frame) instead of filling, so object-fit:cover never engages. */
 .shot__ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
 .shot__motif{position:absolute;inset:0;color:var(--slate-400);opacity:0.26;display:flex;align-items:center;justify-content:center;}
 .shot__motif svg{width:120%;height:120%;}
