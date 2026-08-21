@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wren &amp; Alderman | Family Law, Portland Oregon</title>
+<meta name="description" content="A Portland family law practice handling divorce, parenting plans, mediation and support. Free confidential consultation.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#3F5D52">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&family=IBM+Plex+Serif:wght@400&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --sand:#EFE7DA; --sand-dp:#E5DACA; --paper:#FBF7F1;
+  --euc:#3F5D52; --euc-dp:#324A42; --euc-lt:#6E8C80;
+  --ink:#2A3A33; --mut:#4A5D55;
+  --clay:#9C5238;            /* text-safe: 4.65:1 on sand */
+  --clay-lg:#C4714E;         /* large / decorative only: 2.94:1 */
+  --rule:#D9CDBB;
+  --serif:'Newsreader',Georgia,serif;
+  --sans:'Public Sans',system-ui,sans-serif;
+  --max:1180px; --g:clamp(20px,5vw,56px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sand);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.68;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;letter-spacing:-.015em;color:var(--euc-dp)}
+h2{font-size:clamp(28px,4vw,44px)}
+h3{font-size:clamp(19px,2vw,23px);line-height:1.3}
+p{max-width:64ch}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--g)}
+section{padding:clamp(64px,9vw,116px) 0}
+.skip{position:absolute;left:-9999px;background:var(--euc);color:#fff;padding:12px 20px;z-index:300}
+.skip:focus{left:0}
+:focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--clay);display:block;margin-bottom:14px}
+.lede{font-size:clamp(17px,1.7vw,19.5px);color:var(--mut)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 26px;
+  font-family:var(--sans);font-size:15px;font-weight:600;border:2px solid var(--euc);
+  background:var(--euc);color:#fff;text-decoration:none;border-radius:2px;cursor:pointer;transition:.2s}
+.btn:hover{background:var(--euc-dp);border-color:var(--euc-dp)}
+.btn-out{background:transparent;color:var(--euc-dp)}
+.btn-out:hover{background:var(--euc);color:#fff}
+
+/* quick exit — a real safety pattern on family / DV sites */
+.exit{position:fixed;top:0;right:0;z-index:200;background:var(--clay);color:#fff;
+  border:0;border-bottom-left-radius:4px;font:600 13.5px var(--sans);padding:0 18px;min-height:44px;
+  cursor:pointer;display:flex;align-items:center;gap:8px}
+.exit:hover{background:#8E4931}
+.exit-note{font-size:12.5px;color:var(--mut);margin-top:10px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:90;background:rgba(239,231,218,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:16px var(--g);display:flex;align-items:center;gap:36px}
+.brand{display:flex;align-items:baseline;gap:9px;text-decoration:none;font-family:var(--serif);font-size:21px;color:var(--euc-dp)}
+.brand i{font-style:normal;color:var(--clay)}
+.nav-links{display:flex;gap:28px;list-style:none;margin-left:auto}
+.nav-links a{font-size:14.5px;font-weight:500;color:var(--mut);text-decoration:none;padding-bottom:3px;border-bottom:1px solid transparent}
+.nav-links a:hover{color:var(--euc-dp);border-color:var(--clay)}
+.menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--rule);padding:9px 14px;font:600 13px var(--sans);color:var(--euc-dp);cursor:pointer}
+
+/* hero */
+.hero{padding:clamp(48px,7vw,88px) 0 clamp(56px,8vw,96px)}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(36px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(38px,5.6vw,66px);letter-spacing:-.025em;margin-bottom:22px;max-width:15ch}
+.hero h1 em{font-style:italic;color:var(--clay)}
+.hero .lede{max-width:46ch;margin-bottom:30px}
+.hero-cta{display:flex;gap:13px;flex-wrap:wrap}
+.hero-fig{border-radius:3px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 60px -24px rgba(42,58,51,.4)}
+.hero-fig img{width:100%;height:100%;object-fit:cover}
+
+/* steps — the spine of the page */
+.steps{background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.step-list{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:48px}
+.step{background:var(--paper);padding:28px 22px}
+.step .n{font-family:var(--serif);font-size:15px;color:var(--clay);display:block;margin-bottom:12px}
+.step h3{font-size:18px;margin-bottom:8px}
+.step p{font-size:14.5px;color:var(--mut);max-width:none}
+
+/* plain-language Q&A */
+.qa{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:44px}
+.q{background:var(--paper);border:1px solid var(--rule);border-radius:3px;padding:26px 28px}
+.q h3{font-size:18.5px;margin-bottom:10px}
+.q p{font-size:15px;color:var(--mut);max-width:none}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px}
+.s-card{border-top:2px solid var(--euc-lt);padding-top:20px}
+.s-card h3{margin-bottom:9px}
+.s-card p{font-size:15px;color:var(--mut);max-width:none}
+
+/* quiet band */
+.quiet{background:var(--euc);color:#fff;text-align:center}
+.quiet h2{color:#fff;max-width:20ch;margin:0 auto 18px}
+.quiet p{color:#D6E2DC;margin:0 auto 30px;max-width:52ch}
+.quiet .btn{background:#fff;color:var(--euc-dp);border-color:#fff}
+.quiet .btn:hover{background:var(--sand);border-color:var(--sand)}
+
+/* people */
+.ppl{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+.pc img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:50%;max-width:220px;margin-bottom:18px}
+.pc h3{font-size:20px}
+.pc .role{font-size:13px;color:var(--clay);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-top:5px}
+.pc p{font-size:14.5px;color:var(--mut);margin-top:10px;max-width:none}
+
+/* contact */
+.contact{background:var(--paper);border-top:1px solid var(--rule)}
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,64px);align-items:start}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;padding:13px 15px;border:1px solid #93A69C;border-radius:2px;
+  font:400 16px var(--sans);background:#fff;color:var(--ink);min-height:48px}
+.field textarea{min-height:120px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--euc);outline:2px solid var(--clay);outline-offset:2px}
+.opt{font-weight:400;color:var(--mut)}
+
+/* compliance */
+.compliance{background:var(--sand-dp);border-top:1px solid var(--rule);padding:clamp(44px,6vw,64px) 0}
+.compliance__h{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);margin-bottom:22px}
+.compliance__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 34px}
+.compliance p{font-size:13.5px;line-height:1.6;color:var(--mut);max-width:58ch}
+.compliance strong{color:var(--ink)}
+.compliance__note{margin-top:24px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px}
+
+footer{background:var(--ink);color:#C7D2CC;padding:52px 0 30px}
+.f-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:36px;margin-bottom:36px}
+.f-brand{font-family:var(--serif);font-size:20px;color:var(--sand)}
+footer h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--sand);margin-bottom:14px;font-family:var(--sans);font-weight:700}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+footer a{font-size:14px;text-decoration:none;color:#C7D2CC}
+footer a:hover{color:var(--clay-lg)}
+.f-bot{border-top:1px solid rgba(239,231,218,.15);padding-top:20px;font-size:13px;color:#9AA8A1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:960px){
+  .nav-links{display:none}.menu-btn{display:block}
+  .hero-grid{grid-template-columns:1fr}.hero-fig{order:-1;aspect-ratio:16/10}
+  .step-list{grid-template-columns:1fr}
+  .qa,.svc,.ppl,.c-grid,.f-grid,.compliance__grid{grid-template-columns:1fr}
+}
+
+/* Narrow-viewport nav. With the links collapsed the row is brand + controls;
+   without min-width:0 the brand refuses to shrink and pushes the row wide. */
+@media (max-width:560px){
+  .nav-in{gap:12px}
+  .brand{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:17px}
+  .menu-btn{margin-left:auto;flex:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+
+.sr-credit{position:relative;overflow:hidden;background:#F1EDE0;color:#02020E;
+  font-family:'IBM Plex Sans',system-ui,sans-serif;padding:32px 0;border-top:1px solid #E0D9C6}
+.sr-ghost{position:absolute;right:-70px;top:50%;transform:translateY(-50%);width:300px;height:300px;color:#E4DECF;pointer-events:none;opacity:.85}
+.sr-ghost svg{width:100%;height:100%}
+.sr-in{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,60px);
+  display:flex;align-items:center;gap:clamp(16px,3vw,34px);flex-wrap:wrap}
+.sr-lock{display:flex;align-items:center;gap:11px;color:inherit;flex:none;text-decoration:none}
+.sr-mark{width:30px;height:30px;color:#840902;flex:none}
+.sr-wm{display:flex;flex-direction:column;line-height:1}
+.sr-wm b{font-weight:700;font-size:15px}
+.sr-wm i{font-family:'IBM Plex Serif',Georgia,serif;font-style:normal;font-size:9px;letter-spacing:4px;color:#5B6183;margin-top:3px}
+.sr-txt{font-size:13.5px;line-height:1.5;color:#5B6183;max-width:62ch;margin:0}
+.sr-txt strong{color:#02020E;font-weight:600}
+.sr-txt a{color:#840902;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(132,9,2,.35)}
+.sr-badge-wrap{position:fixed;left:0;top:0;width:0;height:0}
+.sr-badge{position:fixed;left:16px;bottom:16px;z-index:95;display:flex;align-items:center;gap:8px;
+  background:#FFFDF6;border:1px solid #E0D9C6;border-radius:99px;padding:7px 14px 7px 10px;text-decoration:none;
+  font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:12.5px;color:#02020E;
+  box-shadow:0 1px 2px rgba(2,2,14,.04),0 8px 22px rgba(2,2,14,.07);transition:transform .2s,opacity .3s}
+.sr-badge:hover{transform:translateY(-2px)}
+.sr-badge svg{width:17px;height:17px;color:#840902;flex:none}
+@media (max-width:860px){.sr-badge,.sr-badge-wrap{display:none}.sr-ghost{right:-120px;width:230px;height:230px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<button class="exit" type="button" data-exit title="Leaves this site immediately and replaces this page in your history">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  Quick exit
+</button>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#">Wren <i>&amp;</i> Alderman</a>
+    <nav aria-label="Primary"><ul class="nav-links">
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#answers">Answers</a></li>
+      <li><a href="#people">Our team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+    <button class="menu-btn" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Family Law &middot; Portland, Oregon</span>
+        <h1>You are allowed to <em>not know</em> what happens next.</h1>
+        <p class="lede">Most people who call us have never spoken to a family lawyer before. There is no test to pass and nothing you need to have figured out first. Start with a conversation.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#contact">Book a free consultation</a>
+          <a class="btn btn-out" href="#how">See how it works</a>
+        </div>
+        <p class="exit-note">Browsing on a shared device? The <strong>Quick exit</strong> button at the top right leaves this site immediately.</p>
+      </div>
+      <figure class="hero-fig">
+        <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=760&q=80" alt="Morning light through a window in a quiet room" width="760" height="950">
+      </figure>
+    </div>
+  </section>
+
+  <section class="steps" id="how">
+    <div class="wrap">
+      <span class="eyebrow">What happens next</span>
+      <h2>Five steps, and you always know which one you are on.</h2>
+      <div class="step-list">
+        <div class="step"><span class="n">01</span><h3>A first conversation</h3><p>Free, confidential, and no obligation. We listen before we advise.</p></div>
+        <div class="step"><span class="n">02</span><h3>Understanding your position</h3><p>We map assets, children, timelines and risks so you can see the whole picture.</p></div>
+        <div class="step"><span class="n">03</span><h3>Choosing a path</h3><p>Mediation, collaborative, or court. We explain the trade-offs in plain terms.</p></div>
+        <div class="step"><span class="n">04</span><h3>Doing the work</h3><p>Filings, negotiation, and advocacy — with you told what is happening and when.</p></div>
+        <div class="step"><span class="n">05</span><h3>Afterwards</h3><p>Orders implemented, and support if things need revisiting later.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <span class="eyebrow">How we help</span>
+      <h2>Family law, and nothing else.</h2>
+      <div class="svc">
+        <article class="s-card"><h3>Divorce &amp; dissolution</h3><p>Property division, spousal support and the practical work of separating two lives.</p></article>
+        <article class="s-card"><h3>Parenting &amp; custody</h3><p>Parenting plans, relocation, and modification when circumstances change.</p></article>
+        <article class="s-card"><h3>Mediation</h3><p>A structured alternative to litigation, for couples who want to keep control of the outcome.</p></article>
+        <article class="s-card"><h3>Support &amp; enforcement</h3><p>Child and spousal support, calculation, review and enforcement.</p></article>
+        <article class="s-card"><h3>Prenuptial agreements</h3><p>Clear agreements made calmly, before they are ever needed.</p></article>
+        <article class="s-card"><h3>Domestic safety</h3><p>Protective orders and urgent applications, handled discreetly and quickly.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="quiet">
+    <div class="wrap">
+      <h2>The first call is free, and it is confidential.</h2>
+      <p>Thirty minutes, no obligation, and no pressure to retain us at the end of it. If we are not the right fit we will say so and point you somewhere better.</p>
+      <a class="btn" href="#contact">Book a consultation</a>
+    </div>
+  </section>
+
+  <section id="answers" style="background:var(--paper)">
+    <div class="wrap">
+      <span class="eyebrow">Plain answers</span>
+      <h2>The questions people actually ask.</h2>
+      <div class="qa">
+        <div class="q"><h3>Will I have to go to court?</h3><p>Most of our matters resolve without a trial. Mediation and collaborative processes are usually faster, cheaper and less damaging to co-parenting relationships — but we prepare every case as though it may be heard.</p></div>
+        <div class="q"><h3>What will this cost?</h3><p>We give a written estimate after the first meeting, and we bill against it. If a strategy stops being proportionate to what is at stake, we will tell you rather than keep going.</p></div>
+        <div class="q"><h3>Can I keep the house?</h3><p>Sometimes. It depends on equity, income, and what else is being divided. We will model the realistic options before you make a decision you cannot reverse.</p></div>
+        <div class="q"><h3>How long does it take?</h3><p>Oregon requires a 90-day waiting period for dissolution. Uncontested matters often finish close to that; contested ones take longer, and we will give you a range rather than a promise.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="people">
+    <div class="wrap">
+      <span class="eyebrow">Our team</span>
+      <h2>Small firm. You will know who is handling your matter.</h2>
+      <div class="ppl">
+        <article class="pc"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=440&q=80" alt="" loading="lazy"><h3>Placeholder Name</h3><div class="role">Partner</div><p>Twenty years in family law, with a practice built on keeping matters out of court where that serves the client.</p></article>
+        <article class="pc"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=440&q=80" alt="" loading="lazy"><h3>Placeholder Name</h3><div class="role">Partner</div><p>Collaborative-trained, with a focus on parenting plans and complex relocation matters.</p></article>
+        <article class="pc"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=440&q=80" alt="" loading="lazy"><h3>Placeholder Name</h3><div class="role">Associate</div><p>Support calculation, enforcement, and the procedural work that keeps a matter moving.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap c-grid">
+      <div>
+        <span class="eyebrow">Get in touch</span>
+        <h2>Book a free, confidential consultation.</h2>
+        <p class="lede" style="margin-top:16px">We reply within one business day. If you would rather speak to someone now, call <a href="tel:+15035550147" style="color:var(--clay);font-weight:600">(503) 555-0147</a>.</p>
+        <p style="margin-top:24px;font-size:14.5px;color:var(--mut)">Wren &amp; Alderman LLP<br>1400 SW Morrison Street, Suite 210<br>Portland, Oregon 97205</p>
+      </div>
+      <form data-concept>
+        <div class="field"><label for="n">Your name</label><input id="n" name="name" required></div>
+        <div class="field"><label for="e">Email</label><input id="e" type="email" name="email" required></div>
+        <div class="field"><label for="p">Phone <span class="opt">(optional)</span></label><input id="p" type="tel" name="phone"></div>
+        <div class="field"><label for="m">Safe to contact by</label>
+          <select id="m" name="method"><option>Email only</option><option>Phone</option><option>Either is fine</option></select></div>
+        <div class="field"><label for="t">Anything you would like us to know <span class="opt">(optional)</span></label><textarea id="t" name="note"></textarea></div>
+        <button class="btn" type="submit" style="width:100%">Request a consultation</button>
+        <p style="font-size:13px;color:var(--mut);margin-top:12px">Sending this form does not create an attorney&ndash;client relationship.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="compliance" aria-labelledby="compliance-h">
+    <div class="wrap">
+      <h2 id="compliance-h" class="compliance__h">Attorney Advertising</h2>
+      <div class="compliance__grid">
+        <p><strong>This website is attorney advertising.</strong> The information here is legal information, not legal advice, and should not be relied upon as a substitute for advice about your specific circumstances.</p>
+        <p><strong>No attorney&ndash;client relationship</strong> is created by visiting this site, submitting a form, or sending email. Representation begins only when a written engagement agreement is signed by both parties.</p>
+        <p><strong>Licensed in the State of Oregon.</strong> Wren &amp; Alderman LLP does not seek to represent anyone in any jurisdiction where this site would not comply with local rules.</p>
+        <p><strong>Prior results do not guarantee a similar outcome.</strong> Every matter turns on its own facts. Any figures shown are illustrative and describe no actual client.</p>
+      </div>
+      <p class="compliance__note">Concept study. <strong>Wren &amp; Alderman LLP</strong> is a fictional firm created to demonstrate design direction. All names, people, figures, matters and testimonials are illustrative and describe no real entity, person or outcome.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-brand">Wren &amp; Alderman</div>
+        <p style="margin-top:12px;font-size:14px;max-width:32ch">A family law practice in Portland, Oregon. Divorce, parenting, mediation and support.</p>
+        <p style="margin-top:14px"><a href="tel:+15035550147" style="color:var(--sand);font-weight:600">(503) 555-0147</a></p>
+      </div>
+      <div><h4>Services</h4><ul><li><a href="#services">Divorce</a></li><li><a href="#services">Parenting</a></li><li><a href="#services">Mediation</a></li><li><a href="#services">Support</a></li></ul></div>
+      <div><h4>Firm</h4><ul><li><a href="#people">Our team</a></li><li><a href="#how">How it works</a></li><li><a href="#answers">Answers</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Accessibility</a></li></ul></div>
+    </div>
+    <div class="f-bot"><span>&copy; 2026 Wren &amp; Alderman LLP</span><span>Attorney advertising</span></div>
+  </div>
+</footer>
+<aside class="sr-credit" aria-label="Design credit">
+  <div class="sr-ghost" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></div>
+  <div class="sr-in">
+    <a class="sr-lock" href="https://syncreach.io/" target="_blank" rel="noopener">
+      <span class="sr-mark"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></span>
+      <span class="sr-wm"><b>SYNC</b><i>REACH</i></span>
+    </a>
+    <p class="sr-txt">Concept study designed and built by <strong>SyncReach</strong>. Digital growth systems for law firms: websites, client intake, search and AI visibility, automation. <a href="https://syncreach.io/" target="_blank" rel="noopener">syncreach.io</a></p>
+  </div>
+</aside>
+<aside class="sr-badge-wrap" aria-label="SyncReach credit badge"><a class="sr-badge" href="https://syncreach.io/" target="_blank" rel="noopener"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg><span>Concept by <b>SyncReach</b></span></a></aside>
+<script>
+
+(function(){
+  // Quick exit: replace history so Back does not return here, then leave.
+  var x=document.querySelector('[data-exit]');
+  if(x) x.addEventListener('click',function(){
+    try{location.replace('https://www.google.com/search?q=weather');}catch(e){location.href='https://www.google.com';}
+  });
+  var m=document.querySelector('.menu-btn'), ul=document.querySelector('.nav-links');
+  if(m&&ul) m.addEventListener('click',function(){
+    var open=ul.style.display==='flex';
+    ul.style.cssText=open?'':'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--sand);padding:18px var(--g) 24px;border-bottom:1px solid var(--rule);gap:14px;margin-left:0';
+    m.setAttribute('aria-expanded',String(!open));
+  });
+  document.querySelectorAll('form[data-concept]').forEach(function(f){
+    f.addEventListener('submit',function(e){e.preventDefault();alert('Concept build — this form is not connected.');});
+  });
+})();
+
+(function(){
+  var b=document.querySelector('.sr-badge-wrap'), c=document.querySelector('.sr-credit');
+  if(!b||!c||!('IntersectionObserver' in window))return;
+  b.style.transition='opacity .3s,transform .3s';
+  new IntersectionObserver(function(es){es.forEach(function(e){
+    var h=e.isIntersecting; b.style.opacity=h?'0':'1';
+    b.style.transform=h?'translateY(10px)':'none'; b.style.pointerEvents=h?'none':'auto';
+  })},{threshold:0.05}).observe(c);
+})();
+</script>
+</body>
+</html>
