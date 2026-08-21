@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Studies — SyncReach</title>
+<meta name="description" content="Concept design studies for legal-industry websites — full builds for fictional firms, showing how SyncReach approaches structure, typography, and client intake.">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.note{display:flex;gap:12px;align-items:flex-start;max-width:740px;margin:24px 0 0;padding:14px 16px;background:var(--red-50);border:1px solid var(--red-100);border-radius:var(--radius-xs);}
+.note svg{flex:none;width:17px;height:17px;color:var(--brand-red);margin-top:2px;}
+.note p{margin:0;font-size:14.5px;color:var(--text-default);}
+
+.studies{display:grid;gap:36px;}
+.card{display:flex;flex-direction:column;background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow:hidden;transition:border-color var(--ease) .16s,box-shadow var(--ease) .16s;}
+.card:hover{border-color:var(--brand-red);box-shadow:var(--shadow-overlay);}
+.shot{position:relative;overflow:hidden;border-bottom:1px solid var(--border-default);background:var(--brand-navy);display:flex;align-items:center;justify-content:center;}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top center;position:relative;z-index:2;}
+.shot__ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.shot__motif{position:absolute;inset:0;color:var(--slate-400);opacity:0.26;display:flex;align-items:center;justify-content:center;}
+.shot__motif svg{width:120%;height:120%;}
+.shot__tint{position:absolute;inset:0;background:var(--brand-red);opacity:0.14;mix-blend-mode:multiply;}
+.shot__cap{position:relative;display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--slate-300);font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;text-align:center;padding:0 16px;}
+.shot__cap svg{width:22px;height:22px;}
+
+.card__body{padding:26px 28px 28px;display:flex;flex-direction:column;flex:1;}
+.card__meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;font-family:var(--font-mono);font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);}
+.card__meta b{color:var(--text-accent);font-weight:500;}
+.card__meta i{font-style:normal;color:var(--border-strong);}
+.card__t{font-family:var(--font-sans);font-weight:700;letter-spacing:-0.022em;color:var(--text-strong);line-height:1.12;margin:13px 0 0;}
+.card__d{font-size:15.5px;color:var(--text-muted);margin:12px 0 0;max-width:62ch;}
+.card__acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:22px;}
+
+.feat .shot{height:430px;}
+.feat .card__t{font-size:clamp(27px,3.6vw,36px);}
+.feat .card__body{padding:30px 34px 32px;}
+.second .shot{height:320px;}
+.second .card__t{font-size:clamp(23px,2.9vw,28px);}
+.second .card__body{padding:28px 32px 30px;}
+
+/* brief + approach */
+.brief{padding:56px 0;border-top:1px solid var(--border-soft);display:grid;grid-template-columns:0.68fr 1fr;gap:48px;}
+.brief:first-of-type{border-top:0;padding-top:8px;}
+.brief__l .card__meta{margin-bottom:12px;}
+.brief__name{font-family:var(--font-sans);font-weight:700;font-size:26px;letter-spacing:-0.02em;color:var(--text-strong);margin:0;line-height:1.14;}
+.brief__sub{font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);margin:10px 0 0;}
+.brief__live{display:inline-flex;align-items:center;gap:7px;margin-top:18px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-accent);}
+.brief__live svg{width:13px;height:13px;}
+.brief h4{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-accent);margin:0 0 10px;}
+.brief h4+p{margin:0;}
+.brief p{font-size:16px;color:var(--text-default);}
+.brief__grp+.brief__grp{margin-top:30px;padding-top:30px;border-top:1px solid var(--border-soft);}
+.decisions{display:grid;gap:14px;margin:14px 0 0;}
+.dec{display:flex;gap:13px;align-items:flex-start;}
+.dec__n{flex:none;font-family:var(--font-mono);font-size:11.5px;letter-spacing:0.06em;color:var(--text-accent);padding-top:3px;width:22px;}
+.dec p{margin:0;font-size:15.5px;color:var(--text-default);}
+.dec b{font-weight:600;color:var(--text-strong);}
+
+@media (max-width:900px){
+  .feat .shot{height:270px;}
+  .second .shot{height:220px;}
+  .brief{grid-template-columns:1fr;gap:26px;padding:44px 0;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="brand" href="../index.html" aria-label="SyncReach home">
+    <span class="brand__mark" data-globe-mark></span>
+    <span class="brand__name"><b>SYNC</b><span>REACH</span></span>
+  </a>
+  <div class="nav__links">
+    <a href="../index.html#system">Growth System</a><a href="../services.html">Services</a><a href="../pricing.html">Pricing</a><a href="../about.html">About</a><a href="../contact.html">Contact</a>
+  </div>
+  <span class="nav__sp"></span>
+  <div class="nav__right">
+    <a class="btn btn--sm btn--ghost" href="#">Sign in</a>
+    <a class="btn btn--sm btn--primary" href="../contact.html">Book a free consultation</a>
+  </div>
+</nav>
+
+<header class="phead">
+  <span class="phead__motif" data-globe></span>
+  <div class="phead__in">
+    <span class="eyebrow">Design studies</span>
+    <h1>Complete site builds, made to be judged before you commission one.</h1>
+    <p>Each study takes a firm in the legal industry, works the brief through to a finished, functioning site, and leaves the reasoning on the table. Different corners of the legal industry, different problems, deliberately different directions.</p>
+    <div class="note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <p>These are concept studies. Firms, figures, matters, and testimonials are illustrative and describe no real entity or outcome. Photography is licensed stock; people shown are models.</p>
+    </div>
+  </div>
+</header>
+
+<main class="sec">
+  <div class="studies">
+
+    <article class="card feat">
+      <div class="shot">
+        <span class="shot__motif" data-globe></span><span class="shot__tint"></span>
+        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Meridian Legal Services — homepage<br>assets/meridian-dynamic.jpg</span>
+        <img data-shot="assets/meridian-dynamic.jpg" src="assets/meridian-dynamic.jpg" alt="Meridian Legal Services homepage — hero with headline &quot;Everything between filing and verdict.&quot;" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="card__body">
+        <div class="card__meta"><b>Study 01</b><i>·</i><span>Litigation support</span><i>·</i><span>Multi-service / operational</span></div>
+        <h2 class="card__t">Meridian Legal Services — eight service lines that had to read as one account.</h2>
+        <p class="card__d">Court reporting through mobile notary, nine offices across five states, operating since 1991. The buyers are firm administrators who already juggle three or four vendors and are not looking for a fifth. The site's argument is consolidation, and the obstacle is that consolidation sounds like risk.</p>
+        <div class="card__acts">
+          <a class="btn btn--primary" href="https://www.syncreach.io/design-studies/meridian-dynamic/" target="_blank" rel="noopener">View the live study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+          <a class="btn btn--secondary" href="#brief-meridian">Read the brief</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card second">
+      <div class="shot">
+        <span class="shot__motif" data-globe></span><span class="shot__tint"></span>
+        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Hale &amp; Corvin — homepage<br>assets/hale-corvin.jpg</span>
+        <img data-shot="assets/hale-corvin.jpg" src="assets/hale-corvin.jpg" alt="Hale &amp; Corvin homepage — hero with headline &quot;Judgment, earned the old way.&quot;" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="card__body">
+        <div class="card__meta"><b>Study 02</b><i>·</i><span>Commercial litigation</span><i>·</i><span>Boutique / editorial</span></div>
+        <h2 class="card__t">Hale &amp; Corvin LLP — a boutique that competes on trial record, not headcount.</h2>
+        <p class="card__d">Fourteen partners, no associates layer, San Francisco. Its buyers are general counsel who can hire anyone, and who read a small firm's site looking for the reason not to. The design problem is proving seniority without the scale signals a large firm gets for free.</p>
+        <div class="card__acts">
+          <a class="btn btn--primary" href="https://www.syncreach.io/design-studies/hale-corvin/" target="_blank" rel="noopener">View the live study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+          <a class="btn btn--secondary" href="#brief-hale">Read the brief</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card second">
+      <div class="shot">
+        <span class="shot__motif" data-globe></span><span class="shot__tint"></span>
+        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Halvorsen Kite — homepage<br>assets/halvorsen-kite.jpg</span>
+        <img data-shot="assets/halvorsen-kite.jpg" src="assets/halvorsen-kite.jpg" alt="Halvorsen Kite homepage — hero with headline “Counsel for people who build the thing.”" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="card__body">
+        <div class="card__meta"><b>Study 03</b><i>·</i><span>Intellectual property &amp; technology</span><i>·</i><span>Dark / engineering-led</span></div>
+        <h2 class="card__t">Halvorsen Kite — patent counsel sold to the engineers, not the board.</h2>
+        <p class="card__d">Eleven attorneys, all registered before the USPTO, all with an engineering degree. The people who choose IP counsel at an engineering-led company are usually technical founders and staff engineers, and they have spent years being talked down to by firms that could not read their spec.</p>
+        <div class="card__acts">
+          <a class="btn btn--primary" href="https://www.syncreach.io/design-studies/halvorsen-kite/" target="_blank" rel="noopener">View the live study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+          <a class="btn btn--secondary" href="#brief-halvorsen-kite">Read the brief</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card second">
+      <div class="shot">
+        <span class="shot__motif" data-globe></span><span class="shot__tint"></span>
+        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Solano &amp; Reyes — homepage<br>assets/solano-reyes.jpg</span>
+        <img data-shot="assets/solano-reyes.jpg" src="assets/solano-reyes.jpg" alt="Solano &amp; Reyes homepage — hero with headline “Every case is a family waiting on an answer.”" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="card__body">
+        <div class="card__meta"><b>Study 04</b><i>·</i><span>Immigration law</span><i>·</i><span>Bilingual / reassuring</span></div>
+        <h2 class="card__t">Solano &amp; Reyes — an immigration practice where the language choice is the first design decision.</h2>
+        <p class="card__d">Family petitions, humanitarian relief, naturalisation and removal defence in San Antonio. The client is often paying out of savings, has been given three different answers by three different people, and is deciding whether this firm will tell them the truth about their odds.</p>
+        <div class="card__acts">
+          <a class="btn btn--primary" href="https://www.syncreach.io/design-studies/solano-reyes/" target="_blank" rel="noopener">View the live study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+          <a class="btn btn--secondary" href="#brief-solano-reyes">Read the brief</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card second">
+      <div class="shot">
+        <span class="shot__motif" data-globe></span><span class="shot__tint"></span>
+        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Vance Ferrara — homepage<br>assets/vance-ferrara.jpg</span>
+        <img data-shot="assets/vance-ferrara.jpg" src="assets/vance-ferrara.jpg" alt="Vance Ferrara homepage — hero with headline “The insurer already has a team.”" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="card__body">
+        <div class="card__meta"><b>Study 05</b><i>·</i><span>Injury &amp; wrongful death</span><i>·</i><span>Urgent / contingency intake</span></div>
+        <h2 class="card__t">Vance Ferrara — an injury practice designed for a phone call in the first week.</h2>
+        <p class="card__d">Miami plaintiff work on contingency, competing in the most saturated advertising market in legal. The visitor is days out from a serious collision, on a phone, and comparing four firms that all say the same three things. The site has one job, and it is the call.</p>
+        <div class="card__acts">
+          <a class="btn btn--primary" href="https://www.syncreach.io/design-studies/vance-ferrara/" target="_blank" rel="noopener">View the live study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+          <a class="btn btn--secondary" href="#brief-vance-ferrara">Read the brief</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card second">
+      <div class="shot">
+        <span class="shot__motif" data-globe></span><span class="shot__tint"></span>
+        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Wren &amp; Alderman — homepage<br>assets/wren-alderman.jpg</span>
+        <img data-shot="assets/wren-alderman.jpg" src="assets/wren-alderman.jpg" alt="Wren &amp; Alderman homepage — hero with headline “You are allowed to not know what happens next.”" loading="lazy" onerror="this.remove()">
+      </div>
+      <div class="card__body">
+        <div class="card__meta"><b>Study 06</b><i>·</i><span>Family law</span><i>·</i><span>Quiet / trauma-aware</span></div>
+        <h2 class="card__t">Wren &amp; Alderman — family law that lowers the cost of the first contact.</h2>
+        <p class="card__d">Portland family law, where most enquiries come from someone who has never spoken to a lawyer and is not sure they are allowed to yet. The design problem is not persuasion, it is permission — and safety, for the visitor reading on a device someone else can see.</p>
+        <div class="card__acts">
+          <a class="btn btn--primary" href="https://www.syncreach.io/design-studies/wren-alderman/" target="_blank" rel="noopener">View the live study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+          <a class="btn btn--secondary" href="#brief-wren-alderman">Read the brief</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<section class="sec" style="padding-top:0;">
+  <div class="sec__head" style="margin-bottom:34px;">
+    <span class="eyebrow">The reasoning</span>
+    <h2 class="sec__title">The brief, and what the design did about it.</h2>
+    <p class="sec__sub">Same process each time: understand who is buying, what they doubt, and the one action the site has to produce. Visual direction is the last decision, not the first.</p>
+  </div>
+
+  <div class="brief" id="brief-meridian">
+    <div class="brief__l">
+      <div class="card__meta"><b>Study 01</b></div>
+      <h3 class="brief__name">Meridian Legal Services</h3>
+      <p class="brief__sub">Litigation support · 9 offices, 5 states</p>
+      <a class="brief__live" href="https://www.syncreach.io/design-studies/meridian-dynamic/" target="_blank" rel="noopener">View live study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+    </div>
+    <div class="brief__r">
+      <div class="brief__grp">
+        <h4>Overview</h4>
+        <p>Court reporting, records retrieval, service of process, e-filing, imaging, investigations, court services, and messenger — eight lines across nine offices, operating since 1991. Buyers are firm administrators and litigation operations directors who already use three or four vendors and are not looking for a fifth. The site's argument is consolidation, and the obstacle is that consolidation sounds like risk.</p>
+      </div>
+      <div class="brief__grp">
+        <h4>Approach &amp; design decisions</h4>
+        <div class="decisions">
+          <div class="dec"><span class="dec__n">01</span><p><b>State the offer in one line.</b> "Everything between filing and verdict," followed by "One account, one portal, one invoice." Eight service lines are hard to hold in mind; the span between two familiar events is not.</p></div>
+          <div class="dec"><span class="dec__n">02</span><p><b>Name the real reason firms switch.</b> The consolidation section says it directly: the reason is almost never technical, it is that nobody has to chase a status update again. Written for the person whose week that actually is.</p></div>
+          <div class="dec"><span class="dec__n">03</span><p><b>Answer the subcontracting fear immediately.</b> Every office carries its own reporters, servers, and imaging capacity; nothing routes to a call centre or gets subcontracted silently. That sentence sits in the pitch, not buried in an FAQ.</p></div>
+          <div class="dec"><span class="dec__n">04</span><p><b>Testimonials with operational specifics.</b> Each client story carries firm size, services used, and tenure — "defense firm, 90 attorneys, client since 2019." Administrators calibrate against firms shaped like theirs.</p></div>
+          <div class="dec"><span class="dec__n">05</span><p><b>Remove the switching cost from the close.</b> "No minimums, no onboarding fee, no contract term." Every clause answers a procurement objection, which is what stands between interest and a first order.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brief" id="brief-hale">
+    <div class="brief__l">
+      <div class="card__meta"><b>Study 02</b></div>
+      <h3 class="brief__name">Hale &amp; Corvin LLP</h3>
+      <p class="brief__sub">Commercial litigation · San Francisco</p>
+      <a class="brief__live" href="https://www.syncreach.io/design-studies/hale-corvin/" target="_blank" rel="noopener">View live study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+    </div>
+    <div class="brief__r">
+      <div class="brief__grp">
+        <h4>Overview</h4>
+        <p>A fourteen-partner litigation boutique founded in 1998, with no non-equity tier and no career associates. Its buyers are general counsel who can hire anyone, and who read a small firm's website looking for the reason not to. The site has to answer seniority, capacity, and outcomes before it asks for a call.</p>
+      </div>
+      <div class="brief__grp">
+        <h4>Approach &amp; design decisions</h4>
+        <div class="decisions">
+          <div class="dec"><span class="dec__n">01</span><p><b>Turn the weakness into the claim.</b> "A litigation boutique built on trial experience, not headcount" and "Fourteen partners, no associates layer" state the structure plainly. Small stops being a gap once it is the reason partners try the case.</p></div>
+          <div class="dec"><span class="dec__n">02</span><p><b>Numbers where adjectives usually go.</b> $2.4B litigated, 61 trials to verdict, 14 partners — placed immediately under the hero. Representative matters follow with outcome, forum, and year, headed "Outcomes, not adjectives."</p></div>
+          <div class="dec"><span class="dec__n">03</span><p><b>Four practices, no overflow work.</b> Each practice is numbered and paired with a one-line scope, with the staffing rule stated above them: matters go to partners who have tried that claim type. The structure is the differentiator, so the structure is visible.</p></div>
+          <div class="dec"><span class="dec__n">04</span><p><b>Attorneys as proof, not decoration.</b> Three partner profiles carry what they try, not where they went to school. Full bios sit one level down; the homepage is making a competence argument.</p></div>
+          <div class="dec"><span class="dec__n">05</span><p><b>Close with a low-friction promise.</b> "Consultations are confidential. Most calls are returned within one business day." A specific, checkable commitment converts better than an invitation to get in touch.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brief" id="brief-halvorsen-kite">
+    <div class="brief__l">
+      <div class="card__meta"><b>Study 03</b></div>
+      <h3 class="brief__name">Halvorsen Kite</h3>
+      <p class="brief__sub">IP &amp; technology · Seattle</p>
+      <a class="brief__live" href="https://www.syncreach.io/design-studies/halvorsen-kite/" target="_blank" rel="noopener">View live study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+    </div>
+    <div class="brief__r">
+      <div class="brief__grp">
+        <h4>Overview</h4>
+        <p>A Seattle patent, trademark and technology practice founded in 2014. Eleven attorneys, every one registered before the USPTO and holding an engineering degree. The buyer is a technical founder or in-house engineering lead who has already been handed a boilerplate application by a general practice firm, and who evaluates counsel the way they evaluate a vendor: can you read the spec, and who actually does the work.</p>
+      </div>
+      <div class="brief__grp">
+        <h4>Approach &amp; design decisions</h4>
+        <div class="decisions">
+          <div class="dec"><span class="dec__n">01</span><p><b>Speak to the builder.</b> “Counsel for people who build the thing.” The headline addresses the engineer, not the general counsel, because at this stage of company there often is no general counsel.</p></div>
+          <div class="dec"><span class="dec__n">02</span><p><b>Answer the handoff question in the hero.</b> “The person who drafts your application is the person who prosecutes it.” The most common complaint about patent work is that the named partner disappears after the pitch, so the staffing model is stated before anything else.</p></div>
+          <div class="dec"><span class="dec__n">03</span><p><b>Credentials as a strip of facts.</b> Founded, attorneys, registered before the USPTO, with an engineering degree — four cells, two of which read “All.” Framed as a bar to clear rather than a boast.</p></div>
+          <div class="dec"><span class="dec__n">04</span><p><b>Developer-tool visual language.</b> Monospace labels, a faint technical grid, and a dark default with a light toggle. The aesthetic borrows from the tools the buyer works in all day, which is a credibility signal no adjective buys.</p></div>
+          <div class="dec"><span class="dec__n">05</span><p><b>Navigation named after the work.</b> Services, matters, approach, contact. Four items, lowercase, no “Insights” or “Thought leadership” — restraint reads as competence to this audience.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brief" id="brief-solano-reyes">
+    <div class="brief__l">
+      <div class="card__meta"><b>Study 04</b></div>
+      <h3 class="brief__name">Solano &amp; Reyes</h3>
+      <p class="brief__sub">Immigration law · San Antonio, Texas</p>
+      <a class="brief__live" href="https://www.syncreach.io/design-studies/solano-reyes/" target="_blank" rel="noopener">View live study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+    </div>
+    <div class="brief__r">
+      <div class="brief__grp">
+        <h4>Overview</h4>
+        <p>A San Antonio immigration practice handling family petitions, humanitarian relief, naturalisation and removal defence. Clients frequently arrive after a notario or a general practitioner, paying out of household savings, having been told three different things about the same case. The site has to establish honesty about outcomes and cost before it asks for a consultation, and it has to do that in Spanish as fluently as in English.</p>
+      </div>
+      <div class="brief__grp">
+        <h4>Approach &amp; design decisions</h4>
+        <div class="decisions">
+          <div class="dec"><span class="dec__n">01</span><p><b>Language is a switch, not a subpage.</b> EN / ES sits in the primary navigation as a toggle. A translated site buried under a footer link tells a bilingual client which language the firm considers the real one.</p></div>
+          <div class="dec"><span class="dec__n">02</span><p><b>Say what the process feels like, not what the statute is.</b> “Every case is a family waiting on an answer.” The emotional fact is the accurate one; the statutory detail belongs on the service pages.</p></div>
+          <div class="dec"><span class="dec__n">03</span><p><b>Promise realism, in the hero.</b> “We tell you what is realistic before you spend anything.” The differentiator in this market is not expertise, it is the willingness to say a case is weak.</p></div>
+          <div class="dec"><span class="dec__n">04</span><p><b>Practical reassurance under the fold line.</b> Consultations in English and Spanish; evening appointments available. Two facts that answer whether a working parent can actually use this firm.</p></div>
+          <div class="dec"><span class="dec__n">05</span><p><b>Warm palette, deliberate distance from institutional design.</b> Cream, deep teal, and a clay red — closer to a community practice than a courthouse. Immigration clients associate cold institutional design with the agency they are afraid of.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brief" id="brief-vance-ferrara">
+    <div class="brief__l">
+      <div class="card__meta"><b>Study 05</b></div>
+      <h3 class="brief__name">Vance Ferrara</h3>
+      <p class="brief__sub">Injury &amp; wrongful death · Miami, Florida</p>
+      <a class="brief__live" href="https://www.syncreach.io/design-studies/vance-ferrara/" target="_blank" rel="noopener">View live study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+    </div>
+    <div class="brief__r">
+      <div class="brief__grp">
+        <h4>Overview</h4>
+        <p>A Miami injury and wrongful death practice working on contingency, in the most saturated legal advertising market in the country. The visitor typically arrives within days of a serious collision, on a phone, comparing several firms whose sites make identical claims. Everything on the page is measured against one action: a call placed now, or a case review submitted in under a minute.</p>
+      </div>
+      <div class="brief__grp">
+        <h4>Approach &amp; design decisions</h4>
+        <div class="decisions">
+          <div class="dec"><span class="dec__n">01</span><p><b>Give the visitor an opponent.</b> “The insurer already has a team.” Undifferentiated injury sites sell the firm; this one names the thing the client is up against and the asymmetry they are in right now.</p></div>
+          <div class="dec"><span class="dec__n">02</span><p><b>Make the urgency factual.</b> “Within hours of a serious collision, the other side has adjusters, investigators and counsel working the file.” Specific and verifiable, where competitors use “act fast.”</p></div>
+          <div class="dec"><span class="dec__n">03</span><p><b>The phone number is a fixed element.</b> It sits in the navigation and it is the primary button. On mobile, tap-to-call is the conversion; anything competing with it is removed.</p></div>
+          <div class="dec"><span class="dec__n">04</span><p><b>Answer money before the visitor asks.</b> “No fee unless we recover,” beside “Available 24 hours” and “Se habla español.” Three chips covering cost, access, and language — the three reasons people do not call.</p></div>
+          <div class="dec"><span class="dec__n">05</span><p><b>Heavy condensed type, photographic depth.</b> Amber on near-black, a single full-bleed image behind the hero. The register is closer to a fight than a consultation, which is what the claim in the headline requires.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="brief" id="brief-wren-alderman">
+    <div class="brief__l">
+      <div class="card__meta"><b>Study 06</b></div>
+      <h3 class="brief__name">Wren &amp; Alderman</h3>
+      <p class="brief__sub">Family law · Portland, Oregon</p>
+      <a class="brief__live" href="https://www.syncreach.io/design-studies/wren-alderman/" target="_blank" rel="noopener">View live study<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg></a>
+    </div>
+    <div class="brief__r">
+      <div class="brief__grp">
+        <h4>Overview</h4>
+        <p>A Portland family law practice. Most people who contact the firm have never spoken to a family lawyer, arrive without documents or a decision made, and half-expect to be told they are not ready. A meaningful share are browsing on a device another household member has access to. The site is built to reduce the cost of making contact rather than to argue the firm is the best one.</p>
+      </div>
+      <div class="brief__grp">
+        <h4>Approach &amp; design decisions</h4>
+        <div class="decisions">
+          <div class="dec"><span class="dec__n">01</span><p><b>Remove the prerequisite.</b> “You are allowed to not know what happens next,” with “There is no test to pass and nothing you need to have figured out first.” The most common reason a family law enquiry does not happen is the belief that it is premature.</p></div>
+          <div class="dec"><span class="dec__n">02</span><p><b>Safety as interface, not a disclaimer.</b> A persistent Quick exit control sits top right, explained in plain language beneath the buttons. For a shared-device visitor this is the feature that makes the rest of the site usable.</p></div>
+          <div class="dec"><span class="dec__n">03</span><p><b>Free first conversation, named as a conversation.</b> “Book a free consultation” beside “See how it works.” The second path exists because a proportion of visitors need to understand the process privately before speaking to anyone.</p></div>
+          <div class="dec"><span class="dec__n">04</span><p><b>Quiet typography, no adversarial language.</b> A high-contrast serif, a muted forest and clay palette, generous line spacing. No gavels, no courthouse steps, nothing that frames the situation as a fight the visitor has to win.</p></div>
+          <div class="dec"><span class="dec__n">05</span><p><b>Answers before credentials.</b> How it works, Services, Answers, Our team. Questions come before the firm, because the visitor is triaging their own situation, not yet choosing a lawyer.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="dark">
+  <span class="dark__motif" data-globe></span>
+  <div class="dark__in">
+    <div class="sec__head">
+      <span class="eyebrow">Why they look nothing alike</span>
+      <h2 class="dark__t">The direction comes out of the brief, not a house style.</h2>
+      <p class="dark__p">A support vendor selling consolidation, a boutique arguing seniority, a patent practice talking to engineers, and a family law firm trying to make one phone call easier are making different arguments to different buyers. Running them through one visual template would flatten the only thing that matters — whether the site answers the doubt its buyer actually arrives with.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ctasec">
+  <div class="band">
+    <span class="band__motif" data-globe></span>
+    <div>
+      <h3 class="band__t">Want a study built around your firm?</h3>
+      <p class="band__s">Book a free consultation and we'll scope a direction against your practice area, competitors, and intake goals.</p>
+    </div>
+    <div class="band__r"><a class="btn btn--light" href="../contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book a free consultation</a></div>
+  </div>
+</section>
+
+<footer class="foot">
+  <a class="brand" href="../index.html" aria-label="SyncReach home">
+    <span class="brand__mark" data-globe-mark style="color:var(--text-strong)"></span>
+    <span class="brand__name"><b>SYNC</b><span>REACH</span></span>
+  </a>
+  <div class="foot__links">
+    <a href="../index.html">Home</a><a href="../services.html">Services</a><a href="index.html">Design Studies</a><a href="../pricing.html">Pricing</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a><a href="../terms.html">Terms</a>
+  </div>
+  <span class="foot__c">© 2026 SyncReach Solutions Inc.</span>
+</footer>
+
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1b2432"/><rect x="30" y="34" width="40" height="32" rx="3" fill="none" stroke="#c8402f" stroke-width="3"/><circle cx="41" cy="45" r="3.4" fill="#c8402f"/><path d="M32 62l12-11 10 9 8-7 6 6" fill="none" stroke="#f2f2f0" stroke-width="3" stroke-linejoin="round"/></svg></template>
+<script src="../assets/site.js"></script>
+<script>document.querySelectorAll('img[data-shot]').forEach(i=>{i.onerror=()=>i.remove();i.src=i.dataset.shot});</script>
+</body>
+</html>
