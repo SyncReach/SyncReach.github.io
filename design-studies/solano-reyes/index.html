@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solano &amp; Reyes | Immigration Lawyers, San Antonio</title>
+<meta name="description" content="San Antonio immigration attorneys. Family petitions, humanitarian relief, naturalisation and removal defence. Consultations in English and Spanish.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#12494B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&family=IBM+Plex+Serif:wght@400&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --teal:#12494B; --teal-dp:#0C3335; --teal-lt:#2C6B6D;
+  --cream:#F7F1E7; --cream-dp:#EDE4D6; --white:#FFFDF9;
+  --terra:#A64A28;          /* text-safe on cream: 5.15:1 */
+  --terra-btn:#B3502D;      /* white text 5.12:1, edge on cream 4.56:1 */
+  --mut:#4F6260;
+  --rule:#DCD1BF;
+  --disp:'Bricolage Grotesque',system-ui,sans-serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --max:1200px; --g:clamp(20px,5vw,56px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--teal-dp);font-family:var(--sans);font-size:17px;line-height:1.66;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--disp);font-weight:700;line-height:1.08;letter-spacing:-.025em;color:var(--teal)}
+h2{font-size:clamp(29px,4.4vw,50px)}
+h3{font-size:clamp(18px,1.9vw,22px);line-height:1.28}
+p{max-width:64ch}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--g)}
+section{padding:clamp(60px,8vw,110px) 0}
+.skip{position:absolute;left:-9999px;background:var(--teal);color:#fff;padding:12px 20px;z-index:300}
+.skip:focus{left:0}
+:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--terra);display:block;margin-bottom:14px}
+.lede{font-size:clamp(17px,1.7vw,19.5px);color:var(--mut)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 27px;
+  font-family:var(--sans);font-size:15px;font-weight:600;text-decoration:none;cursor:pointer;
+  background:var(--terra-btn);color:#fff;border:2px solid var(--terra-btn);border-radius:3px;transition:.2s}
+.btn:hover{background:#9C4526;border-color:#9C4526;transform:translateY(-1px)}
+.btn-out{background:transparent;color:var(--teal);border-color:var(--teal)}
+.btn-out:hover{background:var(--teal);color:#fff}
+
+/* nav + language switch */
+.nav{position:sticky;top:0;z-index:90;background:rgba(247,241,231,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:15px var(--g);display:flex;align-items:center;gap:30px}
+.brand{font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:-.03em;text-decoration:none;color:var(--teal)}
+.brand i{font-style:normal;color:var(--terra)}
+.nav-links{display:flex;gap:24px;list-style:none;margin-left:auto}
+.nav-links a{font-size:14.5px;font-weight:500;color:var(--mut);text-decoration:none;padding-bottom:3px;border-bottom:1px solid transparent}
+.nav-links a:hover{color:var(--teal);border-color:var(--terra)}
+.lang{display:flex;border:1px solid var(--teal);border-radius:999px;overflow:hidden;flex:none}
+.lang button{background:transparent;border:0;padding:8px 15px;font:600 13px var(--sans);color:var(--teal);cursor:pointer;min-height:36px}
+.lang button[aria-pressed="true"]{background:var(--teal);color:var(--cream)}
+.menu-btn{display:none;background:none;border:1px solid var(--rule);padding:9px 13px;font:600 13px var(--sans);color:var(--teal);cursor:pointer}
+
+/* hero */
+.hero{padding:clamp(44px,6vw,80px) 0 clamp(52px,7vw,88px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(34px,5vw,60px);align-items:center}
+.hero h1{font-size:clamp(36px,5.6vw,66px);letter-spacing:-.03em;margin-bottom:20px;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--terra)}
+.hero .lede{max-width:48ch;margin-bottom:28px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-fig{border-radius:4px;overflow:hidden;aspect-ratio:5/4;box-shadow:0 30px 60px -24px rgba(12,51,53,.42)}
+.hero-fig img{width:100%;height:100%;object-fit:cover}
+.hero-note{margin-top:26px;padding-top:20px;border-top:1px solid var(--rule);font-size:14.5px;color:var(--mut);display:flex;gap:22px;flex-wrap:wrap}
+.hero-note span{display:flex;align-items:center;gap:8px}
+.hero-note i{width:7px;height:7px;border-radius:50%;background:var(--terra);display:block;flex:none}
+
+/* journey timeline */
+.journey{background:var(--white);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.j-list{margin-top:46px;border-left:2px solid var(--rule);padding-left:0;list-style:none}
+.j-list li{position:relative;padding:0 0 34px 34px}
+.j-list li::before{content:"";position:absolute;left:-8px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--terra);border:3px solid var(--white)}
+.j-list li:last-child{padding-bottom:0}
+.j-list h3{margin-bottom:7px}
+.j-list p{font-size:15px;color:var(--mut)}
+.j-list .t{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);display:block;margin-bottom:6px}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.s-card{background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:26px 24px}
+.s-card h3{margin-bottom:9px}
+.s-card p{font-size:14.5px;color:var(--mut);max-width:none}
+
+/* checklist band */
+.check{background:var(--teal);color:var(--cream)}
+.check h2,.check h3{color:var(--cream)}
+.check .eyebrow{color:#E9A184}
+.check .lede{color:#BFD3D2}
+.ck{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 34px;margin-top:40px;list-style:none}
+.ck li{display:flex;gap:13px;align-items:flex-start;font-size:15.5px;color:#D9E5E4}
+.ck svg{flex:none;margin-top:4px;color:#E9A184}
+
+/* stats */
+.st{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:42px}
+.st div .n{font-family:var(--disp);font-weight:700;font-size:clamp(30px,3.6vw,44px);color:var(--teal);letter-spacing:-.03em;line-height:1}
+.st div .l{font-size:13.5px;color:var(--mut);margin-top:8px}
+
+/* contact */
+.contact{background:var(--white);border-top:1px solid var(--rule)}
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,5vw,60px);align-items:start}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;padding:13px 15px;border:1px solid #7E9694;border-radius:3px;
+  font:400 16px var(--sans);background:#fff;color:var(--teal-dp);min-height:48px}
+.field textarea{min-height:118px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--teal);outline:2px solid var(--terra);outline-offset:2px}
+.opt{font-weight:400;color:var(--mut)}
+
+/* compliance */
+.compliance{background:var(--cream-dp);border-top:1px solid var(--rule);padding:clamp(44px,6vw,64px) 0}
+.compliance__h{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);margin-bottom:22px;font-family:var(--sans)}
+.compliance__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 34px}
+.compliance p{font-size:13.5px;line-height:1.6;color:var(--mut);max-width:58ch}
+.compliance strong{color:var(--teal-dp)}
+.compliance__note{margin-top:24px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px}
+
+footer{background:var(--teal-dp);color:#B6C9C8;padding:52px 0 30px}
+.f-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:34px;margin-bottom:34px}
+.f-brand{font-family:var(--disp);font-weight:700;font-size:20px;color:var(--cream);letter-spacing:-.03em}
+footer h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);margin-bottom:14px;font-weight:700}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+footer a{font-size:14px;text-decoration:none;color:#B6C9C8}
+footer a:hover{color:#E9A184}
+.f-bot{border-top:1px solid rgba(247,241,231,.15);padding-top:20px;font-size:13px;color:#8FA6A5;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:960px){
+  .nav-links{display:none}.menu-btn{display:block}
+  .hero-grid{grid-template-columns:1fr}.hero-fig{order:-1;aspect-ratio:16/10}
+  .svc,.ck,.c-grid,.f-grid,.compliance__grid{grid-template-columns:1fr}
+  .st{grid-template-columns:repeat(2,1fr)}
+}
+
+/* Narrow-viewport nav. With the links collapsed the row is brand + controls;
+   without min-width:0 the brand refuses to shrink and pushes the row wide. */
+@media (max-width:560px){
+  .nav-in{gap:12px}
+  .brand{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:17px}
+  .menu-btn{margin-left:auto;flex:none}
+}
+@media (max-width:560px){ .lang{flex:none} .lang button{padding:8px 11px} }
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+
+.sr-credit{position:relative;overflow:hidden;background:#F1EDE0;color:#02020E;
+  font-family:'IBM Plex Sans',system-ui,sans-serif;padding:32px 0;border-top:1px solid #E0D9C6}
+.sr-ghost{position:absolute;right:-70px;top:50%;transform:translateY(-50%);width:300px;height:300px;color:#E4DECF;pointer-events:none;opacity:.85}
+.sr-ghost svg{width:100%;height:100%}
+.sr-in{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,60px);
+  display:flex;align-items:center;gap:clamp(16px,3vw,34px);flex-wrap:wrap}
+.sr-lock{display:flex;align-items:center;gap:11px;color:inherit;flex:none;text-decoration:none}
+.sr-mark{width:30px;height:30px;color:#840902;flex:none}
+.sr-wm{display:flex;flex-direction:column;line-height:1}
+.sr-wm b{font-weight:700;font-size:15px}
+.sr-wm i{font-family:'IBM Plex Serif',Georgia,serif;font-style:normal;font-size:9px;letter-spacing:4px;color:#5B6183;margin-top:3px}
+.sr-txt{font-size:13.5px;line-height:1.5;color:#5B6183;max-width:62ch;margin:0}
+.sr-txt strong{color:#02020E;font-weight:600}
+.sr-txt a{color:#840902;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(132,9,2,.35)}
+.sr-badge-wrap{position:fixed;left:0;top:0;width:0;height:0}
+.sr-badge{position:fixed;left:16px;bottom:16px;z-index:95;display:flex;align-items:center;gap:8px;
+  background:#FFFDF6;border:1px solid #E0D9C6;border-radius:99px;padding:7px 14px 7px 10px;text-decoration:none;
+  font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:12.5px;color:#02020E;
+  box-shadow:0 1px 2px rgba(2,2,14,.04),0 8px 22px rgba(2,2,14,.07);transition:transform .2s,opacity .3s}
+.sr-badge:hover{transform:translateY(-2px)}
+.sr-badge svg{width:17px;height:17px;color:#840902;flex:none}
+@media (max-width:860px){.sr-badge,.sr-badge-wrap{display:none}.sr-ghost{right:-120px;width:230px;height:230px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#">Solano <i>&amp;</i> Reyes</a>
+    <nav aria-label="Primary"><ul class="nav-links">
+      <li><a href="#journey"><span data-i18n="nav.how" data-en="How it works" data-es="C&oacute;mo funciona">How it works</span></a></li>
+      <li><a href="#services"><span data-i18n="nav.services" data-en="Services" data-es="Servicios">Services</span></a></li>
+      <li><a href="#prepare"><span data-i18n="nav.prepare" data-en="What you'll need" data-es="Qu&eacute; necesita">What you'll need</span></a></li>
+      <li><a href="#contact"><span data-i18n="nav.contact" data-en="Contact" data-es="Contacto">Contact</span></a></li>
+    </ul></nav>
+    <div class="lang" role="group" aria-label="Language / Idioma">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+    <button class="menu-btn" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span data-i18n="hero.eyebrow" data-en="Immigration Law &middot; San Antonio, Texas" data-es="Ley de Inmigraci&oacute;n &middot; San Antonio, Texas">Immigration Law &middot; San Antonio, Texas</span></span>
+        <h1><span data-i18n="hero.h1a" data-en="Every case is a family" data-es="Cada caso es una familia">Every case is a family</span> <em><span data-i18n="hero.h1b" data-en="waiting on an answer." data-es="esperando una respuesta.">waiting on an answer.</span></em></h1>
+        <p class="lede"><span data-i18n="hero.lede" data-en="Family petitions, humanitarian relief, naturalisation and removal defence. We explain the process in the language you think in, and we tell you what is realistic before you spend anything." data-es="Peticiones familiares, alivio humanitario, naturalizaci&oacute;n y defensa contra la deportaci&oacute;n. Explicamos el proceso en el idioma en que usted piensa, y le decimos qu&eacute; es realista antes de que gaste nada.">Family petitions, humanitarian relief, naturalisation and removal defence. We explain the process in the language you think in, and we tell you what is realistic before you spend anything.</span></p>
+        <div class="hero-cta">
+          <a class="btn" href="#contact"><span data-i18n="hero.cta1" data-en="Book a consultation" data-es="Reserve una consulta">Book a consultation</span></a>
+          <a class="btn btn-out" href="#journey"><span data-i18n="hero.cta2" data-en="See how it works" data-es="Vea c&oacute;mo funciona">See how it works</span></a>
+        </div>
+        <div class="hero-note">
+          <span><i></i><span data-i18n="hero.n1" data-en="Consultations in English &amp; Spanish" data-es="Consultas en ingl&eacute;s y espa&ntilde;ol">Consultations in English &amp; Spanish</span></span>
+          <span><i></i><span data-i18n="hero.n2" data-en="Evening appointments available" data-es="Citas por la tarde disponibles">Evening appointments available</span></span>
+        </div>
+      </div>
+      <figure class="hero-fig">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=820&q=80" alt="Two people in conversation across a table" width="820" height="656">
+      </figure>
+    </div>
+  </section>
+
+  <section class="journey" id="journey">
+    <div class="wrap">
+      <span class="eyebrow"><span data-i18n="journey.eyebrow" data-en="The process" data-es="El proceso">The process</span></span>
+      <h2><span data-i18n="journey.h2" data-en="What actually happens, step by step." data-es="Lo que realmente sucede, paso a paso.">What actually happens, step by step.</span></h2>
+      <ol class="j-list">
+        <li>
+          <span class="t" data-i18n data-en="Step 1" data-es="Paso 1">Step 1</span>
+          <h3 data-i18n data-en="Consultation" data-es="Consulta">Consultation</h3>
+          <p data-i18n data-en="We look at your history, your status and your options together. You leave knowing what is possible and what it costs." data-es="Revisamos juntos su historial, su estatus y sus opciones. Usted se va sabiendo qu&eacute; es posible y cu&aacute;nto cuesta.">We look at your history, your status and your options together. You leave knowing what is possible and what it costs.</p>
+        </li>
+        <li>
+          <span class="t" data-i18n data-en="Step 2" data-es="Paso 2">Step 2</span>
+          <h3 data-i18n data-en="Preparing the petition" data-es="Preparaci&oacute;n de la petici&oacute;n">Preparing the petition</h3>
+          <p data-i18n data-en="We gather evidence, complete the forms and check them twice. Most denials we see are avoidable paperwork errors." data-es="Reunimos evidencia, completamos los formularios y los revisamos dos veces. La mayor&iacute;a de las negaciones que vemos son errores de papeleo evitables.">We gather evidence, complete the forms and check them twice. Most denials we see are avoidable paperwork errors.</p>
+        </li>
+        <li>
+          <span class="t" data-i18n data-en="Step 3" data-es="Paso 3">Step 3</span>
+          <h3 data-i18n data-en="Filing and waiting" data-es="Presentaci&oacute;n y espera">Filing and waiting</h3>
+          <p data-i18n data-en="We file, track the receipt notices and tell you what each one means. You will not have to guess what a letter says." data-es="Presentamos, damos seguimiento a los avisos de recibo y le explicamos qu&eacute; significa cada uno. No tendr&aacute; que adivinar qu&eacute; dice una carta.">We file, track the receipt notices and tell you what each one means. You will not have to guess what a letter says.</p>
+        </li>
+        <li>
+          <span class="t" data-i18n data-en="Step 4" data-es="Paso 4">Step 4</span>
+          <h3 data-i18n data-en="Interview or hearing" data-es="Entrevista o audiencia">Interview or hearing</h3>
+          <p data-i18n data-en="We prepare you for the questions and we go with you. Nobody from this office sends a client in alone." data-es="Lo preparamos para las preguntas y vamos con usted. Nadie de esta oficina env&iacute;a a un cliente solo.">We prepare you for the questions and we go with you. Nobody from this office sends a client in alone.</p>
+        </li>
+        <li>
+          <span class="t" data-i18n data-en="Step 5" data-es="Paso 5">Step 5</span>
+          <h3 data-i18n data-en="After the decision" data-es="Despu&eacute;s de la decisi&oacute;n">After the decision</h3>
+          <p data-i18n data-en="Approved, we help with next steps. Denied, we explain the appeal or the alternative route the same week." data-es="Si es aprobado, ayudamos con los siguientes pasos. Si es negado, explicamos la apelaci&oacute;n o la ruta alternativa esa misma semana.">Approved, we help with next steps. Denied, we explain the appeal or the alternative route the same week.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <span class="eyebrow"><span data-i18n="svc.eyebrow" data-en="How we help" data-es="C&oacute;mo ayudamos">How we help</span></span>
+      <h2><span data-i18n="svc.h2" data-en="Immigration law, exclusively." data-es="Ley de inmigraci&oacute;n, exclusivamente.">Immigration law, exclusively.</span></h2>
+      <div class="svc">
+        <article class="s-card">
+          <h3 data-i18n data-en="Family petitions" data-es="Peticiones familiares">Family petitions</h3>
+          <p data-i18n data-en="Spouses, children and parents &mdash; including consular processing and adjustment of status." data-es="C&oacute;nyuges, hijos y padres &mdash; incluyendo procesamiento consular y ajuste de estatus.">Spouses, children and parents &mdash; including consular processing and adjustment of status.</p>
+        </article>
+        <article class="s-card">
+          <h3 data-i18n data-en="Naturalisation" data-es="Naturalizaci&oacute;n">Naturalisation</h3>
+          <p data-i18n data-en="Eligibility review, application and interview preparation." data-es="Revisi&oacute;n de elegibilidad, solicitud y preparaci&oacute;n para la entrevista.">Eligibility review, application and interview preparation.</p>
+        </article>
+        <article class="s-card">
+          <h3 data-i18n data-en="Humanitarian relief" data-es="Alivio humanitario">Humanitarian relief</h3>
+          <p data-i18n data-en="Asylum, U and T visas, VAWA self-petitions, handled with discretion." data-es="Asilo, visas U y T, autopeticiones VAWA, manejados con discreci&oacute;n.">Asylum, U and T visas, VAWA self-petitions, handled with discretion.</p>
+        </article>
+        <article class="s-card">
+          <h3 data-i18n data-en="Removal defence" data-es="Defensa contra deportaci&oacute;n">Removal defence</h3>
+          <p data-i18n data-en="Representation in immigration court, including bond and cancellation." data-es="Representaci&oacute;n en la corte de inmigraci&oacute;n, incluyendo fianza y cancelaci&oacute;n.">Representation in immigration court, including bond and cancellation.</p>
+        </article>
+        <article class="s-card">
+          <h3 data-i18n data-en="Employment-based" data-es="Basado en empleo">Employment-based</h3>
+          <p data-i18n data-en="Labour certification, professional visas and employer compliance." data-es="Certificaci&oacute;n laboral, visas profesionales y cumplimiento del empleador.">Labour certification, professional visas and employer compliance.</p>
+        </article>
+        <article class="s-card">
+          <h3 data-i18n data-en="DACA &amp; youth" data-es="DACA y j&oacute;venes">DACA &amp; youth</h3>
+          <p data-i18n data-en="Renewals, special immigrant juvenile status and related relief." data-es="Renovaciones, estatus especial de inmigrante juvenil y alivio relacionado.">Renewals, special immigrant juvenile status and related relief.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="check" id="prepare">
+    <div class="wrap">
+      <span class="eyebrow"><span data-i18n="check.eyebrow" data-en="Before your consultation" data-es="Antes de su consulta">Before your consultation</span></span>
+      <h2><span data-i18n="check.h2" data-en="Bring what you have. Missing documents are normal." data-es="Traiga lo que tenga. Es normal que falten documentos.">Bring what you have. Missing documents are normal.</span></h2>
+      <p class="lede" style="margin-top:14px"><span data-i18n="check.lede" data-en="Nobody arrives with a complete file. Bring what you can find and we will work out the rest together." data-es="Nadie llega con un expediente completo. Traiga lo que pueda encontrar y resolveremos el resto juntos.">Nobody arrives with a complete file. Bring what you can find and we will work out the rest together.</span></p>
+      <ul class="ck">
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n data-en="Passport or national ID, current or expired" data-es="Pasaporte o identificaci&oacute;n nacional, vigente o vencida">Passport or national ID, current or expired</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n data-en="Any notice you have received from USCIS or the court" data-es="Cualquier aviso que haya recibido de USCIS o de la corte">Any notice you have received from USCIS or the court</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n data-en="Birth and marriage certificates, if you have them" data-es="Actas de nacimiento y matrimonio, si las tiene">Birth and marriage certificates, if you have them</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n data-en="Records of time in the United States" data-es="Registros de su tiempo en los Estados Unidos">Records of time in the United States</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n data-en="Any prior immigration paperwork, even if incomplete" data-es="Cualquier papeleo de inmigraci&oacute;n anterior, aunque est&eacute; incompleto">Any prior immigration paperwork, even if incomplete</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n data-en="A list of your questions &mdash; there are no bad ones" data-es="Una lista de sus preguntas &mdash; no hay preguntas malas">A list of your questions &mdash; there are no bad ones</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2><span data-i18n="stats.h2" data-en="A practice built on follow-through." data-es="Una pr&aacute;ctica basada en el seguimiento.">A practice built on follow-through.</span></h2>
+      <div class="st">
+        <div><div class="n">18</div><div class="l" data-i18n data-en="Years in immigration practice" data-es="A&ntilde;os en pr&aacute;ctica de inmigraci&oacute;n">Years in immigration practice</div></div>
+        <div><div class="n">2</div><div class="l" data-i18n data-en="Languages, both fluent" data-es="Idiomas, ambos con fluidez">Languages, both fluent</div></div>
+        <div><div class="n">1</div><div class="l" data-i18n data-en="Attorney on your matter, start to finish" data-es="Abogado en su caso, de principio a fin">Attorney on your matter, start to finish</div></div>
+        <div><div class="n">48h</div><div class="l" data-i18n data-en="Typical response to a client message" data-es="Respuesta t&iacute;pica a un mensaje de cliente">Typical response to a client message</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap c-grid">
+      <div>
+        <span class="eyebrow"><span data-i18n="contact.eyebrow" data-en="Get in touch" data-es="Cont&aacute;ctenos">Get in touch</span></span>
+        <h2><span data-i18n="contact.h2" data-en="Book a consultation." data-es="Reserve una consulta.">Book a consultation.</span></h2>
+        <p class="lede" style="margin-top:16px"><span data-i18n="contact.lede" data-en="We reply within one business day. Consultations are confidential and available in English or Spanish." data-es="Respondemos dentro de un d&iacute;a h&aacute;bil. Las consultas son confidenciales y est&aacute;n disponibles en ingl&eacute;s o espa&ntilde;ol.">We reply within one business day. Consultations are confidential and available in English or Spanish.</span></p>
+        <p style="margin-top:24px;font-size:14.5px;color:var(--mut)">Solano &amp; Reyes PLLC<br>318 W Houston Street, Suite 400<br>San Antonio, Texas 78205<br><a href="tel:+12105550164" style="color:var(--terra);font-weight:600">(210) 555-0164</a></p>
+      </div>
+      <form data-concept>
+        <div class="field"><label for="n"><span data-i18n="f.name" data-en="Your name" data-es="Su nombre">Your name</span></label><input id="n" name="name" required></div>
+        <div class="field"><label for="e"><span data-i18n="f.email" data-en="Email" data-es="Correo electr&oacute;nico">Email</span></label><input id="e" type="email" name="email" required></div>
+        <div class="field"><label for="p"><span data-i18n="f.phone" data-en="Phone" data-es="Tel&eacute;fono">Phone</span> <span class="opt">(optional)</span></label><input id="p" type="tel" name="phone"></div>
+        <div class="field"><label for="l"><span data-i18n="f.lang" data-en="Preferred language" data-es="Idioma preferido">Preferred language</span></label>
+          <select id="l" name="lang"><option>English</option><option>Espa&ntilde;ol</option></select></div>
+        <div class="field"><label for="s"><span data-i18n="f.about" data-en="Briefly, what is your situation?" data-es="Brevemente, &iquest;cu&aacute;l es su situaci&oacute;n?">Briefly, what is your situation?</span></label><textarea id="s" name="situation"></textarea></div>
+        <button class="btn" type="submit" style="width:100%"><span data-i18n="f.submit" data-en="Request a consultation" data-es="Solicitar una consulta">Request a consultation</span></button>
+        <p style="font-size:13px;color:var(--mut);margin-top:12px"><span data-i18n="f.note" data-en="Sending this form does not create an attorney&ndash;client relationship." data-es="Enviar este formulario no crea una relaci&oacute;n abogado&ndash;cliente.">Sending this form does not create an attorney&ndash;client relationship.</span></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="compliance" aria-labelledby="compliance-h">
+    <div class="wrap">
+      <h2 id="compliance-h" class="compliance__h">Attorney Advertising</h2>
+      <div class="compliance__grid">
+        <p><strong>This website is attorney advertising.</strong> The information here is legal information, not legal advice, and should not be relied upon as a substitute for advice about your specific circumstances.</p>
+        <p><strong>No attorney&ndash;client relationship</strong> is created by visiting this site, submitting a form, or sending email. Representation begins only when a written engagement agreement is signed by both parties.</p>
+        <p><strong>Licensed in the State of Texas.</strong> Solano &amp; Reyes PLLC does not seek to represent anyone in any jurisdiction where this site would not comply with local rules.</p>
+        <p><strong>Prior results do not guarantee a similar outcome.</strong> Every matter turns on its own facts. Any figures shown are illustrative and describe no actual client.</p>
+      </div>
+      <p class="compliance__note">Concept study. <strong>Solano &amp; Reyes PLLC</strong> is a fictional firm created to demonstrate design direction. All names, people, figures, matters and testimonials are illustrative and describe no real entity, person or outcome.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-brand">Solano &amp; Reyes</div>
+        <p style="margin-top:12px;font-size:14px;max-width:32ch">An immigration practice in San Antonio, Texas. Family, humanitarian, naturalisation and removal defence.</p>
+        <p style="margin-top:14px"><a href="tel:+12105550164" style="color:var(--cream);font-weight:600">(210) 555-0164</a></p>
+      </div>
+      <div><h4>Services</h4><ul><li><a href="#services">Family petitions</a></li><li><a href="#services">Naturalisation</a></li><li><a href="#services">Humanitarian relief</a></li><li><a href="#services">Removal defence</a></li></ul></div>
+      <div><h4>Firm</h4><ul><li><a href="#journey">How it works</a></li><li><a href="#prepare">What you'll need</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Accessibility</a></li></ul></div>
+    </div>
+    <div class="f-bot"><span>&copy; 2026 Solano &amp; Reyes PLLC</span><span>Attorney advertising</span></div>
+  </div>
+</footer>
+<aside class="sr-credit" aria-label="Design credit">
+  <div class="sr-ghost" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></div>
+  <div class="sr-in">
+    <a class="sr-lock" href="https://syncreach.io/" target="_blank" rel="noopener">
+      <span class="sr-mark"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg></span>
+      <span class="sr-wm"><b>SYNC</b><i>REACH</i></span>
+    </a>
+    <p class="sr-txt">Concept study designed and built by <strong>SyncReach</strong>. Digital growth systems for law firms: websites, client intake, search and AI visibility, automation. <a href="https://syncreach.io/" target="_blank" rel="noopener">syncreach.io</a></p>
+  </div>
+</aside>
+<aside class="sr-badge-wrap" aria-label="SyncReach credit badge"><a class="sr-badge" href="https://syncreach.io/" target="_blank" rel="noopener"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><ellipse cx="50" cy="50" rx="22" ry="44"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="11.34" y1="29" x2="88.66" y2="29"/><line x1="11.34" y1="71" x2="88.66" y2="71"/><line x1="19.8" y1="18" x2="80.2" y2="18"/><line x1="19.8" y1="82" x2="80.2" y2="82"/></g></svg><span>Concept by <b>SyncReach</b></span></a></aside>
+<script>
+
+(function(){
+  // Real bilingual switch: swaps copy and updates document lang, so screen
+  // readers and translation tools get the right pronunciation and hints.
+  var nodes=document.querySelectorAll('[data-en][data-es]');
+  var btns=document.querySelectorAll('.lang button[data-lang]');
+  function setLang(l){
+    nodes.forEach(function(n){ n.innerHTML = l==='es' ? n.dataset.es : n.dataset.en; });
+    document.documentElement.lang = l;
+    btns.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang===l)); });
+    try{ localStorage.setItem('sr-lang', l); }catch(e){}
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+  try{
+    var saved=localStorage.getItem('sr-lang');
+    if(saved){ setLang(saved); }
+    else if((navigator.language||'').toLowerCase().indexOf('es')===0){ setLang('es'); }
+  }catch(e){}
+
+  var m=document.querySelector('.menu-btn'), ul=document.querySelector('.nav-links');
+  if(m&&ul) m.addEventListener('click',function(){
+    var open=ul.style.display==='flex';
+    ul.style.cssText=open?'':'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--cream);padding:18px var(--g) 22px;border-bottom:1px solid var(--rule);gap:14px;margin-left:0';
+    m.setAttribute('aria-expanded',String(!open));
+  });
+  document.querySelectorAll('form[data-concept]').forEach(function(f){
+    f.addEventListener('submit',function(e){e.preventDefault();alert('Concept build — this form is not connected.');});
+  });
+})();
+
+(function(){
+  var b=document.querySelector('.sr-badge-wrap'), c=document.querySelector('.sr-credit');
+  if(!b||!c||!('IntersectionObserver' in window))return;
+  b.style.transition='opacity .3s,transform .3s';
+  new IntersectionObserver(function(es){es.forEach(function(e){
+    var h=e.isIntersecting; b.style.opacity=h?'0':'1';
+    b.style.transform=h?'translateY(10px)':'none'; b.style.pointerEvents=h?'none':'auto';
+  })},{threshold:0.05}).observe(c);
+})();
+</script>
+</body>
+</html>
