@@ -53,10 +53,12 @@ em{font-style:italic;color:var(--brass-dp)}
 /* nav */
 .nav{position:sticky;top:0;z-index:90;background:rgba(246,242,233,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule)}
 .nav-in{max-width:var(--max);margin:0 auto;padding:20px var(--g);display:flex;align-items:center;gap:40px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand svg{width:30px;height:30px}
-.brand .tx{font-family:var(--serif);font-size:19px;letter-spacing:-.01em;color:var(--navy)}
-.brand .tx b{font-weight:500}
+.brand{display:flex;align-items:center;text-decoration:none}
+.brand img{height:54px;width:auto;display:block}
+/* The supplied mark is near-black on transparent: 1.07:1 on the footer navy.
+   The footer uses a parchment recolour of the same artwork (16.78:1). */
+.f-brand img{height:40px;width:auto;display:block}
+@media (max-width:560px){.brand img{height:40px}}
 .nav-links{display:flex;gap:32px;list-style:none;margin-left:auto}
 .nav-links a{font-size:14.5px;font-weight:500;text-decoration:none;color:var(--sec);padding:4px 0;border-bottom:1px solid transparent;transition:.2s}
 .nav-links a:hover{color:var(--navy);border-color:var(--brass)}
@@ -201,9 +203,8 @@ footer a:hover{color:var(--brass-lt)}
 
 <header class="nav">
   <div class="nav-in">
-    <a class="brand" href="#">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#101B2D"/><path d="M9 21V11l7 6 7-6v10" stroke="#C9A65C" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
-      <span class="tx">Hale &amp; <b>Corvin</b></span>
+    <a class="brand" href="#" aria-label="Hale &amp; Corvin, home">
+      <img src="assets/hale-corvin.png" alt="Hale &amp; Corvin" width="471" height="138">
     </a>
     <ul class="nav-links">
       <li><a href="#practice">Practice</a></li>
@@ -282,11 +283,11 @@ footer a:hover{color:var(--brass-lt)}
     <div class="people">
       <div class="person rv">
         <div class="p-img"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80" alt="Portrait of a senior litigation partner in an office setting"></div>
-        <div class="p-body"><h3>Daniel Corvin</h3><div class="role">Founding Partner</div><p>Thirty years trying commercial disputes to verdict across California.</p></div>
+        <div class="p-body"><h3>Margaret Hale</h3><div class="role">Founding Partner</div><p>Thirty years trying commercial disputes to verdict across California.</p></div>
       </div>
       <div class="person rv rv2">
         <div class="p-img"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=500&q=80" alt="Portrait of a litigation partner reviewing case materials"></div>
-        <div class="p-body"><h3>Margaret Hale</h3><div class="role">Founding Partner</div><p>Leads the firm's appellate and post-trial practice before the Ninth Circuit.</p></div>
+        <div class="p-body"><h3>Daniel Corvin</h3><div class="role">Founding Partner</div><p>Leads the firm's appellate and post-trial practice before the Ninth Circuit.</p></div>
       </div>
       <div class="person rv rv3">
         <div class="p-img"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500&q=80" alt="Portrait of a litigation partner in professional attire"></div>
@@ -336,9 +337,8 @@ footer a:hover{color:var(--brass-lt)}
   <div class="wrap">
     <div class="f-grid">
       <div>
-        <div style="display:flex;align-items:center;gap:11px">
-          <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#1B2C46"/><path d="M9 21V11l7 6 7-6v10" stroke="#C9A65C" stroke-width="1.6" fill="none" stroke-linejoin="round"/></svg>
-          <span style="font-family:'Fraunces',serif;color:var(--parch);font-size:18px">Hale &amp; Corvin LLP</span>
+        <div class="f-brand">
+          <img src="assets/hale-corvin-light.png" alt="Hale &amp; Corvin LLP" width="409" height="120">
         </div>
         <p style="margin-top:14px;max-width:34ch">Commercial litigation boutique. San Francisco, California.</p>
         <p style="margin-top:12px"><a href="tel:+14155550142" style="color:var(--parch);font-weight:600">(415) 555-0142</a></p>
