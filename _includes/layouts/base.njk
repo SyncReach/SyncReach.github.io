@@ -63,9 +63,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW9V9Z63"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 {% set isHome = page.url == '/' or page.url == '/index.html' %}
 {% set isServices = page.url == '/services' or page.url == '/services/' or page.url == '/services.html' %}
@@ -89,7 +90,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </nav>
 
+<main id="main">
 {{ content | safe }}
+</main>
 
 <!-- ============ FOOTER ============ -->
 <footer class="foot">
@@ -98,7 +101,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="brand__name"><b>SYNC</b><span>REACH</span></span>
   </a>
   <div class="foot__links">
-    <a href="/">Home</a><a href="/services">Services</a><a href="/pricing">Pricing</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/security">Security</a><a href="mailto:admin@syncreach.io">admin@syncreach.io</a><a href="tel:+12892701009">+1 (289) 270-1009</a>
+    <a href="/">Home</a><a href="/services">Services</a><a href="/pricing">Pricing</a><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/security">Security</a><a href="/accessibility">Accessibility</a><a href="mailto:admin@syncreach.io">admin@syncreach.io</a><a href="tel:+12892701009">+1 (289) 270-1009</a>
   </div>
   <span class="foot__c">© 2026 SyncReach Solutions Inc.</span>
 </footer>
