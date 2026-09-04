@@ -18,7 +18,7 @@
 .card{display:flex;flex-direction:column;background:var(--surface-default);border:1px solid var(--border-default);border-radius:var(--radius-sm);overflow:hidden;transition:border-color var(--ease) .16s,box-shadow var(--ease) .16s;}
 .card:hover{border-color:var(--brand-red);box-shadow:var(--shadow-overlay);}
 .shot{position:relative;overflow:hidden;border-bottom:1px solid var(--border-default);background:var(--brand-navy);display:flex;align-items:center;justify-content:center;}
-.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;z-index:2;}/* absolute, not relative: .shot is display:flex, and a relatively-positioned img shrinks to its aspect-ratio width (948px in a 1150px frame) instead of filling, so object-fit:cover never engages. */
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top center;position:relative;z-index:2;}
 .shot__ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
 .shot__motif{position:absolute;inset:0;color:var(--slate-400);opacity:0.26;display:flex;align-items:center;justify-content:center;}
 .shot__motif svg{width:120%;height:120%;}
@@ -64,6 +64,52 @@
   .second .shot{height:220px;}
   .brief{grid-template-columns:1fr;gap:26px;padding:44px 0;}
 }
+
+/* ---- animated hero ---- */
+.hero{position:relative;overflow:hidden;background:var(--brand-ink);isolation:isolate;}
+.hero__grid{position:absolute;inset:-2px;background-image:linear-gradient(to right,rgba(154,159,184,.09) 1px,transparent 1px),linear-gradient(to bottom,rgba(154,159,184,.09) 1px,transparent 1px);background-size:72px 72px;animation:heroGrid 26s linear infinite;}
+@keyframes heroGrid{to{transform:translate3d(-72px,-72px,0)}}
+.hero__glow{position:absolute;width:900px;height:900px;left:-260px;top:-380px;border-radius:50%;background:radial-gradient(circle,rgba(132,9,2,.62),rgba(132,9,2,0) 62%);animation:heroGlow 14s ease-in-out infinite;}
+@keyframes heroGlow{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.16) translate(40px,30px);opacity:.62}}
+.hero__in{position:relative;max-width:1200px;margin:0 auto;padding:74px 24px 78px;display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center;min-height:min(84vh,720px);}
+.hero__copy>*{animation:heroRise .9s cubic-bezier(.16,.84,.3,1) both;}
+.hero__copy>*:nth-child(1){animation-delay:.05s}.hero__copy>*:nth-child(2){animation-delay:.16s}.hero__copy>*:nth-child(3){animation-delay:.27s}.hero__copy>*:nth-child(4){animation-delay:.38s}.hero__copy>*:nth-child(5){animation-delay:.49s}
+@keyframes heroRise{from{opacity:0;transform:translate3d(0,22px,0);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
+.hero .eyebrow{color:var(--brand-cream);}
+.hero .eyebrow::before{background:var(--brand-red);width:30px;}
+.hero__t{font-family:var(--font-sans);font-weight:700;font-size:clamp(36px,4.7vw,58px);line-height:1.02;letter-spacing:-.03em;color:var(--brand-cream);margin:20px 0 0;max-width:15ch;}
+.hero__t em{font-family:var(--font-serif);font-style:italic;font-weight:400;color:#E8B4AC;}
+.hero__p{font-size:17.5px;line-height:1.62;color:var(--slate-300);margin:22px 0 0;max-width:50ch;}
+.hero__rot{display:flex;align-items:baseline;gap:12px;margin:26px 0 0;font-family:var(--font-mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate-400);}
+.hero__rot b{font-weight:500;color:var(--brand-cream);}
+.hero__rotw{position:relative;display:inline-block;min-width:24ch;height:1.3em;overflow:hidden;}
+.hero__rotw span{position:absolute;inset:0;color:#E8B4AC;opacity:0;transform:translateY(90%);transition:opacity .5s var(--ease,ease),transform .5s cubic-bezier(.16,.84,.3,1);white-space:nowrap;}
+.hero__rotw span[data-on]{opacity:1;transform:none;}
+.hero__rotw span[data-out]{opacity:0;transform:translateY(-90%);}
+.hero__acts{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 0;}
+.hero__note{display:flex;gap:11px;align-items:flex-start;max-width:56ch;margin:34px 0 0;padding-top:20px;border-top:1px solid var(--border-inverse-strong);}
+.hero__note svg{flex:none;width:16px;height:16px;color:#E8B4AC;margin-top:3px;}
+.hero__note p{margin:0;font-size:13.5px;line-height:1.55;color:var(--slate-400);}
+/* mosaic */
+.hero__mos{position:relative;height:min(78vh,660px);display:grid;grid-template-columns:repeat(3,1fr);gap:16px;transform:rotate(-9deg) scale(1.08);transform-origin:center;-webkit-mask-image:radial-gradient(120% 78% at 55% 50%,#000 46%,transparent 88%);mask-image:radial-gradient(120% 78% at 55% 50%,#000 46%,transparent 88%);animation:heroRise 1.2s cubic-bezier(.16,.84,.3,1) .2s both;}
+.mcol{display:flex;flex-direction:column;gap:16px;will-change:transform;}
+.mcol--a{animation:mosUp 34s linear infinite}.mcol--b{animation:mosDown 40s linear infinite}.mcol--c{animation:mosUp 46s linear infinite}
+@keyframes mosUp{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,-50%,0)}}
+@keyframes mosDown{from{transform:translate3d(0,-50%,0)}to{transform:translate3d(0,0,0)}}
+.mtile{position:relative;flex:none;border:1px solid rgba(232,180,172,.22);border-radius:var(--radius-sm);overflow:hidden;background:var(--brand-navy);box-shadow:0 18px 40px rgba(2,2,14,.55);}
+.mtile img{width:100%;height:auto;display:block;filter:saturate(.72) contrast(1.04);}
+.mtile::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(132,9,2,.26),rgba(2,2,14,.5));}
+.hero__mosfoot{position:absolute;left:24px;right:24px;bottom:22px;display:flex;gap:10px;align-items:center;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-400);}
+.hero__mosfoot i{flex:1;height:1px;background:var(--border-inverse-strong);font-style:normal;}
+@media (max-width:980px){
+  .hero__in{grid-template-columns:1fr;min-height:0;padding:56px 24px 62px;}
+  .hero__mos{position:absolute;inset:0;height:100%;opacity:.16;transform:rotate(-9deg) scale(1.5);z-index:-1;}
+  .hero__mosfoot{display:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero__grid,.hero__glow,.mcol{animation:none!important}
+  .hero__copy>*,.hero__mos{animation-duration:.01s!important}
+}
 </style>
 </head>
 <body>
@@ -86,27 +132,41 @@
 <main id="main">
 
 
-<header class="phead">
-  <span class="phead__motif" data-globe></span>
-  <div class="phead__in">
-    <span class="eyebrow">Design studies</span>
-    <h1>Complete site builds, made to be judged before you commission one.</h1>
-    <p>Each study takes a firm in the legal industry, works the brief through to a finished, functioning site, and leaves the reasoning on the table. Different corners of the legal industry, different problems, deliberately different directions.</p>
-    <div class="note">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
-      <p>These are concept studies. Firms, figures, matters, and testimonials are illustrative and describe no real entity or outcome. Photography is licensed stock; people shown are models.</p>
+<header class="hero">
+  <span class="hero__grid" aria-hidden="true"></span>
+  <span class="hero__glow" aria-hidden="true"></span>
+  <div class="hero__in">
+    <div class="hero__copy">
+      <span class="eyebrow">Design studies</span>
+      <h1 class="hero__t">Complete site builds, made to be <em>judged</em> before you commission one.</h1>
+      <p class="hero__p">Each study takes a firm in the legal industry, works the brief through to a finished, functioning site, and leaves the reasoning on the table. Different corners of the industry, different problems, deliberately different directions.</p>
+      <div class="hero__rot"><b>Six studies</b><span class="hero__rotw" id="heroRot" aria-live="off"></span></div>
+      <div class="hero__acts">
+        <a class="btn btn--primary" href="#studies">Browse the studies</a>
+        <a class="btn btn--light" href="/contact">Book a free consultation</a>
+      </div>
+      <div class="hero__note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+        <p>These are concept studies. Firms, figures, matters, and testimonials are illustrative and describe no real entity or outcome. Photography is licensed stock; people shown are models.</p>
+      </div>
+    </div>
+    <div class="hero__mos">
+      <div class="mcol mcol--a" aria-hidden="true"><div class="mtile"><img src="assets/meridian-dynamic.jpg" alt="Meridian Legal Services study preview" loading="lazy"></div><div class="mtile"><img src="assets/halvorsen-kite.jpg" alt="Halvorsen Kite study preview" loading="lazy"></div><div class="mtile"><img src="assets/hale-corvin.jpg" alt="Hale & Corvin study preview" loading="lazy"></div><div class="mtile"><img src="assets/wren-alderman.jpg" alt="Wren & Alderman study preview" loading="lazy"></div><div class="mtile"><img src="assets/meridian-dynamic.jpg" alt="Meridian Legal Services study preview" loading="lazy"></div><div class="mtile"><img src="assets/halvorsen-kite.jpg" alt="Halvorsen Kite study preview" loading="lazy"></div><div class="mtile"><img src="assets/hale-corvin.jpg" alt="Hale & Corvin study preview" loading="lazy"></div><div class="mtile"><img src="assets/wren-alderman.jpg" alt="Wren & Alderman study preview" loading="lazy"></div></div>
+      <div class="mcol mcol--b" aria-hidden="true"><div class="mtile"><img src="assets/solano-reyes.jpg" alt="Solano & Reyes study preview" loading="lazy"></div><div class="mtile"><img src="assets/vance-ferrara.jpg" alt="Vance Ferrara study preview" loading="lazy"></div><div class="mtile"><img src="assets/meridian-dynamic.jpg" alt="Meridian Legal Services study preview" loading="lazy"></div><div class="mtile"><img src="assets/hale-corvin.jpg" alt="Hale & Corvin study preview" loading="lazy"></div><div class="mtile"><img src="assets/solano-reyes.jpg" alt="Solano & Reyes study preview" loading="lazy"></div><div class="mtile"><img src="assets/vance-ferrara.jpg" alt="Vance Ferrara study preview" loading="lazy"></div><div class="mtile"><img src="assets/meridian-dynamic.jpg" alt="Meridian Legal Services study preview" loading="lazy"></div><div class="mtile"><img src="assets/hale-corvin.jpg" alt="Hale & Corvin study preview" loading="lazy"></div></div>
+      <div class="mcol mcol--c" aria-hidden="true"><div class="mtile"><img src="assets/wren-alderman.jpg" alt="Wren & Alderman study preview" loading="lazy"></div><div class="mtile"><img src="assets/solano-reyes.jpg" alt="Solano & Reyes study preview" loading="lazy"></div><div class="mtile"><img src="assets/halvorsen-kite.jpg" alt="Halvorsen Kite study preview" loading="lazy"></div><div class="mtile"><img src="assets/vance-ferrara.jpg" alt="Vance Ferrara study preview" loading="lazy"></div><div class="mtile"><img src="assets/wren-alderman.jpg" alt="Wren & Alderman study preview" loading="lazy"></div><div class="mtile"><img src="assets/solano-reyes.jpg" alt="Solano & Reyes study preview" loading="lazy"></div><div class="mtile"><img src="assets/halvorsen-kite.jpg" alt="Halvorsen Kite study preview" loading="lazy"></div><div class="mtile"><img src="assets/vance-ferrara.jpg" alt="Vance Ferrara study preview" loading="lazy"></div></div>
+      <span class="hero__mosfoot"><i></i>Live builds · 2024—2026<i></i></span>
     </div>
   </div>
 </header>
 
-<section class="sec">
+<section class="sec" id="studies">
   <div class="studies">
 
     <article class="card feat">
       <div class="shot">
         <span class="shot__motif" data-globe></span><span class="shot__tint"></span>
-        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Meridian Legal Services — homepage<br>/assets/ds-meridian-dynamic.jpg</span>
-        <img data-shot="/assets/ds-meridian-dynamic.jpg" src="/assets/ds-meridian-dynamic.jpg" alt="Meridian Legal Services homepage — hero with headline &quot;Everything between filing and verdict.&quot;" loading="lazy" onerror="this.remove()">
+        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Meridian Legal Services — homepage<br>assets/meridian-dynamic.jpg</span>
+        <img data-shot="assets/meridian-dynamic.jpg" src="assets/meridian-dynamic.jpg" alt="Meridian Legal Services homepage — hero with headline &quot;Everything between filing and verdict.&quot;" loading="lazy" onerror="this.remove()">
       </div>
       <div class="card__body">
         <div class="card__meta"><b>Study 01</b><i>·</i><span>Litigation support</span><i>·</i><span>Multi-service / operational</span></div>
@@ -122,8 +182,8 @@
     <article class="card second">
       <div class="shot">
         <span class="shot__motif" data-globe></span><span class="shot__tint"></span>
-        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Hale &amp; Corvin — homepage<br>/assets/ds-hale-corvin.jpg</span>
-        <img data-shot="/assets/ds-hale-corvin.jpg" src="/assets/ds-hale-corvin.jpg" alt="Hale &amp; Corvin homepage — hero with headline &quot;Judgment, earned the old way.&quot;" loading="lazy" onerror="this.remove()">
+        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Hale &amp; Corvin — homepage<br>assets/hale-corvin.jpg</span>
+        <img data-shot="assets/hale-corvin.jpg" src="assets/hale-corvin.jpg" alt="Hale &amp; Corvin homepage — hero with headline &quot;Judgment, earned the old way.&quot;" loading="lazy" onerror="this.remove()">
       </div>
       <div class="card__body">
         <div class="card__meta"><b>Study 02</b><i>·</i><span>Commercial litigation</span><i>·</i><span>Boutique / editorial</span></div>
@@ -139,8 +199,8 @@
     <article class="card second">
       <div class="shot">
         <span class="shot__motif" data-globe></span><span class="shot__tint"></span>
-        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Halvorsen Kite — homepage<br>/assets/ds-halvorsen-kite.jpg</span>
-        <img data-shot="/assets/ds-halvorsen-kite.jpg" src="/assets/ds-halvorsen-kite.jpg" alt="Halvorsen Kite homepage — hero with headline “Counsel for people who build the thing.”" loading="lazy" onerror="this.remove()">
+        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Halvorsen Kite — homepage<br>assets/halvorsen-kite.jpg</span>
+        <img data-shot="assets/halvorsen-kite.jpg" src="assets/halvorsen-kite.jpg" alt="Halvorsen Kite homepage — hero with headline “Counsel for people who build the thing.”" loading="lazy" onerror="this.remove()">
       </div>
       <div class="card__body">
         <div class="card__meta"><b>Study 03</b><i>·</i><span>Intellectual property &amp; technology</span><i>·</i><span>Dark / engineering-led</span></div>
@@ -156,8 +216,8 @@
     <article class="card second">
       <div class="shot">
         <span class="shot__motif" data-globe></span><span class="shot__tint"></span>
-        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Solano &amp; Reyes — homepage<br>/assets/ds-solano-reyes.jpg</span>
-        <img data-shot="/assets/ds-solano-reyes.jpg" src="/assets/ds-solano-reyes.jpg" alt="Solano &amp; Reyes homepage — hero with headline “Every case is a family waiting on an answer.”" loading="lazy" onerror="this.remove()">
+        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Solano &amp; Reyes — homepage<br>assets/solano-reyes.jpg</span>
+        <img data-shot="assets/solano-reyes.jpg" src="assets/solano-reyes.jpg" alt="Solano &amp; Reyes homepage — hero with headline “Every case is a family waiting on an answer.”" loading="lazy" onerror="this.remove()">
       </div>
       <div class="card__body">
         <div class="card__meta"><b>Study 04</b><i>·</i><span>Immigration law</span><i>·</i><span>Bilingual / reassuring</span></div>
@@ -173,8 +233,8 @@
     <article class="card second">
       <div class="shot">
         <span class="shot__motif" data-globe></span><span class="shot__tint"></span>
-        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Vance Ferrara — homepage<br>/assets/ds-vance-ferrara.jpg</span>
-        <img data-shot="/assets/ds-vance-ferrara.jpg" src="/assets/ds-vance-ferrara.jpg" alt="Vance Ferrara homepage — hero with headline “The insurer already has a team.”" loading="lazy" onerror="this.remove()">
+        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Vance Ferrara — homepage<br>assets/vance-ferrara.jpg</span>
+        <img data-shot="assets/vance-ferrara.jpg" src="assets/vance-ferrara.jpg" alt="Vance Ferrara homepage — hero with headline “The insurer already has a team.”" loading="lazy" onerror="this.remove()">
       </div>
       <div class="card__body">
         <div class="card__meta"><b>Study 05</b><i>·</i><span>Injury &amp; wrongful death</span><i>·</i><span>Urgent / contingency intake</span></div>
@@ -190,8 +250,8 @@
     <article class="card second">
       <div class="shot">
         <span class="shot__motif" data-globe></span><span class="shot__tint"></span>
-        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Wren &amp; Alderman — homepage<br>/assets/ds-wren-alderman.jpg</span>
-        <img data-shot="/assets/ds-wren-alderman.jpg" src="/assets/ds-wren-alderman.jpg" alt="Wren &amp; Alderman homepage — hero with headline “You are allowed to not know what happens next.”" loading="lazy" onerror="this.remove()">
+        <span class="shot__cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Wren &amp; Alderman — homepage<br>assets/wren-alderman.jpg</span>
+        <img data-shot="assets/wren-alderman.jpg" src="assets/wren-alderman.jpg" alt="Wren &amp; Alderman homepage — hero with headline “You are allowed to not know what happens next.”" loading="lazy" onerror="this.remove()">
       </div>
       <div class="card__body">
         <div class="card__meta"><b>Study 06</b><i>·</i><span>Family law</span><i>·</i><span>Quiet / trauma-aware</span></div>
@@ -397,6 +457,17 @@
 
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1b2432"/><rect x="30" y="34" width="40" height="32" rx="3" fill="none" stroke="#c8402f" stroke-width="3"/><circle cx="41" cy="45" r="3.4" fill="#c8402f"/><path d="M32 62l12-11 10 9 8-7 6 6" fill="none" stroke="#f2f2f0" stroke-width="3" stroke-linejoin="round"/></svg></template>
 <script src="/assets/site.js"></script>
+<script>
+(()=>{const el=document.getElementById('heroRot');if(!el)return;
+const items=['Litigation support','IP & technology','Immigration law','Personal injury','Family law','Estate & probate'];
+el.innerHTML=items.map(t=>'<span>'+t+'</span>').join('');
+const sp=[...el.children];let i=0;sp[0].setAttribute('data-on','');
+if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+setInterval(()=>{const cur=sp[i];i=(i+1)%sp.length;const nx=sp[i];
+cur.removeAttribute('data-on');cur.setAttribute('data-out','');
+nx.removeAttribute('data-out');requestAnimationFrame(()=>nx.setAttribute('data-on',''));
+setTimeout(()=>cur.removeAttribute('data-out'),600);},2600);})();
+</script>
 <script>document.querySelectorAll('img[data-shot]').forEach(i=>{i.onerror=()=>i.remove();i.src=i.dataset.shot});</script>
 </body>
 </html>
