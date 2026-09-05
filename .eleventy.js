@@ -1,6 +1,7 @@
 module.exports = function (eleventyConfig) {
   // Pass the existing hand-built static site through to the build output untouched.
   eleventyConfig.addPassthroughCopy("assets");
+  eleventyConfig.addPassthroughCopy("design-studies/assets");
   eleventyConfig.addPassthroughCopy("favicon.svg");
   eleventyConfig.addPassthroughCopy("robots.txt"); 
   eleventyConfig.addPassthroughCopy(".well-known");
